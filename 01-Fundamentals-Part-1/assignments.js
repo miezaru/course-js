@@ -1,3 +1,4 @@
+/*
 console.log('assignments starts')
 
 let country = 'Ukraine'
@@ -9,3 +10,4 @@ console.log(continent)
 console.log(population)
 
 console.log('assignments end')
+ */
