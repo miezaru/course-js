@@ -71,3 +71,45 @@
 // lastName = 'Sein'
 // console.log(lastName)
 //? LET, CONST AND VAR END
+
+//* BASIC OPERATORS START
+// math operators
+// const now = 2042
+// const ageNika = now - 1997
+// const ageSarah = now - 2018
+// console.log(ageNika, ageSarah, typeof ageNika, typeof ageSarah)
+
+// console.log(ageNika * 2, ageNika / 2, ageSarah / 10, 2 ** 3) // 90 22.5 2.4 8
+// 2 ** 3 means 2 to the power of 3 = 2 * 2 * 2 = 8
+
+// const firstName = 'Nika'
+// const lastName = 'Sine'
+// concatination
+// console.log(firstName + ' ' + lastName) // Nika Sine
+
+// assignment operator
+// let x = 10 + 5 // 15
+// console.log(x)
+// x += 10 // x = x + 10
+// console.log(x)
+// x *= 4
+// console.log(x) // 100
+// x /= 5
+// console.log(x) // 20
+// x++
+// console.log(x) // 21
+// x--
+// x--
+// console.log(x) // 19
+
+// comparison operators
+// >, >=, <, <=
+// console.log(ageNika > ageSarah) // true
+// console.log(ageNika < ageSarah) // flase
+// console.log(ageSarah >= 24) // true, Sarah age is 24
+
+// const isFullAge = ageSarah >= 24
+
+// what first? ---> operator precedence
+// console.log(now - 1997 > now - 2018)
+//* BASIC OPERATORS END
