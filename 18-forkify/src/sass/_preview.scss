@@ -1,0 +1,99 @@
+.preview {
+    &__link {
+        &:link,
+        &:visited {
+            display: flex;
+            align-items: center;
+            padding-block: 1.5rem;
+            padding-inline: 3.25rem;
+            text-decoration: none;
+            border-inline-end: 1px solid hsl(0deg 0% 100%);
+            transition: all 0.3s;
+        }
+
+        &:hover {
+            background-color: $color-grey-light-1;
+            transform: translateY(-2px);
+        }
+
+        &--active {
+            background-color: $color-grey-light-1;
+        }
+    }
+
+    &__fig {
+        position: relative;
+        flex: 0 0 5.8rem;
+        block-size: 5.8rem;
+        margin-inline-end: 2rem;
+        overflow: hidden;
+        border-radius: 50%;
+        backface-visibility: hidden;
+
+        &::before {
+            position: absolute;
+            inset-block-start: 0;
+            inset-inline-start: 0;
+            display: block;
+            inline-size: 100%;
+            block-size: 100%;
+            content: '';
+            background-image: linear-gradient(to right bottom, $color-grad-1, $color-grad-2);
+            opacity: 0.4;
+        }
+
+        img {
+            display: block;
+            inline-size: 100%;
+            block-size: 100%;
+            object-fit: cover;
+            transition: all 0.3s;
+        }
+    }
+
+    &__data {
+        display: grid;
+        grid-template-columns: 1fr 2rem;
+        row-gap: 0.1rem;
+        align-items: center;
+        inline-size: 100%;
+    }
+
+    &__title {
+        grid-column: 1/-1;
+        max-inline-size: 25rem;
+        overflow: hidden;
+        font-size: 1.45rem;
+        font-weight: 600;
+        color: $color-primary;
+
+        // This is how text is truncated!
+        text-overflow: ellipsis;
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+
+    &__publisher {
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: $color-grey-dark-2;
+        text-transform: uppercase;
+    }
+
+    &__user-generated {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        inline-size: 2rem;
+        block-size: 2rem;
+        margin-inline: auto 1.75rem;
+        background-color: darken($color-grey-light-2, 2%);
+        border-radius: 10rem;
+
+        svg {
+            inline-size: 1.2rem;
+            block-size: 1.2rem;
+            fill: $color-primary;
+        }
+    }
+}

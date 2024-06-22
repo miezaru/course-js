@@ -1,0 +1,46 @@
+.search-results {
+    display: flex;
+    flex-direction: column;
+    padding-block: 3rem;
+    padding-inline: 0;
+}
+
+.results {
+    margin-block-end: 2rem;
+    list-style: none;
+}
+
+.pagination {
+    padding-block: 0;
+    padding-inline: 3.5rem;
+    margin-block-start: auto;
+
+    &::after {
+        display: table;
+        clear: both;
+        content: '';
+    }
+
+    &__btn {
+        &--prev {
+            float: inline-start;
+        }
+
+        &--next {
+            float: inline-end;
+        }
+    }
+}
+
+.copyright {
+    padding-block: 0;
+    padding-inline: 3.5rem;
+    margin-block-start: 4rem;
+    font-size: 1.2rem;
+    color: $color-grey-dark-2;
+
+    .twitter-link:link,
+    .twitter-link:visited {
+        color: $color-grey-dark-2;
+    }
+}

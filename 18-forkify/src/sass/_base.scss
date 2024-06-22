@@ -1,0 +1,71 @@
+// $color-primary: #f59a83;
+$color-primary: hsl(6deg 82% 73%);
+$color-grad-1: hsl(43deg 93% 76%);
+$color-grad-2: hsl(4deg 84% 73%);
+
+$color-grey-light-1: hsl(20deg 33% 96%); // Light background
+$color-grey-light-2: hsl(15deg 13% 94%); // Light lines
+$color-grey-light-3: hsl(15deg 15% 80%); // Light text (placeholder)
+$color-grey-dark-1: hsl(15deg 9% 35%); // Normal text
+$color-grey-dark-2: hsl(15deg 7% 54%); // Lighter text
+
+$gradient: linear-gradient(to right bottom, $color-grad-1, $color-grad-2);
+
+$bp-large: 78.15em; // 1250px
+$bp-medium: 61.25em; // 980px
+$bp-small: 37.5em; // 600px
+$bp-smallest: 31.25em; // 500px
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+
+    @media only screen and (max-width: $bp-medium) {
+        font-size: 50%;
+    }
+}
+
+body {
+    min-block-size: calc(100vh - 2 * 4vw);
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    color: $color-grey-dark-1;
+    background-image: $gradient;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    display: grid;
+    grid-template-areas:
+        'head head'
+        'list recipe';
+    grid-template-rows: 10rem minmax(100rem, auto);
+    grid-template-columns: 1fr 2fr;
+    max-inline-size: 120rem;
+    min-block-size: 117rem;
+    margin-block: 4vw;
+    margin-inline: auto;
+    overflow: hidden;
+    background-color: hsl(0deg 0% 100%);
+    border-radius: 9px;
+    box-shadow: 0 2rem 6rem 0.5rem rgba($color-grey-dark-1, 0.2);
+
+    @media only screen and (max-width: $bp-large) {
+        max-inline-size: 100%;
+        margin: 0;
+        border-radius: 0;
+    }
+}

@@ -1,0 +1,218 @@
+%btn {
+    display: flex;
+    align-items: center;
+    color: hsl(0deg 0% 100%);
+    text-transform: uppercase;
+    cursor: pointer;
+    background-image: $gradient;
+    border: none;
+    border-radius: 10rem;
+    transition: all 0.2s;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    & > *:first-child {
+        margin-inline-end: 1rem;
+    }
+}
+
+.btn {
+    @extend %btn;
+
+    padding-block: 1.5rem;
+    padding-inline: 4rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+
+    svg {
+        inline-size: 2.25rem;
+        block-size: 2.25rem;
+        fill: currentcolor;
+    }
+}
+
+.btn--small {
+    &,
+    &:link,
+    &:visited {
+        @extend %btn;
+
+        padding-block: 1.25rem;
+        padding-inline: 2.25rem;
+        font-size: 1.4rem;
+        font-weight: 600;
+        text-decoration: none;
+
+        svg {
+            inline-size: 1.75rem;
+            block-size: 1.75rem;
+            fill: currentcolor;
+        }
+    }
+}
+
+.btn--inline {
+    display: flex;
+    align-items: center;
+    padding-block: 0.8rem;
+    padding-inline: 1.2rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: $color-primary;
+    cursor: pointer;
+    background-color: $color-grey-light-1;
+    border: none;
+    border-radius: 10rem;
+    transition: all 0.2s;
+
+    svg {
+        inline-size: 1.6rem;
+        block-size: 1.6rem;
+        margin-block: 0;
+        margin-inline: 0.2rem;
+        fill: currentcolor;
+    }
+
+    span {
+        margin-block: 0;
+        margin-inline: 0.4rem;
+    }
+
+    &:hover {
+        color: $color-grad-2;
+        background-color: $color-grey-light-2;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.btn--round {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 4.5rem;
+    block-size: 4.5rem;
+    cursor: pointer;
+    background-image: $gradient;
+    border: none;
+    border-radius: 50%;
+    // margin-left: auto;
+    transition: all 0.2s;
+
+    &:hover {
+        transform: scale(1.07);
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    svg {
+        inline-size: 2.5rem;
+        block-size: 2.5rem;
+        fill: hsl(0deg 0% 100%);
+    }
+}
+
+.btn--tiny {
+    inline-size: 2rem;
+    block-size: 2rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+
+    svg {
+        inline-size: 100%;
+        block-size: 100%;
+        fill: $color-primary;
+        transition: all 0.3s;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover svg {
+        fill: $color-grad-2;
+        transform: translateY(-1px);
+    }
+
+    &:active svg {
+        fill: $color-grad-2;
+        transform: translateY(0);
+    }
+
+    &:not(:last-child) {
+        margin-inline-end: 0.3rem;
+    }
+}
+
+.heading--2 {
+    margin-block-end: 2.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: $color-primary;
+    text-align: center;
+    text-transform: uppercase;
+    // transform: skewY(-3deg);
+}
+
+.link:link,
+.link:visited {
+    color: $color-grey-dark-2;
+}
+
+.spinner {
+    margin-block: 5rem;
+    margin-inline: auto;
+    text-align: center;
+
+    svg {
+        inline-size: 6rem;
+        block-size: 6rem;
+        fill: $color-primary;
+        animation: rotate 2s infinite linear;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.message,
+.error {
+    display: flex;
+    max-inline-size: 40rem;
+    padding-block: 5rem;
+    padding-inline: 4rem;
+    margin-block: 0;
+    margin-inline: auto;
+
+    svg {
+        inline-size: 3rem;
+        block-size: 3rem;
+        fill: $color-primary;
+        transform: translateY(-0.3rem);
+    }
+
+    p {
+        margin-inline-start: 1.5rem;
+        font-size: 1.8rem;
+        font-weight: 600;
+        line-height: 1.5;
+    }
+}

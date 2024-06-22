@@ -1,0 +1,86 @@
+* {
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    block-size: 100vh;
+    font-family: sans-serif;
+    line-height: 1.5;
+    color: hsl(0deg 0% 20%);
+    background: linear-gradient(to top left, hsl(161deg 64% 43%), hsl(112deg 55% 64%));
+}
+
+.show-modal {
+    padding-block: 1.75rem;
+    padding-inline: 3.5rem;
+    margin-block: 5rem;
+    margin-inline: 2rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: hsl(0deg 0% 27%);
+    cursor: pointer;
+    background-color: hsl(0deg 0% 100%);
+    border: none;
+    border-radius: 10rem;
+}
+
+.close-modal {
+    position: absolute;
+    inset-block-start: 1.2rem;
+    inset-inline-end: 2rem;
+    font-size: 5rem;
+    color: hsl(0deg 0% 20%);
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+h1 {
+    margin-block-end: 2rem;
+    font-size: 2.5rem;
+}
+
+p {
+    font-size: 1.8rem;
+}
+
+/* -------------------------- */
+/* CLASSES TO MAKE MODAL WORK */
+.hidden {
+    display: none;
+}
+
+.modal {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    z-index: 10;
+    inline-size: 70%;
+    padding: 6rem;
+    background-color: hsl(0deg 0% 100%);
+    border-radius: 5px;
+    box-shadow: 0 3rem 5rem rgb(0 0 0 / 30%);
+    transform: translate(-50%, -50%);
+}
+
+.overlay {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    z-index: 5;
+    inline-size: 100%;
+    block-size: 100%;
+    background-color: rgb(0 0 0 / 60%);
+    backdrop-filter: blur(3px);
+}

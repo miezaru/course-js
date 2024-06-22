@@ -1,0 +1,122 @@
+@import "https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap";
+
+* {
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body {
+    font-family: "Press Start 2P", sans-serif;
+    color: hsl(0deg 0% 93%);
+    background-color: hsl(0deg 0% 13%);
+
+    /* background-color: #60b347; */
+}
+
+/* LAYOUT */
+header {
+    position: relative;
+    block-size: 35vh;
+    border-block-end: 7px solid hsl(0deg 0% 93%);
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    block-size: 65vh;
+    color: hsl(0deg 0% 93%);
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    inline-size: 52rem;
+}
+
+.right {
+    inline-size: 52rem;
+    font-size: 2rem;
+}
+
+/* ELEMENTS STYLE */
+h1 {
+    position: absolute;
+    inset-block-start: 52%;
+    inset-inline-start: 50%;
+    inline-size: 100%;
+    font-size: 4rem;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+
+.number {
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-start: 50%;
+    inline-size: 15rem;
+    padding-block: 3rem;
+    padding-inline: 0;
+    font-size: 6rem;
+    color: hsl(0deg 0% 20%);
+    text-align: center;
+    background: hsl(0deg 0% 93%);
+    transform: translate(-50%, 50%);
+}
+
+.between {
+    position: absolute;
+    inset-block-start: 2rem;
+    inset-inline-end: 2rem;
+    font-size: 1.4rem;
+}
+
+.again {
+    position: absolute;
+    inset-block-start: 2rem;
+    inset-inline-start: 2rem;
+}
+
+.guess {
+    display: block;
+    inline-size: 25rem;
+    padding: 2.5rem;
+    margin-block-end: 3rem;
+    font-family: inherit;
+    font-size: 5rem;
+    color: inherit;
+    text-align: center;
+    background: none;
+    border: 4px solid hsl(0deg 0% 93%);
+}
+
+.btn {
+    padding-block: 2rem;
+    padding-inline: 3rem;
+    font-family: inherit;
+    font-size: 2rem;
+    color: hsl(0deg 0% 13%);
+    cursor: pointer;
+    background-color: hsl(0deg 0% 93%);
+    border: none;
+}
+
+.btn:hover {
+    background-color: hsl(0deg 0% 80%);
+}
+
+.message {
+    block-size: 3rem;
+    margin-block-end: 8rem;
+}
+
+.label-score {
+    margin-block-end: 2rem;
+}
