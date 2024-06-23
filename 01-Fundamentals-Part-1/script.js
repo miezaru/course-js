@@ -74,9 +74,9 @@
 
 //* BASIC OPERATORS START
 // math operators
-const now = 2042
-const ageNika = now - 1997
-const ageSarah = now - 2018
+// const now = 2042
+// const ageNika = now - 1997
+// const ageSarah = now - 2018
 // console.log(ageNika, ageSarah, typeof ageNika, typeof ageSarah)
 
 // console.log(ageNika * 2, ageNika / 2, ageSarah / 10, 2 ** 3) // 90 22.5 2.4 8
@@ -115,11 +115,40 @@ const ageSarah = now - 2018
 //* BASIC OPERATORS END
 
 //? OPERATOR PRECEDENCE START
-console.log(25 - 10 - 5)
+// console.log(25 - 10 - 5)
 
-let x, y
-x = y = 25 - 10 - 5 // 10
-console.log(x, y) // 10 10, x = y = 10, y = 10, x = 10
-const averageAge = (ageNika + ageSarah) / 2
-console.log(ageNika, ageSarah, averageAge)
+// let x, y
+// x = y = 25 - 10 - 5 // 10
+// console.log(x, y) // 10 10, x = y = 10, y = 10, x = 10
+// const averageAge = (ageNika + ageSarah) / 2
+// console.log(ageNika, ageSarah, averageAge)
 //? OPERATOR PRECEDENCE END
+
+//* STRINGS AND TEMPLATE LITERALS START
+const firstName = 'Artem'
+const job = 'programmer'
+const birthYear = 1997
+const year = 2037
+
+// old way
+const artem = "I'm " + firstName + ', a ' + (year - birthYear) + ' years old ' + job + '!'
+console.log(artem)
+
+// template literals (ES6) - more readable and efficient
+const artemNew = `I'm ${firstName}, a ${year - birthYear} years old ${job}!`
+console.log(artemNew)
+
+// use backticks always
+console.log(`Just a regular string...`)
+// use backticks for multiline strings
+console.log(
+  'String with \n\
+multiple \n\
+lines)'
+)
+console.log(
+  `String
+multiple
+lines`
+)
+//* STRINGS AND TEMPLATE LITERALS END
