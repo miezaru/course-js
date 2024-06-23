@@ -179,3 +179,33 @@ if (birthYear < 2000) {
 }
 console.log(century)
 console.log(`---------- TAKING DECISIONS: IF/ELSE STATEMENTS END ----------`)
+
+console.log(`---------- TYPE CONVERSION AND COERCION START ----------`)
+// type conversion
+const inputYear = '1997'
+console.log(inputYear + 18) // concatenates string and number
+console.log(Number(inputYear), inputYear) // converts string to number
+console.log(Number(inputYear) + 18) // adds number
+
+console.log(Number('artem')) // NaN (Not a Number)
+console.log(typeof NaN) // number
+
+console.log(String(23), 23) // '23' 23
+
+// type coercion
+console.log('I am ' + 23 + ' years old') // 'I am 23 years old'
+console.log('I am ' + '23' + ' years old') // 'I am 23 years old'
+console.log('I am ' + String(23) + ' years old') // 'I am 23 years old'
+
+console.log('23' - '10' - 3) // 10
+console.log('23' + '10' + 3) // '23103'
+console.log('23' * '2') // 46
+console.log('23' / '2') // 11.5
+
+let n = '1' + 1
+n = n - 1
+console.log(n) // 10
+
+console.log(2 + 3 + 4 + '5') // '95'
+console.log('10' - '4' - '3' - 2 + '5') // '15'
+console.log(`---------- TYPE CONVERSION AND COERCION END ----------`)
