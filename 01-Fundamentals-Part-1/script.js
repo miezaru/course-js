@@ -275,3 +275,36 @@ console.log(`(3 > 2) && (5 < 4)`, 3 > 2 && 5 < 4) // false
 console.log(`(3 > 2) || (5 < 4)`, 3 > 2 || 5 < 4) // true
 console.log(`!(3 > 2) && (5 < 4)`, !(3 > 2) && 5 < 4) // true
 console.log(`---------- BOOLEAN LOGIC END ----------`)
+console.log(`---------- LOGICAL OPERATORS START ----------`)
+// && (AND) operator
+// || (OR) operator
+const hasDriversLicense = true // A
+const hasGoodVision = true // B
+console.log(`hasDriversLicence && hasGoodVision`, hasDriversLicense && hasGoodVision) // true
+console.log(`hasDriversLicence || hasGoodVision`, hasDriversLicense || hasGoodVision) // true
+console.log(`!hasDriversLicense`, !hasDriversLicense) // false
+
+const shouldDrive = hasDriversLicense && hasGoodVision
+console.log(`Should drive?`, shouldDrive) // true
+if (shouldDrive) {
+  console.log(`Sarah is able to drive!`)
+} else {
+  console.log(`Someone else should drive!`)
+}
+
+const isTired = false // C
+console.log(
+  `hasDriversLicence || hasGoodVision || isTired`,
+  hasDriversLicense || hasGoodVision || isTired
+) // true
+console.log(
+  `hasDriversLicence && hasGoodVision && isTired`,
+  hasDriversLicense && hasGoodVision && isTired
+) // true
+
+if (hasDriversLicense && hasGoodVision && !isTired) {
+  console.log(`Sarah is able to drive!`)
+} else {
+  console.log(`Someone else should drive...`)
+}
+console.log(`---------- LOGICAL OPERATORS END ----------`)
