@@ -209,3 +209,31 @@ console.log(n) // 10
 console.log(2 + 3 + 4 + '5') // '95'
 console.log('10' - '4' - '3' - 2 + '5') // '15'
 console.log(`---------- TYPE CONVERSION AND COERCION END ----------`)
+
+console.log(`---------- TRUTHY AND FALSY VALUES START ----------`)
+console.log(`5 falsy values: 0, '', undefined, null, NaN`)
+console.log(`Boolean(0)`, Boolean(0)) // false
+console.log(`Boolean('')`, Boolean('')) // false
+console.log(`Boolean(undefined)`, Boolean(undefined)) // false
+console.log(`Boolean(null)`, Boolean(null)) // false
+console.log(`Boolean(NaN)`, Boolean(NaN)) // false
+console.log(`boolean conversion is only implicit not explicit`)
+console.log(`Boolean({})`, Boolean({})) // true
+console.log(`Boolean([])`, Boolean([])) // true
+console.log(`Boolean('Artem')`, Boolean('Artem')) // true
+
+const money = 100
+// 0 convertion to a boolean is false
+if (money) {
+  console.log(`Don't spend it all`)
+} else {
+  console.log(`You should get a job!`)
+}
+
+let height = 0
+if (height) {
+  console.log(`YAY! Height is defined`)
+} else {
+  console.log(`Height is UNDEFINED or FALSY value`)
+}
+console.log(`---------- TRUTHY AND FALSY VALUES END ----------`)
