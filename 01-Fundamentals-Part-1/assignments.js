@@ -83,17 +83,3 @@ switch (language) {
 }
 
 console.log('---------- ASSIGNMENTS END ----------')
-console.log('---------- STATEMENTS AND EXPRESSIONS START ----------')
-// expression examples, produce value
-console.log(2 + 3) // -> 5
-console.log(5 - 3) // -> 2
-console.log(3 * 4) // -> 12
-console.log(10 / 2) // -> 5
-console.log(10 % 3) // -> 1
-console.log('Hello' + 'World') // -> Hello World
-// statement examples
-if (23 > 10) {
-  const str = `23 is greater than 10`
-}
-
-console.log('---------- STATEMENTS AND EXPRESSIONS END ----------')

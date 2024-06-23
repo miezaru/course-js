@@ -348,3 +348,36 @@ if (day === 'monday') {
 } else console.log(`Not a valid day!`)
 
 console.log(`---------- THE SWITCH STATEMENT END ----------`)
+console.log('---------- STATEMENTS AND EXPRESSIONS START ----------')
+// expression examples, produce value
+console.log(2 + 3) // -> 5
+console.log(5 - 3) // -> 2
+console.log(3 * 4) // -> 12
+console.log(10 / 2) // -> 5
+console.log(10 % 3) // -> 1
+console.log('Hello' + ' ' + 'World') // -> Hello World
+// statement examples
+if (23 > 10) {
+  const str = `23 is greater than 10`
+}
+console.log('---------- STATEMENTS AND EXPRESSIONS END ----------')
+console.log(`---------- CONDITIONAL (TERNARY) OPERATOR START ----------`)
+age = 21
+// ternary operator is like an if-else statement but shorter and in one line
+age >= 18 ? console.log(`I like to drink wine 🍷`) : console.log(`I like to drink water 💧`)
+
+// we can store the result of the ternary operator in a variable because it's an expression
+const drink = age >= 18 ? 'wine 🍷' : 'water 💧'
+console.log(drink)
+
+let drink2
+if (age >= 18) {
+  drink2 = 'wine 🍷'
+} else {
+  drink2 = 'water 💧'
+}
+console.log(drink2)
+// ternary operator cool for quick desitions
+// because ternary operator is an expression, we can use it in a function call and string interpolation
+console.log(`I like to drink ${age >= 18 ? 'wine 🍷' : 'water 💧'}`)
+console.log(`---------- CONDITIONAL (TERNARY) OPERATOR END ----------`)
