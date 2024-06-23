@@ -237,3 +237,24 @@ if (height) {
   console.log(`Height is UNDEFINED or FALSY value`)
 }
 console.log(`---------- TRUTHY AND FALSY VALUES END ----------`)
+console.log(`---------- EQUALITY OPERATORS: == vs === START ----------`)
+age = 18
+if (age === 18) console.log(`You just became an adult!`)
+console.log(`18 === 18`, 18 === 18) // true
+console.log(`18 == '18' (loose)`, 18 == '18') // true
+console.log(`18 === '18' (strict)`, 18 === '18') // false
+
+// prompt returns a string, so we need to convert it to number
+const favouriteNumber = Number(prompt(`What's your favourite number?`))
+console.log(favouriteNumber, typeof favouriteNumber)
+
+if (favouriteNumber === 21) {
+  console.log(`Cool! 21 is an amazing number!`)
+} else if (favouriteNumber === 7) {
+  console.log(`7 is also a cool number!`)
+} else {
+  console.log(`Number is not 21 or 7. Number is ${favouriteNumber}`)
+}
+
+if (favouriteNumber !== 21) console.log(`Why not 21?`)
+console.log(`---------- EQUALITY OPERATORS: == vs === END ----------`)
