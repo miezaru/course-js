@@ -245,7 +245,8 @@ console.log(`18 == '18' (loose)`, 18 == '18') // true
 console.log(`18 === '18' (strict)`, 18 === '18') // false
 
 // prompt returns a string, so we need to convert it to number
-const favouriteNumber = Number(prompt(`What's your favourite number?`))
+// const favouriteNumber = Number(prompt(`What's your favourite number?`))
+const favouriteNumber = 23
 console.log(favouriteNumber, typeof favouriteNumber)
 
 if (favouriteNumber === 21) {
@@ -258,3 +259,19 @@ if (favouriteNumber === 21) {
 
 if (favouriteNumber !== 21) console.log(`Why not 21?`)
 console.log(`---------- EQUALITY OPERATORS: == vs === END ----------`)
+console.log(`---------- BOOLEAN LOGIC START ----------`)
+// boolean logic examples
+console.log(`true && true`, true && true) // true
+console.log(`true && false`, true && false) // false
+console.log(`false && true`, false && true) // false
+console.log(`false && false`, false && false) // false
+console.log(`!true`, !true) // false
+console.log(`!false`, !false) // true
+console.log(`true || true`, true || true) // true
+console.log(`true || false`, true || false) // true
+console.log(`false || true`, false || true) // true
+console.log(`false || false`, false || false) // false
+console.log(`(3 > 2) && (5 < 4)`, 3 > 2 && 5 < 4) // false
+console.log(`(3 > 2) || (5 < 4)`, 3 > 2 || 5 < 4) // true
+console.log(`!(3 > 2) && (5 < 4)`, !(3 > 2) && 5 < 4) // true
+console.log(`---------- BOOLEAN LOGIC END ----------`)
