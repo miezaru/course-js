@@ -72,6 +72,7 @@ console.log(age1, age2)
 //~ FUNCTION DECLARATION VS FUNCTION EXPRESSION END
 
 //~ ARROW FUNCTIONS START
+
 // arrow functions are a shorter syntax for writing function expressions
 // arrow functions returns the result of the expression inside the function automatically
 const calcAge3 = (birthYear) => 2024 - birthYear
@@ -90,4 +91,22 @@ console.log(yearsUntilRetirement(1997, 'Artem'))
 console.log(yearsUntilRetirement(1984, 'Igor'))
 
 // arrow function has a differences from regular function expressions, they have no 'this' keyword
+
 //~ ARROW FUNCTIONS END
+
+//~ FUNCTIONS CALLING OTHER FUNCTIONS START
+
+function cutFruitPieces(fruit) {
+  return fruit * 4
+}
+
+function fruitProcessor2(apples, oranges) {
+  const applePieces = cutFruitPieces(apples)
+  const orangePieces = cutFruitPieces(oranges)
+  const juice = `Juice with ${applePieces} pieces of apples and ${orangePieces} pieces of oranges`
+  return juice
+}
+
+console.log(fruitProcessor2(2, 3))
+
+//~ FUNCTIONS CALLING OTHER FUNCTIONS END
