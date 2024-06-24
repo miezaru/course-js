@@ -8,7 +8,8 @@ console.log(21)
 let firstName = 'Nika'
 console.log(firstName)
 
-console.log(`---------- VARIABLE NAME CONVENTIONS START ----------`)
+//~ VARIABLE NAME CONVENTIONS START
+
 // varibales can only contain numbers, letters, undescores or a dollar sign
 // let 3years = 3
 
@@ -29,9 +30,11 @@ let job1 = 'Programmer'
 let job2 = 'Teacher'
 
 console.log(myFirstJob)
-console.log(`---------- VARIABLE NAME CONVENTIONS END ----------`)
 
-console.log(`---------- DATA TYPES START ----------`)
+//~ VARIABLE NAME CONVENTIONS END
+
+//~ DATA TYPES START
+
 // typeof
 console.log(typeof true) // boolean
 console.log(typeof 2) // number
@@ -49,9 +52,11 @@ console.log(year, typeof year)
 
 year = 1997
 console.log(year, typeof year)
-console.log(`---------- DATA TYPES END ----------`)
 
-console.log(`---------- LET, CONST AND VAR START ----------`)
+//~ DATA TYPES END
+
+//~ LET, CONST AND VAR START
+
 // GOOD PRACTIVE - to have as little variable mutations as possible (always use const, change to let if needed, var completely avoided)
 
 // let, var - mutating variables
@@ -73,9 +78,11 @@ job = 'teacher'
 // never write variables w/o declared it
 let lastName = 'Sein'
 console.log(lastName)
-console.log(`---------- LET, CONST AND VAR END ----------`)
 
-console.log(`---------- BASIC OPERATORS START ----------`)
+//~ LET, CONST AND VAR END
+
+// ~ BASIC OPERATORS START
+
 // math operators
 const now = 2042
 const ageNika = now - 1997
@@ -115,9 +122,11 @@ const isFullAge = ageSarah >= 24
 
 // what first? ---> operator precedence
 console.log(now - 1997 > now - 2018)
-console.log(`---------- BASIC OPERATORS END ----------`)
 
-console.log(`---------- OPERATOR PRECEDENCE START ----------`)
+//~ BASIC OPERATORS END
+
+//~ OPERATOR PRECEDENCE START
+
 console.log(25 - 10 - 5)
 
 let w, y
@@ -125,9 +134,11 @@ w = y = 25 - 10 - 5 // 10
 console.log(x, y) // 10 10, x = y = 10, y = 10, x = 10
 const averageAge = (ageNika + ageSarah) / 2
 console.log(ageNika, ageSarah, averageAge)
-console.log(`---------- OPERATOR PRECEDENCE END ----------`)
 
-console.log(`---------- STRINGS AND TEMPLATE LITERALS START ----------`)
+//~ OPERATOR PRECEDENCE END
+
+//~ STRINGS AND TEMPLATE LITERALS START
+
 job = 'programmer'
 birthYear = 1997
 year = 2037
@@ -155,9 +166,11 @@ console.log(
 multiple
 lines`
 )
-console.log(`---------- STRING AND TEMPLATE LITERALS END ----------`)
 
-console.log(`---------- TAKING DECISIONS: IF/ELSE STATEMENTS START ----------`)
+//~ STRING AND TEMPLATE LITERALS END
+
+//~ TAKING DECISIONS: IF/ELSE STATEMENTS START
+
 age = 19
 // const isOldEnough = age >= 18
 
@@ -178,9 +191,11 @@ if (birthYear < 2000) {
   century = 21
 }
 console.log(century)
-console.log(`---------- TAKING DECISIONS: IF/ELSE STATEMENTS END ----------`)
 
-console.log(`---------- TYPE CONVERSION AND COERCION START ----------`)
+//~ TAKING DECISIONS: IF/ELSE STATEMENTS END
+
+//~ TYPE CONVERSION AND COERCION START
+
 // type conversion
 const inputYear = '1997'
 console.log(inputYear + 18) // concatenates string and number
@@ -208,9 +223,11 @@ console.log(n) // 10
 
 console.log(2 + 3 + 4 + '5') // '95'
 console.log('10' - '4' - '3' - 2 + '5') // '15'
-console.log(`---------- TYPE CONVERSION AND COERCION END ----------`)
 
-console.log(`---------- TRUTHY AND FALSY VALUES START ----------`)
+//~ TYPE CONVERSION AND COERCION END
+
+//~ TRUTHY AND FALSY VALUES START
+
 console.log(`5 falsy values: 0, '', undefined, null, NaN`)
 console.log(`Boolean(0)`, Boolean(0)) // false
 console.log(`Boolean('')`, Boolean('')) // false
@@ -236,8 +253,11 @@ if (height) {
 } else {
   console.log(`Height is UNDEFINED or FALSY value`)
 }
-console.log(`---------- TRUTHY AND FALSY VALUES END ----------`)
-console.log(`---------- EQUALITY OPERATORS: == vs === START ----------`)
+
+//~ TRUTHY AND FALSY VALUES END
+
+//~ EQUALITY OPERATORS: == VS === START
+
 age = 18
 if (age === 18) console.log(`You just became an adult!`)
 console.log(`18 === 18`, 18 === 18) // true
@@ -258,8 +278,11 @@ if (favouriteNumber === 21) {
 }
 
 if (favouriteNumber !== 21) console.log(`Why not 21?`)
-console.log(`---------- EQUALITY OPERATORS: == vs === END ----------`)
-console.log(`---------- BOOLEAN LOGIC START ----------`)
+
+//~ EQUALITY OPERATORS: == VS === END
+
+//~ BOOLEAN LOGIC START
+
 // boolean logic examples
 console.log(`true && true`, true && true) // true
 console.log(`true && false`, true && false) // false
@@ -274,8 +297,13 @@ console.log(`false || false`, false || false) // false
 console.log(`(3 > 2) && (5 < 4)`, 3 > 2 && 5 < 4) // false
 console.log(`(3 > 2) || (5 < 4)`, 3 > 2 || 5 < 4) // true
 console.log(`!(3 > 2) && (5 < 4)`, !(3 > 2) && 5 < 4) // true
-console.log(`---------- BOOLEAN LOGIC END ----------`)
-console.log(`---------- LOGICAL OPERATORS START ----------`)
+console.log(`----------  ----------`)
+console.log(`---------- ----------`)
+
+//~ BOOLEAN LOGIC END
+
+//~ LOGICAL OPERATORS START
+
 // && (AND) operator
 // || (OR) operator
 const hasDriversLicense = true // A
@@ -307,8 +335,11 @@ if (hasDriversLicense && hasGoodVision && !isTired) {
 } else {
   console.log(`Someone else should drive...`)
 }
-console.log(`---------- LOGICAL OPERATORS END ----------`)
-console.log(`---------- THE SWITCH STATEMENT START ----------`)
+
+//~ LOGICAL OPERATORS END
+
+//~ THE SWITCH STATEMENT START
+
 const day = 'wednesday'
 switch (day) {
   case 'monday': // day === 'monday
@@ -347,8 +378,10 @@ if (day === 'monday') {
   console.log(`Enjoy the weekend!`)
 } else console.log(`Not a valid day!`)
 
-console.log(`---------- THE SWITCH STATEMENT END ----------`)
-console.log('---------- STATEMENTS AND EXPRESSIONS START ----------')
+//~ THE SWITCH STATEMENT END
+
+//~ STATEMENTS AND EXPRESSIONS START
+
 // expression examples, produce value
 console.log(2 + 3) // -> 5
 console.log(5 - 3) // -> 2
@@ -380,4 +413,5 @@ console.log(drink2)
 // ternary operator cool for quick desitions
 // because ternary operator is an expression, we can use it in a function call and string interpolation
 console.log(`I like to drink ${age >= 18 ? 'wine 🍷' : 'water 💧'}`)
-console.log(`---------- CONDITIONAL (TERNARY) OPERATOR END ----------`)
+
+//~ CONDITIONAL (TERNARY) OPERATOR END
