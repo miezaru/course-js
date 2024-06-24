@@ -1,5 +1,4 @@
 console.log('---------- ASSIGNMENTS START ----------`)')
-
 const country = 'Ukraine'
 const continent = 'Europe'
 let population = 38
@@ -35,7 +34,7 @@ console.log(description)
 descriptione = `${country} is in ${continent}, and its ${population} million people speak ${language}.`
 console.log(description)
 
-population = 13
+population = 38
 if (population > 33) {
   console.log(`${country} population is ${population - 33} million above average.`)
 } else {
@@ -82,4 +81,5 @@ switch (language) {
     console.log(`Great language too :D`)
 }
 
+console.log(`${country} population is ${population >= 33 ? 'above' : 'below'} average.`)
 console.log('---------- ASSIGNMENTS END ----------')
