@@ -54,3 +54,52 @@ const ages = [calcAge(years[1]), calcAge(years[2]), calcAge(years[years.length -
 console.log(ages)
 
 //~ INTRODUCTION TO ARRAYS END
+
+//~ BASIC ARRAY OPERATIONS (METHODS) START
+
+// ADD ELEMENTS TO AN ARRAY
+
+// push method | adds a new element to the end of an array
+// push method | returns the new length of the array
+let newLenght = friends.push('Mia')
+console.log(friends)
+console.log(newLenght)
+
+// unshift method | adds a new element to the beginning of an array
+// unshift method | returns the new length of the array
+newLength = friends.unshift('Kate')
+console.log(friends)
+console.log(newLength)
+
+// REMOVE ELEMENTS FROM AN ARRAY
+
+// pop method | removes the last element from an array and returns it
+const lastElement = friends.pop()
+console.log(friends)
+console.log(lastElement)
+
+// shift method | removes the first element from an array and returns it
+const firstElement = friends.shift()
+console.log(friends)
+console.log(firstElement)
+
+// OTHER METHODS
+
+// indexOf method | returns the first index at which a given element can be found in the array
+console.log(friends.indexOf('Emma'))
+console.log(friends.indexOf('Bob')) // -1 if the element is not found
+
+// include method | returns true if all elements in the array pass the test implemented by the provided function
+console.log(friends.includes('Nika'))
+console.log(friends.includes('Bob')) // false if the element is not found
+
+friends.push(23)
+console.log(friends.includes('23')) // false because '23' is a string, not a number, this method checks for strict equality
+
+if (friends.includes('Bob')) {
+  console.log('You have a friend named Peter')
+} else if (friends.includes('Nika')) {
+  console.log('You have a friend named Nika')
+}
+
+//~ BASIC ARRAY OPERATIONS (METHODS) END
