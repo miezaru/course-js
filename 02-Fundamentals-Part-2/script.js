@@ -31,6 +31,7 @@ logger()
 logger(23)
 // logger()
 
+// function declaration
 function fruitProcessor(apples, oranges) {
   console.log(apples, oranges)
   const juice = `Juice with ${apples} apples and ${oranges} oranges`
@@ -46,3 +47,26 @@ const appleAndOrangeJuice = fruitProcessor(2, 4)
 console.log(appleAndOrangeJuice)
 
 //~ FUNCTION END
+
+//~ FUNCTION DECLARATION VS FUNCTION EXPRESSION START
+
+// function declaration can be used before they are defined, this process called hoisting
+const age1 = calcAge1(1997)
+
+// function declaration
+function calcAge1(birthYear) {
+  return 2024 - birthYear
+}
+console.log(age1)
+
+// function expression produce a value to be stored in a variable
+// anonymous function is a function without a name
+const calcAge2 = function (birthYear) {
+  return 2024 - birthYear
+}
+const age2 = calcAge2(1997)
+console.log(age1, age2)
+
+// better use function expression for better readability and reusability
+
+//~ FUNCTION DECLARATION VS FUNCTION EXPRESSION END
