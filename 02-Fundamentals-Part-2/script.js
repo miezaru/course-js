@@ -54,6 +54,7 @@ console.log(appleAndOrangeJuice)
 const age1 = calcAge1(1997)
 
 // function declaration
+// function exits immediately after returning the result
 function calcAge1(birthYear) {
   return 2024 - birthYear
 }
@@ -110,3 +111,42 @@ function fruitProcessor2(apples, oranges) {
 console.log(fruitProcessor2(2, 3))
 
 //~ FUNCTIONS CALLING OTHER FUNCTIONS END
+
+//~ REVIEWING FUNCTIONS START
+
+// function paramets is local to each function
+const calcAge = function (birthYear) {
+  return 2024 - birthYear
+}
+
+const yearsUntilRetirement2 = function (birthYear, firstName) {
+  const age = calcAge(birthYear)
+  const retirement = 65 - age
+
+  if (retirement > 0) {
+    console.log(`${firstName} retires in ${retirement} years`)
+    return retirement
+  } else {
+    console.log(`${firstName} is already retired 🎉`)
+    return -1
+  }
+}
+
+console.log(yearsUntilRetirement2(1997, 'Artem'))
+console.log(yearsUntilRetirement2(1950, 'Mike'))
+
+// function has a name, parameters, and a body
+
+// parameters: placeholders for data that will be provided when the function is called, like local variables in functions
+
+// body: block of code that performs a specific task that we want to reuse. Processes the data and returns the result
+
+// return statement: exits the function and sends a value back to the caller
+
+// calling, running or invoking a function, using parentheses and passing the required arguments
+
+// arguments: actual values of function parameters, to provide data to the function
+
+// variable to save returned values (function output)
+
+//~ REVIEWING FUNCTIONS END
