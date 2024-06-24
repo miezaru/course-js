@@ -70,3 +70,24 @@ console.log(age1, age2)
 // better use function expression for better readability and reusability
 
 //~ FUNCTION DECLARATION VS FUNCTION EXPRESSION END
+
+//~ ARROW FUNCTIONS START
+// arrow functions are a shorter syntax for writing function expressions
+// arrow functions returns the result of the expression inside the function automatically
+const calcAge3 = (birthYear) => 2024 - birthYear
+const age3 = calcAge3(1997)
+console.log(age3)
+
+// arrow function with multiple parameters and a return statement
+// need return keyword to return a value if the function has more than one line
+const yearsUntilRetirement = (birthYear, firstName) => {
+  const age = 2024 - birthYear
+  const retirement = 65 - age
+  return `${firstName} retires in ${retirement} years`
+}
+
+console.log(yearsUntilRetirement(1997, 'Artem'))
+console.log(yearsUntilRetirement(1984, 'Igor'))
+
+// arrow function has a differences from regular function expressions, they have no 'this' keyword
+//~ ARROW FUNCTIONS END
