@@ -76,12 +76,12 @@ console.log(newLength)
 // pop method | removes the last element from an array and returns it
 const lastElement = friends.pop()
 console.log(friends)
-console.log(lastElement)
+console.log(lastElement) // Emma
 
 // shift method | removes the first element from an array and returns it
 const firstElement = friends.shift()
 console.log(friends)
-console.log(firstElement)
+console.log(firstElement) // Kate
 
 // OTHER METHODS
 
@@ -89,7 +89,7 @@ console.log(firstElement)
 console.log(friends.indexOf('Emma'))
 console.log(friends.indexOf('Bob')) // -1 if the element is not found
 
-// include method | returns true if all elements in the array pass the test implemented by the provided function
+// includes method | returns true if all elements in the array pass the test implemented by the provided function
 console.log(friends.includes('Nika'))
 console.log(friends.includes('Bob')) // false if the element is not found
 
