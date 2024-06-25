@@ -68,3 +68,20 @@ for (let i = 0; i < artem.length; i++) {
 }
 
 //~ LOOPING ARRAYS, BREAKING AND CONTINUING END
+
+//~ LOOPING BACKWARDS AND LOOPS IN LOOPS START
+
+const nika = ['Nika', 'Wells', 2024 - 2004, 'dreamer', ['Artem', 'Anna', 'Eva']]
+
+for (let i = nika.length - 1; i >= 0; i--) {
+  console.log(i, nika[i])
+}
+
+for (let exercise = 1; exercise <= 3; exercise++) {
+  console.log(`------ Starting exercise ${exercise}`)
+  for (let rep = 1; rep <= 5; rep++) {
+    console.log(`Exercise ${exercise}: Lifting weights repetition ${rep}`)
+  }
+}
+
+//~ LOOPING BACKWARDS AND LOOPS IN LOOPS END
