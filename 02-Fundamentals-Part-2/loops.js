@@ -21,3 +21,50 @@ for (let rep = 1; rep <= 5; rep++) {
 }
 
 //~ ITERATION: THE FOR LOOP END
+
+//~ LOOPING ARRAYS, BREAKING AND CONTINUING START
+
+const artem = ['Artem', 'Usatyi', 2024 - 1997, 'programmer', ['Nika', 'Anna', 'Eva']]
+
+const types = []
+
+// console.log(artem[0])
+// console.log(artem[1])
+// ...
+// console.log(artem[4])
+// console.log(artem[5]) // undefined, does not exist so use artem.length to get the length of the array
+for (let i = 0; i < artem.length; i++) {
+  console.log(artem[i])
+
+  // filling types array
+  types[i] = typeof artem[i]
+  // types.push(typeof artem[i])
+}
+
+console.log(types)
+
+const years = [1997, 2000, 2003, 2020]
+const ages = []
+
+for (let i = 0; i < years.length; i++) {
+  ages.push(2024 - years[i])
+}
+
+console.log(ages)
+
+// continue and break statements
+
+// continue statement skips the current iteration and moves to the next one
+// only strings will be logged
+for (let i = 0; i < artem.length; i++) {
+  if (typeof artem[i] !== 'string') continue
+  console.log(artem[i], typeof artem[i])
+}
+
+// break statement stops the loop and exits the loop immediately
+for (let i = 0; i < artem.length; i++) {
+  if (typeof artem[i] === 'number') break
+  console.log(artem[i], typeof artem[i])
+}
+
+//~ LOOPING ARRAYS, BREAKING AND CONTINUING END
