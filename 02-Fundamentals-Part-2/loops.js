@@ -85,3 +85,28 @@ for (let exercise = 1; exercise <= 3; exercise++) {
 }
 
 //~ LOOPING BACKWARDS AND LOOPS IN LOOPS END
+
+//~ THE WHILE LOOP START
+
+for (let rep = 1; rep <= 10; rep++) {
+  console.log(`Lifting weights repetition ${rep}🏋️`)
+}
+
+// while loop different from for loop in that it doesn't require an increment/decrement value and it continues as long as the condition is true
+let rep = 1
+while (rep <= 10) {
+  console.log(`Lifting weights repetition ${rep}🏋️`)
+  rep++
+}
+
+// when we dont know the exact number of iterations, we can use a while loop
+let dice = Math.trunc(Math.random() * 6 + 1)
+while (dice !== 6) {
+  console.log(`You rolled a ${dice}!`)
+  dice = Math.trunc(Math.random() * 6 + 1)
+  if (dice === 6) console.log('Loop is about to end...')
+}
+
+// we can use const variables inside lopps beacuse they are not reassigned
+
+//~ THE WHILE LOOP END
