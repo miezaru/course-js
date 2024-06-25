@@ -1,3 +1,5 @@
+'use strict'
+
 //~ Assignment 1
 const describeCountry = (country, capital, population) =>
   `${country} has ${population} million people and its capital is ${capital}`

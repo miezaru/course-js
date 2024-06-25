@@ -1,3 +1,5 @@
+'use strict'
+
 //~ INTRODUCTION TO ARRAYS START
 
 const friend1 = 'Nika'
