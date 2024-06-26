@@ -1,33 +1,33 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="ie=edge" http-equiv="X-UA-Compatible">
-        <link type="image/png" href="./img/icon.png" rel="shortcut icon">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta content="ie=edge" http-equiv="X-UA-Compatible" />
+        <link type="image/png" href="./img/icon.png" rel="shortcut icon" />
 
         <link
             href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap"
             rel="stylesheet"
-        >
+        />
 
-        <link href="style.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet" />
         <title>Bankist</title>
     </head>
     <body>
         <!-- TOP NAVIGATION -->
         <nav>
             <p class="welcome">Log in to get started</p>
-            <img class="logo" src="./img/logo.png" alt="Logo">
+            <img class="logo" src="./img/logo.png" alt="Logo" />
             <form class="login">
-                <input class="login__input login__input--user" type="text" placeholder="user">
+                <input class="login__input login__input--user" type="text" placeholder="user" />
                 <!-- In practice, use type="password" -->
                 <input
                     class="login__input login__input--pin"
                     type="text"
                     maxlength="4"
                     placeholder="PIN"
-                >
+                />
                 <button class="login__btn" type="button">&rarr;</button>
             </form>
         </nav>
@@ -71,8 +71,8 @@
             <div class="operation operation--transfer">
                 <h2>Transfer money</h2>
                 <form class="form form--transfer">
-                    <input class="form__input form__input--to" type="text">
-                    <input class="form__input form__input--amount" type="number">
+                    <input class="form__input form__input--to" type="text" />
+                    <input class="form__input form__input--amount" type="number" />
                     <button class="form__btn form__btn--transfer" type="button">&rarr;</button>
                     <label class="form__label">Transfer to</label>
                     <label class="form__label">Amount</label>
@@ -83,7 +83,7 @@
             <div class="operation operation--loan">
                 <h2>Request loan</h2>
                 <form class="form form--loan">
-                    <input class="form__input form__input--loan-amount" type="number">
+                    <input class="form__input form__input--loan-amount" type="number" />
                     <button class="form__btn form__btn--loan" type="button">&rarr;</button>
                     <label class="form__label form__label--loan">Amount</label>
                 </form>
@@ -93,8 +93,8 @@
             <div class="operation operation--close">
                 <h2>Close account</h2>
                 <form class="form form--close">
-                    <input class="form__input form__input--user" type="text">
-                    <input class="form__input form__input--pin" type="password" maxlength="6">
+                    <input class="form__input form__input--user" type="text" />
+                    <input class="form__input form__input--pin" type="password" maxlength="6" />
                     <button class="form__btn form__btn--close" type="button">&rarr;</button>
                     <label class="form__label">Confirm user</label>
                     <label class="form__label">Confirm PIN</label>
