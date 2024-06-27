@@ -75,8 +75,8 @@ console.log(age1, age2)
 //~ ARROW FUNCTIONS START
 
 // arrow functions are a shorter syntax for writing function expressions
-// arrow functions returns the result of the expression inside the function automatically
-const calcAge3 = (birthYear) => 2024 - birthYear
+// arrow functions returns the result of the expression inside the function automatically, if the function has no brackets
+const calcAge3 = birthYear => 2024 - birthYear
 const age3 = calcAge3(1997)
 console.log(age3)
 
