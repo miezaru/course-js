@@ -53,3 +53,16 @@ console.log(calcTempAmplitude(array1, array2))
 // 1) should we implement functionality twice? no. merge the arrays
 
 // 2) merge 2 arrays
+
+//~ CODING CHALLENGE #1
+
+const printForecast = arr => {
+  let finalString = '... '
+  arr.forEach((element, index) => {
+    finalString += `${element}°C in ${index + 1} days ... `
+  })
+  return finalString
+}
+
+console.log(printForecast([17, 21, 23]))
+console.log(printForecast([12, 5, -5, 0, 4]))
