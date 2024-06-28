@@ -1,5 +1,10 @@
 @import "https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap";
 
+:root {
+    --color-win: hsl(106deg 43% 49%);
+    --color-bcg-default: hsl(0deg 0% 13%);
+}
+
 * {
     box-sizing: inherit;
     padding: 0;
@@ -14,9 +19,7 @@ html {
 body {
     font-family: "Press Start 2P", sans-serif;
     color: hsl(0deg 0% 93%);
-    background-color: hsl(0deg 0% 13%);
-
-    /* background-color: #60b347; */
+    background-color: var(--color-bcg-default);
 }
 
 /* LAYOUT */
