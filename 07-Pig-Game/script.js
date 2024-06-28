@@ -19,10 +19,38 @@ score0El.textContent = 0
 score1El.textContent = 0
 diceEl.classList.add('hidden')
 
-let activePlayer = 0
-let currentScore = 0
-const scores = [0, 0]
 let playing = true
+let scores = [0, 0]
+let currentScore = 0
+let activePlayer = 0
+
+const init = () => {
+  playing = true
+
+  currentScore = 0
+  current0El.textContent = currentScore
+  current1El.textContent = currentScore
+
+  scores = scores.map(score => (score = 0))
+  score0El.textContent = scores[0]
+  score1El.textContent = scores[1]
+
+  document.querySelector(`.player--${activePlayer}`).classList.remove('player--winner')
+
+  activePlayer = 0
+  player0El.classList.add('player--active')
+  player1El.classList.remove('player--active')
+
+  /*
+  if (!player0El.classList.contains('player--active')) {
+    player0El.classList.add('player--active')
+  }
+  if (player1El.classList.contains('player--active')) {
+    player1El.classList.remove('player--active')
+  } */
+}
+
+init()
 
 const switchPlayer = () => {
   currentScore = 0
@@ -75,4 +103,8 @@ btnHold.addEventListener('click', () => {
       switchPlayer()
     }
   }
+})
+
+btnNew.addEventListener('click', () => {
+  init()
 })
