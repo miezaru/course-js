@@ -27,15 +27,17 @@ const scoreEl = document.querySelector('.score')
 const highscoreEl = document.querySelector('.highscore')
 
 const messageEl = document.querySelector('.message')
-const bodyEl = document.querySelector('body')
 const numberEl = document.querySelector('.number')
 const guessEl = document.querySelector('.guess')
 
+const bodyEl = document.querySelector('body')
+
+const displayScore = score => (scoreEl.textContent = score)
+const displayHighscore = highscore => (highscoreEl.textContent = highscore)
+
 const displayMessage = message => (messageEl.textContent = message)
 const displayNumber = number => (numberEl.textContent = number)
-const displayScore = score => (scoreEl.textContent = score)
 const displayGuess = guess => (guessEl.value = guess)
-const displayHighscore = highscore => (highscoreEl.textContent = highscore)
 
 const styleNumberEl_Width = style => (numberEl.style.width = style)
 const styleBodyEl_BcgColor = style => (bodyEl.style.backgroundColor = style)
