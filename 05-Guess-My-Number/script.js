@@ -20,8 +20,8 @@ document.querySelector('.score').textContent = 10
 document.querySelector('.guess').value = 23
 console.log(document.querySelector('.guess').value) */
 
-const againBtn = document.querySelector('.again')
-const checkBtn = document.querySelector('.check')
+const againBtnEl = document.querySelector('.again')
+const checkBtnEl = document.querySelector('.check')
 
 const scoreEl = document.querySelector('.score')
 const highscoreEl = document.querySelector('.highscore')
@@ -31,68 +31,70 @@ const bodyEl = document.querySelector('body')
 const numberEl = document.querySelector('.number')
 const guessEl = document.querySelector('.guess')
 
+const displayMessage = message => (messageEl.textContent = message)
+const displayNumber = number => (numberEl.textContent = number)
+const displayScore = score => (scoreEl.textContent = score)
+const displayGuess = guess => (guessEl.value = guess)
+const displayHighscore = highscore => (highscoreEl.textContent = highscore)
+
+const styleNumberEl_Width = style => (numberEl.style.width = style)
+const styleBodyEl_BcgColor = style => (bodyEl.style.backgroundColor = style)
+
 let secretNumber = Math.trunc(Math.random() * 20) + 1
 let score = 20
 let highscore = 0
 
 // handliging events
-checkBtn.addEventListener('click', function () {
+checkBtnEl.addEventListener('click', function () {
   const guess = Number(guessEl.value)
 
   if (!guess) {
     // when player doesn't enter a number
-    messageEl.textContent = '⛔ No number!'
+    displayMessage('⛔ No number!')
 
     // when player wins
   } else if (guess === secretNumber) {
-    messageEl.textContent = 'Correct number 🎉'
-    numberEl.textContent = secretNumber
+    displayMessage('Correct number 🎉')
+    displayNumber(secretNumber)
 
-    bodyEl.style.backgroundColor = 'var(--color-win)'
-    numberEl.style.inlineSize = '30rem'
+    styleBodyEl_BcgColor('var(--color-win)')
+    styleNumberEl_Width('30rem')
 
     if (score > highscore && messageEl.textContent === 'Correct number 🎉') {
       highscore = score
-      highscoreEl.textContent = highscore
+      displayHighscore(highscore)
     }
 
     // guess out of range
   } else if (guess > 20 || guess < 1) {
-    messageEl.textContent = '⛔ Number out of range!'
+    displayMessage('⛔ Number out of range!')
 
-    // guess is to high
-  } else if (guess > secretNumber) {
-    if (score > 1) {
-      messageEl.textContent = 'Too high! 📈'
-      score--
-      scoreEl.textContent = score
-    } else {
-      messageEl.textContent = 'You lost the game! 🥲'
-      scoreEl.textContent = 0
-    }
+    // guess is too high or too low
+  } else if (guess !== secretNumber) {
+    displayMessage(guess > secretNumber ? 'Too high! 📈' : 'Too low! 📉')
 
-    // guess is to low
-  } else if (guess < secretNumber) {
     if (score > 1) {
-      messageEl.textContent = 'Too low! 📉'
       score--
-      scoreEl.textContent = score
+      displayScore(score)
     } else {
-      messageEl.textContent = 'You lost the game! 🥲'
-      scoreEl.textContent = 0
+      displayMessage('You lost the game! 🥲')
+      displayScore(0)
     }
   }
 })
 
-againBtn.addEventListener('click', function () {
+againBtnEl.addEventListener('click', function () {
   score = 20
   secretNumber = Math.trunc(Math.random() * 20) + 1
 
-  messageEl.textContent = 'Start guessing...'
-  numberEl.textContent = '?'
-  scoreEl.textContent = score
-  guessEl.value = ''
+  displayMessage('Start guessing...')
+  displayNumber('?')
+  displayScore(score)
+  displayGuess('')
 
-  numberEl.style.inlineSize = '15rem'
-  bodyEl.style.backgroundColor = 'var(--color-bcg-default)'
+  styleNumberEl_Width('15rem')
+  styleBodyEl_BcgColor('var(--color-bcg-default)')
+
+  // for testing purposes
+  // bodyEl.style.cssText += 'color: red !important'
 })
