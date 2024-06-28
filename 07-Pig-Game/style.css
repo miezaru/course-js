@@ -118,7 +118,6 @@ main {
     text-transform: uppercase;
     cursor: pointer;
     background: none;
-    background-color: white;
     background-color: rgb(255 255 255 / 60%);
     backdrop-filter: blur(10px);
     border: none;
@@ -171,4 +170,9 @@ main {
 .player--winner .name {
     font-weight: 700;
     color: hsl(343deg 57% 50%);
+}
+
+/* hidden class */
+.hidden {
+    display: none;
 }
