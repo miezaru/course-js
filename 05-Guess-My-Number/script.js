@@ -33,6 +33,7 @@ const guessEl = document.querySelector('.guess')
 
 let secretNumber = Math.trunc(Math.random() * 20) + 1
 let score = 20
+let highscore = 0
 
 // handliging events
 checkBtn.addEventListener('click', function () {
@@ -50,8 +51,13 @@ checkBtn.addEventListener('click', function () {
     bodyEl.style.backgroundColor = 'var(--color-win)'
     numberEl.style.inlineSize = '30rem'
 
+    if (score > highscore && messageEl.textContent === 'Correct number 🎉') {
+      highscore = score
+      highscoreEl.textContent = highscore
+    }
+
     // guess out of range
-  } else if (guess > 21 || guess < 1) {
+  } else if (guess > 20 || guess < 1) {
     messageEl.textContent = '⛔ Number out of range!'
 
     // guess is to high
@@ -79,12 +85,6 @@ checkBtn.addEventListener('click', function () {
 })
 
 againBtn.addEventListener('click', function () {
-  if (
-    Number(scoreEl.textContent) > Number(highscoreEl.textContent) &&
-    messageEl.textContent === 'Correct number 🎉'
-  ) {
-    highscoreEl.textContent = scoreEl.textContent
-  }
   score = 20
   secretNumber = Math.trunc(Math.random() * 20) + 1
 
