@@ -86,7 +86,7 @@ console.log(x)
 
 // V8 most popular JavaScript engine used in Chrome, Opera, Edge and nodejs
 // Every JavaScript engine has call stack and heap
-// Call stack - is where our code is executed usin execution context
+// Call stack - is where our code is executed using execution context
 // Heap - is where objects are stored
 
 //~ HOW IS IT COMPILED?
@@ -162,3 +162,38 @@ console.log(x)
 //_ Event Loop - essential for non-blocking concurrency model
 
 // in nodejs we have no access to WEB APIs, but instead we have C++ Bindings & Thread Pool
+
+//~ EXECUTION CONTEXT AND THE CALL STACK
+//_ 1) Global execution context is created for top-level code (code not inside any function(they only executed when we call them))
+
+//_ Execution context - (abstract concept) enviroment in which a piece of JavaScript is executed. Stores all the necessary information for some code to be executed
+//_ Exactly ONE global execution context (EC) - default context, created for code that is not inside any function (top level)
+
+//_ 2) Execution of top-level code (inside global EC)
+
+//_ 3) Execution of functions and waiting for callbacks (click event is a callback)
+
+//_ One execution context per function - for each function call, a new execution context is created
+
+// all these EC-s make the call stack
+
+//~ WHAT INSIDE EXECUTION CONTEXT?
+
+//_ 1) Variable enviroment - all our variables and functions declarations are stored
+/*
+- let, const and var declarations
+- functions
+- arguments object
+*/
+//_ 2) Scope chain - basically consists of references to variables that located outside of the current function
+// to keep truck of the scope chain it is stored in each executon context
+
+//_ 3) This keyword - each EC has a special variable this.
+// EC belonging to arrow functions do not get their own arguments object and this keyword, instead they can use the arguments object and their this keyword from their closest regular function parent
+
+// all of these generated during "creation phase", right before execution
+
+//~ CALL STACK
+//_ Call stack - "place" where execution contexts get stacked on top of each other, to keep track of where we are in the execution
+
+//_ Global execution context pop off from the stack when we close the tab or browser
