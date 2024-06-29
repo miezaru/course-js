@@ -80,3 +80,85 @@ console.log(x)
 
 // how do we achieve that?
 //_ By using an event loop - takes long running tasks, executes them in the "background", and pust them back in the main thread once they are finished
+
+//~ JAVASCRIPT ENGINE
+//_ JS Engine - program that executes JavaScript code
+
+// V8 most popular JavaScript engine used in Chrome, Opera, Edge and nodejs
+// Every JavaScript engine has call stack and heap
+// Call stack - is where our code is executed usin execution context
+// Heap - is where objects are stored
+
+//~ HOW IS IT COMPILED?
+//~ COMPILATION VS INTERPRETATION
+//_ Compilation - entire code is converted into machine code at once, and written to a binary file that can be executed by a computer
+// 3 steps:
+/*
+- soruce code
+---- compilation            | step 1
+- portable file: machine code
+---- execution              | step 2 (can happen way after compilation)
+- program running
+*/
+
+//_ Interpretation - interpreter runs through the source code and executes it line by line
+// we have no this 2 steps as before
+/*
+- source code
+---- execution line by line | step 1 (code still need to be converted to machine code)
+- program running
+*/
+
+// code still need to be converted to machine code, but it simply happens right before it executed and not ahead of time
+
+// JavaScript its purely interpreted language
+// interpreted languages is much, much slower than compiled languages
+
+//_ Modern JavaScript using a mix between compilation and interpretation
+//_ Just-in-time (JIT) compilation - entire code is converted into machine code at once, then executed immediately
+/*
+- source code
+---- compilation            | step 1
+- machine code                       (NOT a portable file)
+---- execution              | step 2 (happens immediately)
+- program running
+*/
+
+//~ HOW ENGINE PROCESSED SCRIPTS
+
+//~ 1) Parse the code
+//_ Parsing in data structure called AST (Abstract Syntax Tree), this works by first splitting up each line of code into pieces that are meaningful to the language (const, function) and saving all this pieces into the tree in a structured way. This step also checks if there are any SyntaxError-s.
+
+//_ Resulting tree later be used to generate the machine code
+
+// (AST Example)
+
+//~ 2) COMPILATION
+//_ Takes AST and compiles it into machine code
+
+//~ 3) EXECUTION
+//_ Executes right away (because modern JavaScript use JIT (Just-In-Type) compilation)
+// happens in call stack
+
+// modern JavaScript engines has some pretty clawer optimization strategies
+// create unoptimized version of machine code at the beginning just so that can start executing as soon as possible
+// then in a background this code is being optimized and recompiled during the already running program execution, and this can be done multiple times (that makes modern engines such as V8 so fast)
+// all this parsing, compilation and optimization happens in some special threads inside the engine that we can not access from our code, completely separate from our main thread, that is basically runnning in a call stack executing our own code
+
+// different engines implement this in slightly different ways
+
+//~ WHAT IS JAVASCRIPT RUNTIME IS? (IN BROWSER)
+//_ JavaScript runtime in browsers - container including all the things that we need to use JavaScript (in this case in the browser)
+
+/*
+- JavaScript engine
+- Web APIs (DOM, Timers, Fetch API)
+- Callback queue (click, timer, data, etc)
+*/
+
+//_ Web APIs - functionalities provided to the engine, accessible on window object
+//_ Calback queue example - callback function from DOM event listener
+//_ Event Loop - takes functions from the callback queue and puts them into call stack (if its empty) so they can be executed
+//_ Event Loop - essential for non-blocking concurrency model
+
+// in nodejs we have no access to WEB APIs, but instead we have C++ Bindings & Thread Pool
