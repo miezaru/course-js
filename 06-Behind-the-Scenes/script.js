@@ -197,3 +197,79 @@ console.log(x)
 //_ Call stack - "place" where execution contexts get stacked on top of each other, to keep track of where we are in the execution
 
 //_ Global execution context pop off from the stack when we close the tab or browser
+
+//~ SCOPE AND THE SCOPE CHAIN
+//_ Scoping - controls how our programs variables are organized and accesed by the JavaScript engine
+// Scoping - how our program`s variables are organized and accessed
+// Scoping asking question: where our variables live, where we can access a certain variable and where not
+
+//_ Lexical scoping - means that the way variables organized and accessed is entirely controls by the placement of functions and of blocks in the program scope
+// Lexical scoping: scoping is controlled by placement of functions and blocks in the code
+// For example a function that is written inside another function has access to the variables of the parent function.
+
+//_ Scope - space of enviroment in which a certain variable is declared (variable enviroment in case of functions). There is global scope, function scope and block scope.
+// Scope chain and varible enviroment in the case of functions it`s basically the same
+
+//_ Scope of variable - region of our code where a certain variable can be accessed
+
+//~ THE 3 TYPES OF SCOPE
+//_ 1) Global scope
+// - outside of any function block
+// - variables declared in global scope are accessible everywhere
+
+//_ 2) Function scope
+// - variables are accessible only inside function, NOT outside
+// - also called local scope
+
+//_ 3) Block scope (ES6)
+// - variablles are accessible only inside blocks (block scoped)
+// - HOWEVER, this only applies to let and const variables
+// - functions are also block scoped (only in strict mode)
+
+// var, let, const - function scope
+// let, const - block scope
+
+// Scope has access to variables from all outer scopes
+// Outer scope has no access to inner scope variables
+
+//~ SCOPE CHAIN VS CALL STACK
+
+const a = 'Artem'
+first()
+
+function first() {
+  const b = 'Hello'
+  second()
+
+  function second() {
+    const c = 'World'
+    third()
+
+    // function third() {
+    //   console.log(a + b + c)
+    // }
+  }
+}
+
+function third() {
+  const d = 'Hey'
+  console.log(d + c + b + a) // Refference error
+}
+
+//_ Scope chain - order in which functions are written
+// has nothing to do with order in which functions were called
+
+//~ SUMMARY
+/*
+- scoping asks the question "Where do variables live?" or "Where can we access a certain variable, and where not?"
+- there are 3 types of scope in JavaScript:
+  - the global scope
+  - scopes defined by functions
+  - scopes defined by blocks (ES6)
+- only let and const variables are block-scoped. Variables declared with var end up in the closest function scope
+- in JavaScript, we have lexical scoping, so the rules of where we can access variables are based on exactly where in the code functions and blocks written
+- every scope always has access to all the variables from all its outer scopes. This is the scope chain!
+- when a variable is not in the current scope, the engine looks up in the scope chain until it finds the variable it`s looking for. This is called variable lookup
+- the scope chain is a one-way street - a scope will never, ever have access to the variables of an inner scope
+- the scope chain has nothing to do with the order in which functions were called. It does not affect the scope chain at all!
+*/
