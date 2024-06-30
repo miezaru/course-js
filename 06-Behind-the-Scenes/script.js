@@ -251,7 +251,7 @@ function first() {
 
 function third() {
   const d = 'Hey'
-  console.log(d + c + b + a) // Refference error
+  // console.log(d + c + b + a) // Refference error
 }
 
 //_ Scope chain - order in which functions are written
@@ -306,3 +306,42 @@ function third() {
 //~ WHY HOISTING?
 // using functions before actual declaration (need for some programming techniques such as mutual recursion)
 // var hoisting is just a byproduct
+
+//~ THE THIS KEYWORD
+//~ HOW THE THIS KEYWORD WORKS
+//_ this keyword/variable - special variable that is created for every execution context (every function). Takes the value of (points to) the "owner" of the function in which the this keyword is used.
+// this is NOT static. It depends on how the function is called, and its value is only assigned when the function is actually called
+
+// different function call types
+/*
+- simple function call - this = undefined ('strict mode'), otherwise window (in the browser)
+- method call - this = <Object that is calling the method>
+- arrow function (don't get own this) - this = <this of surrounding function (lexical this))>
+- event listener - this = <DOM element that the handler is attached to>
+- new, apply, call, bind - later...
+*/
+
+//_ Method example
+const person = {
+  name: 'Johan',
+  year: 1984,
+  calcAge: function () {
+    const arrowCalcAge = () => console.log(new Date().getFullYear() - this.year) // 40
+    arrowCalcAge()
+
+    return console.log(new Date().getFullYear() - this.year)
+  },
+
+  arrowCalcAge: () => console.log(new Date().getFullYear() - this.year), // NaN
+}
+
+person.calcAge()
+person.arrowCalcAge()
+
+// for testing purposes
+document.querySelector('body').addEventListener('click', function () {
+  console.log(this)
+  this.style.background = 'red'
+})
+
+//_ this does NOT point to the function itself, and also NOT the its variable environment
