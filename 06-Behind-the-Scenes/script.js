@@ -2,7 +2,7 @@
 
 //~ HOW JAVASCRIPT WORKS BEHIND THE SCENES
 //_ JavaScipt is a high-level, object-oriented, multi-paradigm programming language
-// _JavaScipt is a high-level, prototype-based object-oriented, multi-paradigm, interpreted or just-in-time compiled, dynamic, single-threaded, garbage-collected programming language with first-class functions and a non-blocking event loop concurrency model.
+//_ JavaScipt is a high-level, prototype-based object-oriented, multi-paradigm, interpreted or just-in-time compiled, dynamic, single-threaded, garbage-collected programming language with first-class functions and a non-blocking event loop concurrency model.
 /*
 - high-level
 - prototype-based object-oriented
@@ -47,13 +47,13 @@ most popular paradigms
 // paradigms is impertaive or declarative
 
 //~ PROTOTYPE-BASED OBJECT-ORIENTED
-// everything in a javascript is an object, except for primitive values (numbers, strings etc.)
+// everything in a JavaScript is an object, except for primitive values (numbers, strings etc.)
 
 const arr = [1, 2, 3]
 arr.push(4) // arr.prototype.push(4)
 console.log(arr) // [1, 2, 3, 4, 5]
 
-// our arrays inherits methods from the prototype
+// our array inherits methods from the prototype
 
 //~ FIRST-CLASS FUNCTIONS
 // in language with first-class functions, functions are simply treated as variables. We can pass them into other functions, and return them from functions
@@ -65,7 +65,6 @@ let x = 23
 let y = 19
 // data type of variable is automatically changed
 x = 'Artem'
-console.log(x)
 
 //~ SINGLE-THREATED
 //~ NON-BLOCKING EVENT LOOP CONCURENCY MODEL
@@ -79,7 +78,7 @@ console.log(x)
 //_ Sounds like it would block the single thread. However, we want non-blocking behavior
 
 // how do we achieve that?
-//_ By using an event loop - takes long running tasks, executes them in the "background", and pust them back in the main thread once they are finished
+//_ By using an event loop - takes long running tasks, executes them in the "background", and put them back in the main thread once they are finished
 
 //~ JAVASCRIPT ENGINE
 //_ JS Engine - program that executes JavaScript code
@@ -94,7 +93,7 @@ console.log(x)
 //_ Compilation - entire code is converted into machine code at once, and written to a binary file that can be executed by a computer
 // 3 steps:
 /*
-- soruce code
+- source code
 ---- compilation            | step 1
 - portable file: machine code
 ---- execution              | step 2 (can happen way after compilation)
@@ -200,7 +199,6 @@ console.log(x)
 
 //~ SCOPE AND THE SCOPE CHAIN
 //_ Scoping - controls how our programs variables are organized and accesed by the JavaScript engine
-// Scoping - how our program`s variables are organized and accessed
 // Scoping asking question: where our variables live, where we can access a certain variable and where not
 
 //_ Lexical scoping - means that the way variables organized and accessed is entirely controls by the placement of functions and of blocks in the program scope
@@ -263,7 +261,7 @@ function third() {
 /*
 - scoping asks the question "Where do variables live?" or "Where can we access a certain variable, and where not?"
 - there are 3 types of scope in JavaScript:
-  - the global scope
+  - global scope
   - scopes defined by functions
   - scopes defined by blocks (ES6)
 - only let and const variables are block-scoped. Variables declared with var end up in the closest function scope
