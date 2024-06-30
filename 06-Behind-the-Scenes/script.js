@@ -345,3 +345,33 @@ document.querySelector('body').addEventListener('click', function () {
 })
 
 //_ this does NOT point to the function itself, and also NOT the its variable environment
+
+//~ PRIMITIVES VS. OBJECTES (PRIMITIVE VS. REFERENCE TYPES)
+let age = 30
+let oldAge = age
+age = 31
+
+console.log(age)
+console.log(oldAge)
+
+const me = {
+  name: 'Artem',
+  age: 27,
+}
+
+const friend = me
+friend.age = 30
+
+// source of confusion
+console.log(friend)
+console.log(me)
+
+//~ REVIEW: PRIMITIVES, OBJECTTS AND THE JAVASCRIPT ENGINE
+//_ Primitives: Number, String, Boolean, undefined, null, symbol, bigInt - primitive types
+//_ Objects: Object literal, Array, Function, many more.. - reference types
+
+// Primitives are stored in the JavaScript engine call stack (primitive types are stored in the execution contexts in which they are declared)
+// When we create a primitive variable, it hase an identifier, address and value
+// identifier looks on address not a value
+
+// Objects are strored in the JavaScript engine heap
