@@ -271,3 +271,38 @@ function third() {
 - the scope chain is a one-way street - a scope will never, ever have access to the variables of an inner scope
 - the scope chain has nothing to do with the order in which functions were called. It does not affect the scope chain at all!
 */
+
+//~ VARIABLE ENVIROMENT: HOISTING AND THE TDZ
+
+//~ HOISTING IN JAVASCRIPT
+//_ Hoisting - makes some types of variables accessible/usable in the code before they are actually declared. "Variables lifted to the top of their scope"
+// --- behind the scenes
+//_ Before execution, code is scanned for variable declarations, and for each variable, a new property is created in the variable enviroment object
+
+// hoisting does not works the same for all variable types
+/*
+|                                |     HOISTED?    |    INITIAL VALUE     |    SCOPE      |
+|--------------------------------|-----------------|----------------------|---------------|
+| function declarations          |       YES       |   Actual function    |    Block      |
+|--------------------------------|-----------------|----------------------|---------------|
+| var variables                  |       YES       |      undefined       |   Function    |
+|--------------------------------|-----------------|----------------------|---------------|
+| let and const variables        |        NO       | <uninitialized>, TDZ |    Block      |
+|--------------------------------|-----------------|----------------------|---------------|
+| function expressions and arrows|            Depends if using var or let/const           |
+|--------------------------------|-----------------|----------------------|---------------|
+*/
+
+// function declaration scope - block in strict mode, otherwise function
+// let and const variables - hoisting no, but technically yes. But not in practice.
+//_ TDZ (ES6) - Temporal Dead Zone - each and every let and const variable has their own temporal dead zone that starts at the beginning of the scope untile the line where it is defined, and a varible only safe to use after the TDZ
+// How to avoid the issues the TDZ causes
+// Relatively simply, always make sure you define your lets and consts at the top of your scope.
+
+//~ WHY TDZ?
+// makes it easier to avoid and catch errors - accessing variables before declaration is bad practice and should be avoided
+// makes const variabes actually work
+
+//~ WHY HOISTING?
+// using functions before actual declaration (need for some programming techniques such as mutual recursion)
+// var hoisting is just a byproduct
