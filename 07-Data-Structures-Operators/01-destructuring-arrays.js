@@ -59,6 +59,7 @@ const [d = 1, s = 1, v = 1] = [8, 9];
 console.log(d, s, v); // 8 9 1
 
 //~ Assignments
+
 // Destructure the books array into two variables called firstBook and secondBook.
 const books = ['Harry Potter', 'A Song of Secrets', 'The Lord of the Rings'];
 let [firstBook, secondBook] = books;
