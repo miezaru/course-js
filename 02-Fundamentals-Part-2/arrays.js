@@ -55,9 +55,7 @@ console.log(age1, age2, age3)
 const ages = [calcAge(years[1]), calcAge(years[2]), calcAge(years[years.length - 1])]
 console.log(ages)
 
-//~ INTRODUCTION TO ARRAYS END
-
-//~ ---------------------------------------- ADD ITEMS TO AN ARRAY
+//~ ADD ITEMS TO AN ARRAY
 
 //_ .push() | adds a new element to the end of an array
 //_ push(element1, element2)
@@ -99,8 +97,7 @@ const array1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 // Fill with 0 from position 2 until position 4, because like in copyWithin, end is not included
 console.log(array1.fill(0, 2, 4)) // [1, 2, 0, 0]
 
-//~ ---------------------------------------- FIND INDEXES
-console.log(`--------------------------------FIND INDEXES`)
+//~ FIND INDEXES
 
 //_ .indexOf()
 //_ indexOf(searchElement), indexOf(searchElement, fromIndex)
@@ -167,8 +164,7 @@ for (const element of homies.entries()) {
   console.log(element)
 }
 
-//~ ---------------------------------------- FIND VALUES
-console.log(`--------------------------------FIND VALUES`)
+//~ FIND VALUES
 
 //_ .values()
 //_ values()
@@ -237,7 +233,7 @@ const found2 = array3.findLast(element => element > 45) // 130
 const found3 = array3.findLast(element => element > 10) // 44
 console.log(found2, found3) // 12
 
-//~ ----------------------------------- TRAVERSE ARRAYS
+//~ TRAVERSE ARRAYS
 
 //_ .forEach() | executes a provided function once for each array element
 //_ callback function (element, index, array), forEach(callbackFn, thisArg)
@@ -356,7 +352,7 @@ const array20 = [3, 1, 2, 5, 4]
 console.log('array20.sort():', array20.toSorted()) // [1, 2, 3, 4, 5]
 console.log('array20:', array20)
 
-//~ ----------------------------------- OTHER ARRAY METHODS
+//~ OTHER ARRAY METHODS
 
 //_ .concat()
 //_ concat(), concat(value1), concat(value1, value2)

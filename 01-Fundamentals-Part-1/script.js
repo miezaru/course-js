@@ -8,7 +8,7 @@ console.log(21)
 let firstName = 'Nika'
 console.log(firstName)
 
-//~ VARIABLE NAME CONVENTIONS START
+//~ VARIABLE NAME CONVENTIONS
 
 // varibales can only contain numbers, letters, undescores or a dollar sign
 // let 3years = 3
@@ -31,9 +31,7 @@ let job2 = 'Teacher'
 
 console.log(myFirstJob)
 
-//~ VARIABLE NAME CONVENTIONS END
-
-//~ DATA TYPES START
+//~ DATA TYPES
 
 // typeof
 console.log(typeof true) // boolean
@@ -53,9 +51,7 @@ console.log(year, typeof year)
 year = 1997
 console.log(year, typeof year)
 
-//~ DATA TYPES END
-
-//~ LET, CONST AND VAR START
+//~ LET, CONST AND VAR
 
 // GOOD PRACTIVE - to have as little variable mutations as possible (always use const, change to let if needed, var completely avoided)
 
@@ -79,9 +75,7 @@ job = 'teacher'
 let lastName = 'Sein'
 console.log(lastName)
 
-//~ LET, CONST AND VAR END
-
-// ~ BASIC OPERATORS START
+// ~ BASIC OPERATORS
 
 // math operators
 const now = 2042
@@ -123,9 +117,7 @@ const isFullAge = ageSarah >= 24
 // what first? ---> operator precedence
 console.log(now - 1997 > now - 2018)
 
-//~ BASIC OPERATORS END
-
-//~ OPERATOR PRECEDENCE START
+//~ OPERATOR PRECEDENCE
 
 console.log(25 - 10 - 5)
 
@@ -135,9 +127,7 @@ console.log(x, y) // 10 10, x = y = 10, y = 10, x = 10
 const averageAge = (ageNika + ageSarah) / 2
 console.log(ageNika, ageSarah, averageAge)
 
-//~ OPERATOR PRECEDENCE END
-
-//~ STRINGS AND TEMPLATE LITERALS START
+//~ STRINGS AND TEMPLATE LITERALS
 
 job = 'programmer'
 birthYear = 1997
@@ -167,9 +157,7 @@ multiple
 lines`
 )
 
-//~ STRING AND TEMPLATE LITERALS END
-
-//~ TAKING DECISIONS: IF/ELSE STATEMENTS START
+//~ TAKING DECISIONS: IF/ELSE STATEMENTS
 
 age = 19
 // const isOldEnough = age >= 18
@@ -192,9 +180,7 @@ if (birthYear < 2000) {
 }
 console.log(century)
 
-//~ TAKING DECISIONS: IF/ELSE STATEMENTS END
-
-//~ TYPE CONVERSION AND COERCION START
+//~ TYPE CONVERSION AND COERCION
 
 // type conversion
 const inputYear = '1997'
@@ -224,9 +210,7 @@ console.log(n) // 10
 console.log(2 + 3 + 4 + '5') // '95'
 console.log('10' - '4' - '3' - 2 + '5') // '15'
 
-//~ TYPE CONVERSION AND COERCION END
-
-//~ TRUTHY AND FALSY VALUES START
+//~ TRUTHY AND FALSY VALUES
 
 console.log(`5 falsy values: 0, '', undefined, null, NaN`)
 console.log(`Boolean(0)`, Boolean(0)) // false
@@ -254,9 +238,7 @@ if (height) {
   console.log(`Height is UNDEFINED or FALSY value`)
 }
 
-//~ TRUTHY AND FALSY VALUES END
-
-//~ EQUALITY OPERATORS: == VS === START
+//~ EQUALITY OPERATORS: == VS ===
 
 age = 18
 if (age === 18) console.log(`You just became an adult!`)
@@ -279,9 +261,7 @@ if (favouriteNumber === 21) {
 
 if (favouriteNumber !== 21) console.log(`Why not 21?`)
 
-//~ EQUALITY OPERATORS: == VS === END
-
-//~ BOOLEAN LOGIC START
+//~ BOOLEAN LOGIC
 
 // boolean logic examples
 console.log(`true && true`, true && true) // true
@@ -300,9 +280,7 @@ console.log(`!(3 > 2) && (5 < 4)`, !(3 > 2) && 5 < 4) // true
 console.log(`----------  ----------`)
 console.log(`---------- ----------`)
 
-//~ BOOLEAN LOGIC END
-
-//~ LOGICAL OPERATORS START
+//~ LOGICAL OPERATORS
 
 // && (AND) operator
 // || (OR) operator
@@ -336,9 +314,7 @@ if (hasDriversLicense && hasGoodVision && !isTired) {
   console.log(`Someone else should drive...`)
 }
 
-//~ LOGICAL OPERATORS END
-
-//~ THE SWITCH STATEMENT START
+//~ THE SWITCH STATEMENT
 
 const day = 'wednesday'
 switch (day) {
@@ -378,9 +354,7 @@ if (day === 'monday') {
   console.log(`Enjoy the weekend!`)
 } else console.log(`Not a valid day!`)
 
-//~ THE SWITCH STATEMENT END
-
-//~ STATEMENTS AND EXPRESSIONS START
+//~ STATEMENTS AND EXPRESSIONS
 
 // expression examples, produce value
 console.log(2 + 3) // -> 5
@@ -413,5 +387,3 @@ console.log(drink2)
 // ternary operator cool for quick desitions
 // because ternary operator is an expression, we can use it in a function call and string interpolation
 console.log(`I like to drink ${age >= 18 ? 'wine 🍷' : 'water 💧'}`)
-
-//~ CONDITIONAL (TERNARY) OPERATOR END

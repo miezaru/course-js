@@ -1,6 +1,6 @@
 'use strict'
 
-//~ INTRODUCTION TO OBJECTS START
+//~ INTRODUCTION TO OBJECTS
 
 // arrays have no names for elements, only accessed by their index
 const artemArray = ['Artem', 'Usatyi', 2024 - 1997, 'programmer', ['Nika', 'Anna', 'Eva']]
@@ -20,9 +20,7 @@ const artem = {
 
 console.log(artem)
 
-//~ INTRODUCTION TO OBJECTS END
-
-//~ DOT VS. BRACKET NOTATION START
+//~ DOT VS. BRACKET NOTATION
 
 console.log(artem.firstName) // 'Artem'
 console.log(artem.lastName) // 'Usatyi'
@@ -60,9 +58,7 @@ console.log(
   `${artem.firstName} has ${artem.friends.length} friends, and his best friend is ${artem.friends[0]}.`
 )
 
-//~ DOT VS. BRACKET NOTATION END
-
-//~ OBJECT METHODS START
+//~ OBJECT METHODS
 
 const person = {
   firstName: 'John',
@@ -113,5 +109,3 @@ console.log(person)
 
 // summary method
 console.log(person.getSummary())
-
-//~ OBJECT METHODS END

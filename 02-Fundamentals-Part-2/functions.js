@@ -1,4 +1,4 @@
-//~ STRICT MODE START
+//~ STRICT MODE
 
 'use strict'
 
@@ -15,9 +15,7 @@ if (hasDriversLicense) console.log(`I can drive!`)
 // const private = 'Audio'
 // const interface = 'Audio'
 
-//~ STRICT MODE END
-
-//~ FUNCTIONS START
+//~ FUNCTIONS
 // DRY PRINCIPLE: Don't Repeat Yourself (DRY) is a coding principle that encourages writing code that is easier to read, understand, and maintain.
 
 // functions allow us to group related code together and reuse it
@@ -46,9 +44,7 @@ console.log(appleJuice)
 const appleAndOrangeJuice = fruitProcessor(2, 4)
 console.log(appleAndOrangeJuice)
 
-//~ FUNCTION END
-
-//~ FUNCTION DECLARATION VS FUNCTION EXPRESSION START
+//~ FUNCTION DECLARATION VS FUNCTION EXPRESSION
 
 // function declaration can be used before they are defined, this process called hoisting
 const age1 = calcAge1(1997)
@@ -70,9 +66,7 @@ console.log(age1, age2)
 
 // better use function expression for better readability and reusability
 
-//~ FUNCTION DECLARATION VS FUNCTION EXPRESSION END
-
-//~ ARROW FUNCTIONS START
+//~ ARROW FUNCTIONS
 
 // arrow functions are a shorter syntax for writing function expressions
 // arrow functions returns the result of the expression inside the function automatically, if the function has no brackets
@@ -93,9 +87,7 @@ console.log(yearsUntilRetirement(1984, 'Igor'))
 
 // arrow function has a differences from regular function expressions, they have no 'this' keyword
 
-//~ ARROW FUNCTIONS END
-
-//~ FUNCTIONS CALLING OTHER FUNCTIONS START
+//~ FUNCTIONS CALLING OTHER FUNCTIONS
 
 function cutFruitPieces(fruit) {
   return fruit * 4
@@ -110,9 +102,7 @@ function fruitProcessor2(apples, oranges) {
 
 console.log(fruitProcessor2(2, 3))
 
-//~ FUNCTIONS CALLING OTHER FUNCTIONS END
-
-//~ REVIEWING FUNCTIONS START
+//~ REVIEWING FUNCTIONS
 
 // function paramets is local to each function
 const calcAge = function (birthYear) {
@@ -148,5 +138,3 @@ console.log(yearsUntilRetirement2(1950, 'Mike'))
 // arguments: actual values of function parameters, to provide data to the function
 
 // variable to save returned values (function output)
-
-//~ REVIEWING FUNCTIONS END

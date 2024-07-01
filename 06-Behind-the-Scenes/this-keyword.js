@@ -81,8 +81,8 @@ const henry = {
 }
 // object is not a object scope, but object literal (global scope)
 
-henry.greet() // Darline || undefined
-console.log(this.firstName) // Darline || underfined
+henry.greet() // using variable - Darline || undefined
+console.log(this.firstName) // using variable - Darline || underfined
 henry.calcAge()
 
 // Not use arrow functions in objects

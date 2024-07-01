@@ -1,6 +1,6 @@
 'use strict'
 
-//~ ITERATION: THE FOR LOOP START
+//~ ITERATION: THE FOR LOOP
 /*
 console.log('Lifting weights repetition 1🏋️')
 console.log('Lifting weights repetition 2🏋️')
@@ -20,9 +20,7 @@ for (let rep = 1; rep <= 5; rep++) {
   console.log(`Lifting weights repetition ${rep}🏋️`)
 }
 
-//~ ITERATION: THE FOR LOOP END
-
-//~ LOOPING ARRAYS, BREAKING AND CONTINUING START
+//~ LOOPING ARRAYS, BREAKING AND CONTINUING
 
 const artem = ['Artem', 'Usatyi', 2024 - 1997, 'programmer', ['Nika', 'Anna', 'Eva']]
 
@@ -67,9 +65,7 @@ for (let i = 0; i < artem.length; i++) {
   console.log(artem[i], typeof artem[i])
 }
 
-//~ LOOPING ARRAYS, BREAKING AND CONTINUING END
-
-//~ LOOPING BACKWARDS AND LOOPS IN LOOPS START
+//~ LOOPING BACKWARDS AND LOOPS IN LOOPS
 
 const nika = ['Nika', 'Wells', 2024 - 2004, 'dreamer', ['Artem', 'Anna', 'Eva']]
 
@@ -84,9 +80,7 @@ for (let exercise = 1; exercise <= 3; exercise++) {
   }
 }
 
-//~ LOOPING BACKWARDS AND LOOPS IN LOOPS END
-
-//~ THE WHILE LOOP START
+//~ THE WHILE LOOP
 
 for (let rep = 1; rep <= 10; rep++) {
   console.log(`Lifting weights repetition ${rep}🏋️`)
@@ -108,5 +102,3 @@ while (dice !== 6) {
 }
 
 // we can use const variables inside lopps beacuse they are not reassigned
-
-//~ THE WHILE LOOP END
