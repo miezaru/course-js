@@ -103,3 +103,76 @@ console.log(restaurant.name);
 restaurantCopy.mainMenu.push('Riskard');
 console.log(restaurantCopy);
 console.log(restaurant);
+
+//~ Assignments
+
+const books = [
+  {
+    title: 'Harry Potter and the Chamber of Secrets',
+    author: ['J.K.Rowling'],
+    isbn: '0439064864',
+    keywords: ['fantasy', 'paranormal'],
+    thirdParty: {
+      goodreads: {
+        rating: 4.41,
+        ratingsCount: 1733,
+        reviewsCount: 63,
+        fiveStarRatingCount: 976,
+        oneStarRatingCount: 13,
+      },
+    },
+  },
+  {
+    title: 'Jurassic Park',
+    author: ['Stephen King'],
+    isbn: '9781784752224',
+    keywords: ['science-fiction', 'horror'],
+  },
+  {
+    title: 'The Lord of the Rings',
+    author: ['Tolkien'],
+    isbn: '9780544003415',
+    keywords: ['fantasy', 'adventure'],
+  },
+  {
+    title: 'The Hobbit',
+    author: ['Tolkien'],
+    isbn: '9780544003415',
+    keywords: ['fantasy', 'adventure'],
+  },
+  {
+    title: 'The Hobbit',
+    author: ['Tolkien'],
+    isbn: '9780544003415',
+    keywords: ['fantasy', 'adventure'],
+  },
+  {
+    title: 'The Hobbit',
+    author: ['Tolkien'],
+    isbn: '9780544003415',
+    keywords: ['fantasy', 'adventure'],
+  },
+  {
+    title: 'The Hobbit',
+    author: ['Tolkien'],
+    isbn: '9780544003415',
+    keywords: ['fantasy', 'adventure'],
+  },
+];
+
+/*
+Each book object has the author property, which stores an array of strings (author names) if there are multiple authors, or a single string (author name) if there is just one author.
+
+Declare an array called bookAuthors, and fill it with authors of the first two books from the books array. The bookAuthors array should have just one level (no nested arrays). */
+
+const bookAuthors = [...books[0].author, ...books[1].author];
+console.log(bookAuthors);
+
+/*
+Write a function called spellWord that accepts a single string as an argument. This function should log to the console each letter of the argument separated by a space. */
+
+const spellWord = function (str) {
+  console.log(...str);
+};
+spellWord('Piece');
+spellWord('JavaScript');
