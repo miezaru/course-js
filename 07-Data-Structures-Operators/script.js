@@ -27,6 +27,7 @@ const restaurant = {
     },
   },
 
+  //_ Destracturing function parameters
   order: function (starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
@@ -39,7 +40,13 @@ const restaurant = {
     );
   },
 
+  //_ Spread operator
   orderPasta: function (ing1, ing2, ing3) {
     console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, and ${ing3}`);
+  },
+
+  //_ Rest operator
+  orderPizza: function (mainIngerient, ...otherIngredients) {
+    console.log(mainIngerient, otherIngredients);
   },
 };
