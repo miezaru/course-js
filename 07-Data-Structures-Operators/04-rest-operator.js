@@ -94,4 +94,79 @@
   // call method
   restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
   restaurant.orderPizza('mushrooms');
+
+  //~ Assignments
+
+  const books = [
+    {
+      title: 'Harry Potter and the Chamber of Secrets',
+      author: ['J.K.Rowling', 'John Depp'],
+      isbn: '0439064864',
+      keywords: ['fantasy', 'paranormal'],
+      thirdParty: {
+        goodreads: {
+          rating: 4.41,
+          ratingsCount: 1733,
+          reviewsCount: 63,
+          fiveStarRatingCount: 976,
+          oneStarRatingCount: 13,
+        },
+      },
+    },
+    {
+      title: 'Jurassic Park',
+      author: ['Stephen King'],
+      isbn: '9781784752224',
+      keywords: ['science-fiction', 'horror'],
+      publisher: { amazon: 'amazon', goodreads: 'goodreads' },
+    },
+    {
+      title: 'The Lord of the Rings',
+      author: ['Tolkien'],
+      isbn: '9780544003415',
+      keywords: ['fantasy', 'adventure'],
+    },
+    {
+      title: 'The Hobbit',
+      author: ['Tolkien'],
+      isbn: '9780544003415',
+      keywords: ['fantasy', 'adventure'],
+    },
+    {
+      title: 'The Hobbit',
+      author: ['Tolkien'],
+      isbn: '9780544003415',
+      keywords: ['fantasy', 'adventure'],
+    },
+    {
+      title: 'The Hobbit',
+      author: ['Tolkien'],
+      isbn: '9780544003415',
+      keywords: ['fantasy', 'adventure'],
+    },
+    {
+      title: 'The Hobbit',
+      author: ['Tolkien'],
+      isbn: '9780544003415',
+      keywords: ['fantasy', 'adventure'],
+    },
+  ];
+
+  // Destructure the keywords property (array) of the first book from the books array into variables called mainKeyword and rest. The first keyword should be assigned to mainKeyword, and the rest of the keywords should be assigned to the rest variable (it should be an array).
+
+  const [mainKeyword, ...restKeywords] = books[0].keywords;
+  console.log(mainKeyword, restKeywords);
+
+  // Destructure the second book from the books array into a variable called bookPublisher. The bookPublisher variable should be assigned with the value of the publisher property of the book object. Assign the rest of the properties to the restOfTheBook variable.
+
+  const { publisher: bookPublisher, ...restBookPublishers } = books[1];
+  console.log(bookPublisher, restBookPublishers);
+
+  // Write a function called printBookAuthorsCount that has two parameters called title and authors. The authors parameter should accept any number of arguments. This function should log to the console a string formatted like that: "The book "${title}" has ${authors.length} authors".
+
+  const printBookAuthorsCount = function (title, ...authors) {
+    console.log(`The book "${title}" has ${authors.length} authors`);
+  };
+
+  printBookAuthorsCount(books[0].title, ...books[0].author);
 }
