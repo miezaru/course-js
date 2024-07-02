@@ -83,3 +83,51 @@ if (restaurant.orderPizza) {
 }
 
 restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+
+//~ Assignments
+
+const books = [
+  {
+    title: 'Harry Potter and the Chamber of Secrets',
+    author: ['J.K.Rowling', 'John Depp'],
+    isbn: '0439064864',
+    keywords: ['fantasy', 'paranormal'],
+    thirdParty: {
+      goodreads: {
+        rating: 4.41,
+        ratingsCount: 1733,
+        reviewsCount: 63,
+        fiveStarRatingCount: 976,
+        oneStarRatingCount: 13,
+      },
+    },
+    onlineContent: false,
+  },
+  {
+    title: 'Jurassic Park',
+    author: ['Stephen King'],
+    isbn: '9781784752224',
+    keywords: ['science-fiction', 'horror'],
+    publisher: { amazon: 'amazon', goodreads: 'goodreads' },
+    onlineContent: true,
+  },
+  {
+    title: 'Algorithms',
+    author: ['Robert Sedgewick', 'Kevin Wayne'],
+    programmingLanguage: 'Java',
+    onlineContent: true,
+  },
+];
+
+const hasExamplesInJava = function (obj) {
+  return obj.programmingLanguage === 'Java' || 'no data available';
+};
+
+console.log(hasExamplesInJava(books[0]));
+console.log(hasExamplesInJava(books[2]));
+
+// Some of the book objects have the onlineContent property, which is either true or false. Loop over the books array, and for the books that provide online content, log to the console a string in this format: "${title}" provides online content. Use short-circuiting.
+
+books.forEach(function (book) {
+  book.onlineContent && console.log(`${book.title} provides online content`);
+});
