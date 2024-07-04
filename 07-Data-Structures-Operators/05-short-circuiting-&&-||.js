@@ -89,31 +89,14 @@ restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
 const books = [
   {
     title: 'Harry Potter and the Chamber of Secrets',
-    author: ['J.K.Rowling', 'John Depp'],
-    isbn: '0439064864',
-    keywords: ['fantasy', 'paranormal'],
-    thirdParty: {
-      goodreads: {
-        rating: 4.41,
-        ratingsCount: 1733,
-        reviewsCount: 63,
-        fiveStarRatingCount: 976,
-        oneStarRatingCount: 13,
-      },
-    },
     onlineContent: false,
   },
   {
     title: 'Jurassic Park',
-    author: ['Stephen King'],
-    isbn: '9781784752224',
-    keywords: ['science-fiction', 'horror'],
-    publisher: { amazon: 'amazon', goodreads: 'goodreads' },
     onlineContent: true,
   },
   {
     title: 'Algorithms',
-    author: ['Robert Sedgewick', 'Kevin Wayne'],
     programmingLanguage: 'Java',
     onlineContent: true,
   },

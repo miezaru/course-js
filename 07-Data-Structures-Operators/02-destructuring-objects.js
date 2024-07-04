@@ -97,7 +97,6 @@ console.log(open, close); */ // 11 23
     {
       title: 'Harry Potter and the Chamber of Secrets',
       author: 'J.K.Rowling',
-      isbn: '0439064864',
       keywords: ['fantasy', 'paranormal'],
       thirdParty: {
         goodreads: {
@@ -112,37 +111,23 @@ console.log(open, close); */ // 11 23
     {
       title: 'Jurassic Park',
       author: 'Stephen King',
-      isbn: '9781784752224',
       keywords: ['science-fiction', 'horror'],
     },
     {
-      title: 'The Lord of the Rings',
-      author: 'Tolkien',
-      isbn: '9780544003415',
-      keywords: ['fantasy', 'adventure'],
+      title: 'Book',
+    },
+    {
+      title: 'Book',
+    },
+    {
+      title: 'Book',
+    },
+    {
+      title: 'Book',
     },
     {
       title: 'The Hobbit',
       author: 'Tolkien',
-      isbn: '9780544003415',
-      keywords: ['fantasy', 'adventure'],
-    },
-    {
-      title: 'The Hobbit',
-      author: 'Tolkien',
-      isbn: '9780544003415',
-      keywords: ['fantasy', 'adventure'],
-    },
-    {
-      title: 'The Hobbit',
-      author: 'Tolkien',
-      isbn: '9780544003415',
-      keywords: ['fantasy', 'adventure'],
-    },
-    {
-      title: 'The Hobbit',
-      author: 'Tolkien',
-      isbn: '9780544003415',
       keywords: ['fantasy', 'adventure'],
     },
   ];
