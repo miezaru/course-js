@@ -64,4 +64,8 @@
       console.log(mainIngerient, otherIngredients);
     },
   };
+
+  //~ ENHANCED OBJECT LITERALS
+
+  console.log(restaurant);
 }
