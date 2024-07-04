@@ -90,4 +90,68 @@
   for (const [day, { open, close }] of entries) {
     console.log(`On ${day} we open at ${open} and close at ${close}`);
   }
+
+  //~ Assignments
+
+  const books = [
+    {
+      title: 'Harry Potter and the Chamber of Secrets',
+      author: ['J.K.Rowling', 'John Depp'],
+      keywords: ['fantasy', 'paranormal'],
+      edition: 2,
+      thirdParty: {
+        goodreads: {
+          rating: 4.41,
+          ratingsCount: 1733,
+          reviewsCount: 63,
+          fiveStarRatingCount: 976,
+          oneStarRatingCount: 13,
+        },
+      },
+      highlighted: true,
+    },
+    {
+      title: 'Jurassic Park',
+      author: ['Stephen King'],
+      keywords: ['science-fiction', 'horror'],
+      publisher: { amazon: 'amazon', goodreads: 'goodreads' },
+      thirdParty: {
+        goodreads: {
+          rating: 3.5,
+          ratingsCount: 1221,
+          reviewsCount: 43,
+          fiveStarRatingCount: 433,
+          oneStarRatingCount: 21,
+        },
+      },
+      highlighted: true,
+    },
+  ];
+
+  // Below is the entries variable that stores an empty array. Use the for-of loop together with the Object.keys() method to loop over the thirdParty.goodreads property (array) of the first book object from the books array. For each key, push a new array that contains that key to the entries array.
+
+  const entries1 = [];
+  for (const key of Object.keys(books[0].thirdParty.goodreads)) {
+    entries1.push([key]);
+  }
+  console.log(entries1);
+
+  // Use the for-of loop together with the Object.values() method and Array's entries() method to loop over thirdParty.goodreads property of the first book from the books array.
+
+  // Push each value to the appropriate inner array in the entries array (use index from entries()).
+
+  for (const [index, value] of Object.values(books[0].thirdParty.goodreads).entries()) {
+    entries1[index].push(value);
+  }
+  console.log(entries1);
+
+  // Use the Object.entries() method on the thirdParty.goodreads property of the first book from the books array. Assign the returned value to the variable called entries2.
+
+  const entries2 = Object.entries(books[0].thirdParty.goodreads);
+  console.log(entries2);
+
+  // Log the entries and entries2 variables to the console, and compare them. They should look the same.
+
+  console.log(entries1);
+  console.log(entries2);
 }
