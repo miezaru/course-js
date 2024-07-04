@@ -87,4 +87,62 @@
   rest1.owner &&= '<ANONYMOUS>';
   rest2.owner &&= '<ANONYMOUS>';
   console.log(rest1, rest2);
+
+  //~ Assignments
+
+  const books = [
+    {
+      title: 'Harry Potter and the Chamber of Secrets',
+      author: ['J.K.Rowling', 'John Depp'],
+      keywords: ['fantasy', 'paranormal'],
+      edition: 2,
+      thirdParty: {
+        goodreads: {
+          rating: 4.41,
+          ratingsCount: 1733,
+          reviewsCount: 63,
+          fiveStarRatingCount: 976,
+          oneStarRatingCount: 13,
+        },
+      },
+      highlighted: true,
+    },
+    {
+      title: 'Jurassic Park',
+      author: ['Stephen King'],
+      keywords: ['science-fiction', 'horror'],
+      publisher: { amazon: 'amazon', goodreads: 'goodreads' },
+      thirdParty: {
+        goodreads: {
+          rating: 3.5,
+          ratingsCount: 1221,
+          reviewsCount: 43,
+          fiveStarRatingCount: 433,
+          oneStarRatingCount: 21,
+        },
+      },
+      highlighted: true,
+    },
+  ];
+
+  // Some of the book objects from the books array are missing the edition property. Loop over the books array, and assign this property with a number 1 (if it doesn't already exist). Use logical assignment operators.
+
+  for (let i = 0; i < books.length; i++) {
+    books[i].edition ||= 1;
+  }
+  console.log(books);
+
+  // Some of the book objects from the books array have the highlighted property, which by default is set to true. Iterate over the books array, and if the thirdParty.goodreads.rating property is less than 4.2, reassign it with false.
+
+  /* for (let i = 0; i < books.length; i++) {
+    if (books[i].thirdParty.goodreads.rating < 4.2) {
+      books[i].highlighted &&= !true;
+    }
+  } */
+
+  for (let i = 0; i < books.length; i++) {
+    books[i].highlighted &&= !(books[i].thirdParty.goodreads.rating < 4.2);
+  }
+
+  console.log(books);
 }
