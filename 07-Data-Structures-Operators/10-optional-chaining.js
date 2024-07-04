@@ -101,4 +101,25 @@
 
   console.log(users[0]?.name ?? 'User array is empty');
   console.log(users[1]?.name ?? 'User array is empty');
+
+  //~ Assignments
+
+  const books = [
+    {
+      title: 'Harry Potter and the Chamber of Secrets',
+      author: ['J.K.Rowling', 'John Depp'],
+      keywords: ['fantasy', 'paranormal'],
+    },
+    {
+      title: 'Harry Potter and the Chamber of Secrets',
+      author: ['J.K.Rowling', 'John Depp'],
+    },
+  ];
+
+  const getFirstKeyword = bookObj => {
+    return bookObj.keywords?.[0];
+  };
+
+  console.log(getFirstKeyword(books[0]));
+  console.log(getFirstKeyword(books[1]));
 }
