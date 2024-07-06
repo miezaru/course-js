@@ -55,4 +55,61 @@
 
   // for testing purposes
   console.log('Artem'.split('').reverse().join(''));
+
+  //~ Assignments
+
+  const books = [
+    {
+      title: 'Harry Potter and the Chamber of Secrets',
+      author: ['J.K.Rowling', 'John Depp'],
+      keywords: ['fantasy', 'paranormal'],
+    },
+    {
+      title: 'Jurassic Park',
+      author: ['Stephen King'],
+      keywords: ['science-fiction', 'horror', 'paranormal'],
+      publisher: { amazon: 'amazon', goodreads: 'goodreads' },
+    },
+  ];
+
+  // Below is the bookCategories variable that stores a string of categories. Each category is separated with a semicolon, for example, in a string "science;computing", 'science' and 'computing' are separate categories.
+
+  // Write a function called logBookCategories that takes a string of categories separated with semicolons, and logs each category to the console (as separate strings).
+
+  const bookCategories =
+    'science;computing;computer science;algorithms;business;operating systems;networking;electronics';
+
+  const logBookCategories = function (categories) {
+    console.log(categories.split(';').forEach(e => console.log(e)));
+    // return console.log(categories.replaceAll(';', ' '));
+  };
+
+  logBookCategories(bookCategories);
+
+  // Now, the opposite. Each book from the books array has the keywords property.
+
+  // Write a function called getKeywordsAsString that takes the books array as an argument, collects keywords from each book, removes duplicates, and then joins them to create a single string where keywords are separated by a semicolon.
+
+  const getKeywordsAsString = function (booksArr) {
+    const keywords = [];
+    booksArr.forEach(book => keywords.push(...book.keywords));
+    return [...new Set(keywords)].join(';');
+  };
+
+  console.log(getKeywordsAsString(books));
+
+  const logBookChapters = function (chapters) {
+    for (const [chapter, pages] of chapters) {
+      console.log(`${chapter.padEnd(20, '_')}${pages}`);
+    }
+  };
+
+  const bookChapters = [
+    ['The Basics', 14],
+    ['Sorting', 254],
+    ['Searching', 372],
+    ['Graphs', 526],
+    ['Strings', 706],
+  ];
+  logBookChapters(bookChapters);
 }
