@@ -56,4 +56,37 @@
   rest.set(document.querySelector('h1'), 'heading');
   console.log(rest.has(document.querySelector('h1')));
   console.log(rest);
+
+  //~ Assignments
+
+  // Create a new book, but this time, as a Map. Assign it to the bookMap variable. Use this array as initial data:
+
+  const initialData = [
+    ['title', 'Clean Code'],
+    ['author', 'Robert C. Martin'],
+  ];
+
+  const bookMap = new Map(initialData);
+  console.log(bookMap);
+
+  // book.set(initialData[0][0], initialData[0][1]).set(initialData[1][0], initialData[1][1]);
+
+  // Set a new key in bookMap called pages, and assign it with a number 464.
+
+  bookMap.set('pages', 464);
+  console.log(bookMap);
+
+  // Get the title and author values from bookMap, and log to the console a string formatted like that: "${title} by ${author}".
+
+  console.log(`${bookMap.get('title')} by ${bookMap.get('author')}`);
+
+  // Get the size of bookMap, and log it to the console.
+
+  console.log(bookMap.size);
+
+  // Check if bookMap has the author key. and if so, log "The author of the book is known" to the console.
+
+  bookMap.has('author')
+    ? console.log('The author of the book is known')
+    : console.log('The author of the book is not known');
 }
