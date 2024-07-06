@@ -59,4 +59,62 @@
   checkBaggage('I have a laptop, some Food and a pocket Knife');
   checkBaggage('Socks and camera');
   checkBaggage('Got some snacks and a gun for protection');
+
+  //~ Assignments
+
+  const books = [
+    {
+      title: 'Harry Potter and the Chamber of Secrets',
+      author: ['J.K.Rowling', 'Julie Sussman (Contributor)'],
+      keywords: ['fantasy', 'paranormal'],
+      ISBN: '9780439064866',
+    },
+    {
+      title: 'Jurassic Programs',
+      author: 'Stephen King',
+      keywords: ['science-fiction', 'horror'],
+      ISBN: '0345538986',
+    },
+  ];
+
+  // Write a function called normalizeAuthorName that takes an author's name (string) as an argument, and returns the same string, but the first name and last name are capitalized, and the "(Contributor)" part is removed (if exists).
+
+  // You can be sure that the author's name always consists of two words separated by a space, and possibly ends with "(Contributor)". The string may also contain trailing spaces.
+
+  const normalizeAuthorName = function (authorName) {
+    const name = authorName
+      .toLowerCase()
+      .trim()
+      .split(' ')
+      .map(name => name[0].toUpperCase() + name.slice(1))
+      .join(' ');
+
+    if (name.lastIndexOf('(contributor)') === -1) {
+      return name;
+    } else {
+      return (
+        name.slice(0, name.lastIndexOf('(contributor)')) +
+        name.slice(name.lastIndexOf('(contributor)') + '(contributor)'.length)
+      );
+    }
+  };
+
+  console.log(normalizeAuthorName('  JuliE sussMan (Contributor)'));
+
+  // Take the title of the second book (books[1]) from the books array, and replace the word "Programs" with "Software". Assign the new string to the newBookTitle variable.
+
+  const newBookTitle = books[1].title.replace('Programs', 'Software');
+  console.log(newBookTitle);
+
+  const logBookTheme = function (title) {
+    const titleLower = title.toLowerCase().trim();
+    if (titleLower.startsWith('computer')) console.log('This book is about computers');
+    else if (titleLower.includes('alghoritms') && titleLower.includes('structures'))
+      console.log('This book is a about alghoritms and data structures');
+    else if (
+      (titleLower.endsWith('system') || titleLower.endsWith('systems')) &&
+      !titleLower.includes('operating')
+    )
+      console.log('This book is about some systems, but definitely not about operating systems');
+  };
 }

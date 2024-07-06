@@ -46,7 +46,7 @@
   console.log(typeof new String('artem')); // object
   console.log(typeof new String('artem').slice()); // string
 
-  //~ Assignments, part 1
+  //~ Assignments
 
   const books = [
     {
