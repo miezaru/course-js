@@ -1,3 +1,5 @@
+'use strict';
+
 {
   //_ Split
   console.log('a+very+nice+string'.split('+')); // ['a', 'very', 'nice', 'string']

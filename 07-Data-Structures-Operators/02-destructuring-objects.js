@@ -58,18 +58,18 @@
 
   // {a, b} = obj; // syntax error, unexpected token =
   ({ a, b } = obj);
-  console.log(a, b);
+  console.log(a, b); // 23 7
 
   //_ Nested objects
   /*
-const { fri } = openingHours;
-console.log(fri); */
+  const { fri } = openingHours;
+  console.log(fri); { close: 23, open: 11 } */
 
   /*
-const {
-  fri: { open, close },
-} = openingHours;
-console.log(open, close); */ // 11 23
+  const {
+    fri: { open, close },
+  } = openingHours;
+  console.log(open, close); */ // 11 23
 
   const {
     fri: { open: o, close: c },

@@ -1,3 +1,5 @@
+'use strict';
+
 {
   const airline = 'TAP Air Portugal';
   const plane = 'A320';
@@ -39,7 +41,7 @@
   checkMiddleSeat('23C');
   checkMiddleSeat('3E');
 
-  //_ When we call methods on a strings, JavaScript behind the scenes converts this string into string object with the same content, and than on that object methods are called (Boxing), after calling convert back to a string
+  //_ When we call methods on a strings, JavaScript behind the scenes converts this string into string object with the same content, and then on that object methods are called (Boxing), after calling convert back to a string
   //_ All strings returs primitives
 
   console.log(new String('artem'));

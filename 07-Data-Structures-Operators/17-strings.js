@@ -1,3 +1,5 @@
+'use strict';
+
 {
   const airline = 'TAP Air Portugal';
 

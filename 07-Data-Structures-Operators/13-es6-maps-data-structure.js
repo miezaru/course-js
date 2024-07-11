@@ -1,3 +1,5 @@
+'use strict';
+
 {
   //~ MAPS: FUNDAMENTALS
 
@@ -16,6 +18,8 @@
     .set(true, 'We are open')
     .set(false, 'We are closed');
   console.log(rest);
+
+  //_ get()
 
   console.log(rest.get('name')); // Classico Italiano
   console.log(rest.get(true)); // We are open
