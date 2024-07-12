@@ -373,3 +373,48 @@ booker();
 // console.dir() - static method displays a list of the properties of the specified JavaScript object.
 // [[Scopes]], [[Prototype]] - internal properties that we can not access from the code
 console.dir(booker);
+
+separator(9);
+//~ MORE CLOSURE EXAMPLES
+
+//_Example 1
+let f;
+
+const g = function () {
+  const a = 23;
+  f = function () {
+    console.log(a * 2);
+  };
+};
+
+const h = function () {
+  const b = 11;
+  f = function () {
+    console.log(b * 2);
+  };
+};
+
+g();
+f();
+console.dir(f);
+
+// Re-assigning f function
+h();
+f();
+console.dir(f);
+
+//_ Example 2
+const boardPassengers = function (n, wait) {
+  const perGroup = n / 3;
+
+  setTimeout(function () {
+    console.log(`We are not boarding all ${n} passengers`);
+    console.log(`There are 3 groups, each with ${perGroup} passengers`);
+  }, wait * 1000);
+
+  console.log(`Will start boarding in ${wait} seconds`);
+};
+
+// Closures priority > scope chain
+const perGroup = 1000;
+boardPassengers(180, 3);
