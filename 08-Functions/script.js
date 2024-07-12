@@ -147,3 +147,21 @@ document.body.addEventListener('click', high5);
 
 // array callback function
 ['Artem', 'Nika', 'Malta', 'Toki'].forEach(high5);
+
+//~ FUNCTIONS RETURNING FUNCTIONS
+
+//_ Closure
+const greet2 = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+greet2('Hello')('Malta');
+
+const greeterHey = greet2('Hey');
+greeterHey('Artem');
+greeterHey('Nika');
+
+// Challenge (rewrite greet2 with arrow functions)
+const greet2Arr = greeting => name => console.log(`${greeting} ${name}`);
+greet2Arr('Hi')('Artem');
