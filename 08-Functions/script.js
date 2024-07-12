@@ -1,5 +1,7 @@
 'use strict';
 
+const separator = () => console.log('---------------------------------------------');
+
 //~ DEFAULT PARAMETERS
 
 const bookings = [];
@@ -28,6 +30,8 @@ createBooking('LH123', 5);
 
 // Specify undefined, when we have no values for parameter or want to skip, it gonna be changed to default value
 createBooking('LH123', undefined, 1000);
+
+separator();
 
 //~ HOW PASSING ARGUMENTS WORKS: VALUE VS REFERENCE
 
@@ -65,6 +69,8 @@ checkIn(flight, artem);
 //_ Passing by value
 //_ Passing by reference (not works in JavaScript)
 //_ When we pass object - we pass it like value with a reference
+
+separator();
 
 //~ FIRST-CLASS AND HIGHER-ORDER FUNCTIONS
 
@@ -114,6 +120,8 @@ function count() {
 
 //_ Higher-order are possible because the language supports first-class functions.
 
+separator();
+
 //~ FUNCTIONS ACCEPTING CALLBACK FUNCTIONS
 
 // Help us write more absctract code (level of abstraction)
@@ -141,12 +149,14 @@ transfromer('JavaScript is the best!', oneWord);
 
 // JS uses callbacks all the time
 const high5 = function () {
-  console.log('👋');
+  // console.log('👋');
 };
 document.body.addEventListener('click', high5);
 
 // array callback function
 ['Artem', 'Nika', 'Malta', 'Toki'].forEach(high5);
+
+separator();
 
 //~ FUNCTIONS RETURNING FUNCTIONS
 
@@ -165,6 +175,8 @@ greeterHey('Nika');
 // Challenge (rewrite greet2 with arrow functions)
 const greet2Arr = greeting => name => console.log(`${greeting} ${name}`);
 greet2Arr('Hi')('Artem');
+
+separator();
 
 //~ THE CALL AND APPLY METHODS
 
@@ -217,3 +229,57 @@ console.log(swiss);
 
 // Instead of using apply, we can still use call method and spread out the arguments from the array
 book.call(swiss, ...flightData);
+
+separator();
+
+//~ THE BIND METHOD
+
+const bookEW = book.bind(eurowings);
+bookEW(23, 'Steven Williams');
+console.log(eurowings);
+
+const bookLH = book.bind(lufthansa);
+const bookLX = book.bind(swiss);
+
+// Number already preset, we only need name
+const bookEW23 = book.bind(eurowings, 23);
+bookEW23('Artem Usatyi');
+bookEW23('Dana Gammer');
+
+//_ With event listeners
+
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  console.log(this);
+
+  this.planes++;
+  console.log(this.planes);
+};
+
+document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane); // error, this keyword looks at button with .buy class
+document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+
+//_ Partial application
+
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
+
+const addVAT = addTax.bind(null, 0.23); // skip 1 parameter (this value) and set tax-rate to 0.23
+console.log(addVAT(100));
+
+//_ Where to use call and bind
+/*
+1. Do I need to store this function in a variable for later use? If so, use bind()
+2. Do I need to pass this function as an argument? If so, use bind()
+3. Do I need to call this function right now? If so, use call() */
+
+// Challenge
+
+const addTaxRate = rate => {
+  return value => value + value * rate;
+};
+
+const addVAT20 = addTaxRate(0.2);
+console.log(addVAT20(100));
+
+separator();
