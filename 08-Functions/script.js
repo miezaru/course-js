@@ -1,8 +1,22 @@
 'use strict';
 
-const separator = () => console.log('---------------------------------------------');
+const topics = [
+  'DEFAULT PARAMETERS',
+  'HOW PASSING ARGUMENTS WORKS: VALUE VS REFERENCE',
+  'FIRST-CLASS AND HIGHER-ORDER FUNCTIONS',
+  'FUNCTIONS ACCEPTING CALLBACK FUNCTIONS',
+  'FUNCTIONS RETURNING FUNCTIONS',
+  'THE CALL AND APPLY METHODS',
+  'THE BIND METHOD',
+  'IMMEDIATELY INVOKED FUNCTION EXPRESSIONS (IIFE)',
+  'CLOSURES',
+  'MORE CLOSURE EXAMPLES',
+];
+
+const separator = topicNum => console.log(`----------${topics[topicNum]}----------`);
 
 //~ DEFAULT PARAMETERS
+separator(0);
 
 const bookings = [];
 
@@ -31,8 +45,7 @@ createBooking('LH123', 5);
 // Specify undefined, when we have no values for parameter or want to skip, it gonna be changed to default value
 createBooking('LH123', undefined, 1000);
 
-separator();
-
+separator(1);
 //~ HOW PASSING ARGUMENTS WORKS: VALUE VS REFERENCE
 
 const flight = 'LH234';
@@ -70,8 +83,7 @@ checkIn(flight, artem);
 //_ Passing by reference (not works in JavaScript)
 //_ When we pass object - we pass it like value with a reference
 
-separator();
-
+separator(2);
 //~ FIRST-CLASS AND HIGHER-ORDER FUNCTIONS
 
 //_ First-class functions
@@ -120,8 +132,7 @@ function count() {
 
 //_ Higher-order are possible because the language supports first-class functions.
 
-separator();
-
+separator(3);
 //~ FUNCTIONS ACCEPTING CALLBACK FUNCTIONS
 
 // Help us write more absctract code (level of abstraction)
@@ -156,8 +167,7 @@ document.body.addEventListener('click', high5);
 // array callback function
 ['Artem', 'Nika', 'Malta', 'Toki'].forEach(high5);
 
-separator();
-
+separator(4);
 //~ FUNCTIONS RETURNING FUNCTIONS
 
 //_ Closure
@@ -176,8 +186,7 @@ greeterHey('Nika');
 const greet2Arr = greeting => name => console.log(`${greeting} ${name}`);
 greet2Arr('Hi')('Artem');
 
-separator();
-
+separator(5);
 //~ THE CALL AND APPLY METHODS
 
 const lufthansa = {
@@ -230,8 +239,7 @@ console.log(swiss);
 // Instead of using apply, we can still use call method and spread out the arguments from the array
 book.call(swiss, ...flightData);
 
-separator();
-
+separator(6);
 //~ THE BIND METHOD
 
 const bookEW = book.bind(eurowings);
@@ -282,4 +290,33 @@ const addTaxRate = rate => {
 const addVAT20 = addTaxRate(0.2);
 console.log(addVAT20(100));
 
-separator();
+separator(7);
+//~ IMMEDIATELY INVOKED FUNCTION EXPRESSIONS (IIFE)
+// IIFE - a JavaScript function that runs as soon as it is defined
+
+const runOnce = function () {
+  console.log('This will never run again');
+};
+runOnce();
+
+// IIFE - just a function value/function expression
+(function () {
+  console.log('This will never run again');
+  const isPrivateFunc = 21;
+})();
+
+// console.log(isPrivateFunc) - we have no access to variables in function scope (execution context / incapsulated)
+
+(() => console.log('This will never run again'))();
+
+{
+  const isPrivateBlock = 21;
+  var notPrivate = 44;
+}
+
+// console.log(isPrivate) - we have no access to const or let variables in from block scope
+console.log(notPrivate); // var ignores block scope
+
+//_ Now IIFE not used anymore because from ES6 blocks have their own scope and we can create and call functions inside the block unless we want use var variables
+
+//_ But if we need to execute function just once, then the IIFE a good choice
