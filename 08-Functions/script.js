@@ -13,7 +13,10 @@ const topics = [
   'MORE CLOSURE EXAMPLES',
 ];
 
-const separator = topicNum => console.log(`----------${topics[topicNum]}----------`);
+const separator = topicNum =>
+  console.log(`
+|----------[ ${topics[topicNum]} ]----------|
+  `);
 
 //~ DEFAULT PARAMETERS
 separator(0);
@@ -320,3 +323,53 @@ console.log(notPrivate); // var ignores block scope
 //_ Now IIFE not used anymore because from ES6 blocks have their own scope and we can create and call functions inside the block unless we want use var variables
 
 //_ But if we need to execute function just once, then the IIFE a good choice
+
+separator(8);
+//~ CLOSURES
+
+const secureBooking = function () {
+  let passengerCount = 0;
+
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers}`);
+  };
+};
+
+const booker = secureBooking();
+
+// Explanation
+
+booker();
+booker();
+booker();
+
+// Explanation
+
+// any function always has access to the variable enviroment of the execution context in which the function was created
+
+// A function has access to the variable enviroment (VE) of the execution context in which it was created
+// Closure: VE attached to the function, exactly as it was at the time and place the function was created
+
+// When EX was destroyed, VE still living somewhere in the JS Engine
+
+// Closure priority > scope chain priority
+
+//_ Closures summary
+/*
+- A closure is the closed over variable enviroment of the execution context in which a function was created, even after that execution context is gone
+
+ - Less formal: A closure gives a function access to all the variables of its parent function, even after that parent function has returned. The function keeps a reference to its outer scope, which preserves the scope chain throughout time
+
+ - Less formal: A closure makes sure that a function doesn't loose connection to variables that existed at the function's birth place
+
+ - Less formal: A closure is like a backpack that a function carries around wherever it goes. This backpack has all the variables that were present in the enviroment where the function was created
+
+ - The main advantage of closures is that they help us create private variables and methods, preventing other parts of the code from accidentally modifying or accessing them.
+ */
+
+// We do NOT have to manually create closures, this is a JavaScript feature that happens automatically. We can't even access closed-over variables explicitly. A closure is NOT a tangible JavaScript object
+
+// console.dir() - static method displays a list of the properties of the specified JavaScript object.
+// [[Scopes]], [[Prototype]] - internal properties that we can not access from the code
+console.dir(booker);
