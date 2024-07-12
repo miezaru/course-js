@@ -165,3 +165,55 @@ greeterHey('Nika');
 // Challenge (rewrite greet2 with arrow functions)
 const greet2Arr = greeting => name => console.log(`${greeting} ${name}`);
 greet2Arr('Hi')('Artem');
+
+//~ THE CALL AND APPLY METHODS
+
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  book(flightNum, name) {
+    console.log(`${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`);
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+  },
+};
+
+lufthansa.book(239, 'Artem Usatyi');
+lufthansa.book(625, 'Nika Smith');
+console.log(lufthansa.bookings);
+
+const eurowings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+};
+
+const book = lufthansa.book;
+
+// undefined, does NOT work
+// book(23, 'Sarah Williams');
+
+//_ Call method
+book.call(eurowings, 23, 'Sarah Williams');
+console.log(eurowings);
+
+book.call(lufthansa, 482, 'Mary Cooper');
+console.log(lufthansa);
+
+const swiss = {
+  airline: 'Swiss Air Lines',
+  iataCode: 'LX',
+  bookings: [],
+};
+
+book.call(swiss, 406, 'Tom Willer');
+console.log(swiss);
+
+//_ Apply method - not using in the modern JavaScript
+// Takes not a list but an array of arguments
+const flightData = [583, 'Milani Kane'];
+book.apply(swiss, flightData);
+console.log(swiss);
+
+// Instead of using apply, we can still use call method and spread out the arguments from the array
+book.call(swiss, ...flightData);
