@@ -113,3 +113,37 @@ function count() {
 //_ First-class functions is just a feature, that means all functions are values. That`s it. That`s just a concept.
 
 //_ Higher-order are possible because the language supports first-class functions.
+
+//~ FUNCTIONS ACCEPTING CALLBACK FUNCTIONS
+
+// Help us write more absctract code (level of abstraction)
+
+const oneWord = function (str) {
+  return str.replace(/ /g, '').toLowerCase();
+};
+
+const upperFirstWord = function (str) {
+  const [first, ...others] = str.split(' ');
+  return [first.toUpperCase(), ...others].join(' ');
+};
+
+// higher-order function - operating on a higher-level of abstraction, leaving the low-level details to other low-level functions
+// deligating the string transform to other lower-level functions wich are oneWord and upperFirstWord
+const transfromer = function (str, fn) {
+  console.log(`Original string: ${str}`);
+  console.log(`Transformed string: ${fn(str)}`);
+
+  console.log(`Transformed by: ${fn.name}`);
+};
+
+transfromer('JavaScript is the best!', upperFirstWord);
+transfromer('JavaScript is the best!', oneWord);
+
+// JS uses callbacks all the time
+const high5 = function () {
+  console.log('👋');
+};
+document.body.addEventListener('click', high5);
+
+// array callback function
+['Artem', 'Nika', 'Malta', 'Toki'].forEach(high5);
