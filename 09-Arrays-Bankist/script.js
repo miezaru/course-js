@@ -87,10 +87,7 @@ const lectures = [
 ];
 
 const separator = num => {
-  if (typeof num === 'number')
-    console.log(`
-    |----------[ ${lectures[num]} ]----------|
-    `);
+  if (typeof num === 'number') console.log(`\n|----------[ ${lectures[num]} ]----------|\n\n`);
   if (typeof num === 'string') console.log(`----- ${num} -----`);
 };
 
@@ -102,8 +99,8 @@ const currencies = new Map([
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
+//~ Simple arrays methods
 separator(0);
-//~ SIMPLE ARRAY METHODS
 
 let arr = ['a', 'b', 'c', 'd', 'e'];
 
@@ -163,3 +160,19 @@ console.log([...arr, ...arr2]);
 separator('join() method');
 
 console.log(letters.join(' - '));
+
+//~ The new at method
+separator(1);
+
+arr = [23, 11, 64];
+console.log(arr[0]);
+console.log(arr.at(0));
+
+separator('last element in array');
+console.log(arr[arr.length - 1]);
+console.log(arr.slice(-1)[0]);
+console.log(arr.at(-1));
+
+separator('works on strings');
+console.log('Artem'.at(0));
+console.log('Artem'.at(-1));
