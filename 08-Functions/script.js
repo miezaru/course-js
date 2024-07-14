@@ -84,7 +84,7 @@ checkIn(flight, artem);
 
 //_ Passing by value
 //_ Passing by reference (not works in JavaScript)
-//_ When we pass object - we pass it like value with a reference
+//_ When we pass object - we pass it like value with a refference
 
 separator(2);
 //~ FIRST-CLASS AND HIGHER-ORDER FUNCTIONS
@@ -113,7 +113,7 @@ document.querySelector('.buy').addEventListener('click', greet);
 // counter.inc.bind(someOtherObject);
 
 //_ Higher-order functions
-// A function that receuves another function as an argument, that returns a new function, or both
+// A function that recieves another function as an argument, that returns a new function, or both
 // This is only possible because of first-class functions
 
 // Function that receives another function
@@ -150,7 +150,7 @@ const upperFirstWord = function (str) {
 };
 
 // higher-order function - operating on a higher-level of abstraction, leaving the low-level details to other low-level functions
-// deligating the string transform to other lower-level functions wich are oneWord and upperFirstWord
+// deligating the string transform to other lower-level functions witch are oneWord and upperFirstWord
 const transfromer = function (str, fn) {
   console.log(`Original string: ${str}`);
   console.log(`Transformed string: ${fn(str)}`);
@@ -161,7 +161,7 @@ const transfromer = function (str, fn) {
 transfromer('JavaScript is the best!', upperFirstWord);
 transfromer('JavaScript is the best!', oneWord);
 
-// JS uses callbacks all the time
+// JavaScript uses callbacks all the time
 const high5 = function () {
   // console.log('👋');
 };
