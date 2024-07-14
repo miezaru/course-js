@@ -97,7 +97,7 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 //~ Simple arrays methods
 separator(0);
@@ -176,3 +176,40 @@ console.log(arr.at(-1));
 separator('works on strings');
 console.log('Artem'.at(0));
 console.log('Artem'.at(-1));
+
+//~ Looping arrays: forEach
+separator(2);
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+separator('for-of loop');
+for (const movement of movements) {
+  if (movement > 0) {
+    console.log(`You deposited ${movement}`);
+  } else {
+    console.log(`You withdrew ${Math.abs(movement)}`);
+  }
+}
+
+separator('for-of loop with entries');
+for (const [index, value] of movements.entries()) {
+  if (value > 0) {
+    console.log(`Movement ${index + 1}: You deposited ${value}`);
+  } else {
+    console.log(`Movement ${index + 1}: You withdrew ${Math.abs(value)}`);
+  }
+}
+
+separator('forEach loop');
+movements.forEach((movement, index, array) => {
+  movement > 0
+    ? console.log(`Movement ${index + 1}: You deposited ${movement}`)
+    : console.log(`Movement ${index + 1}: You withdrew ${Math.abs(movement)}`);
+});
+
+//_ forEach vs for-of loop - forEach have no "continue" and "break" statements
+
+// 0: function(200)
+// 1: function(450)
+// 2: function(-400)
+// ...
