@@ -97,7 +97,7 @@ nav {
     margin-inline: auto;
 
     /* NOTE This creates the fade in/out anumation */
-    opacity: 0;
+    /* opacity: 0; */
     transition: all 1s;
 }
 
