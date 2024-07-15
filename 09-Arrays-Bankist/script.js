@@ -121,7 +121,7 @@ console.log('Artem'.at(-1));
 //~ Looping arrays: forEach
 separator(2);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+let movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 separator('for-of loop');
 for (const movement of movements) {
@@ -178,10 +178,33 @@ currenciesUnique.forEach((value, _, set) => {
 });
 
 //~ Data transformations: map, filter, reduce
-separator(6);
 
 //_ map returns a new array containing the results of applying an operation on all original array elements
 
 //_ filter returns a new array containing the array elements that passed a specified test condition
 
 //_ reduce boils ("reduces") all array elements down to one single value (e.g. adding all elements together)
+
+//~ The map method
+separator(7);
+
+const eurToUsd = 1.1;
+
+separator('with map method');
+const movementsUsd = movements.map(mov => mov * eurToUsd);
+
+console.log(movements);
+console.log(movementsUsd);
+
+separator('with for-of loop');
+const forOfMovementsUsd = [];
+// for (const [i, move] of movements.entries()) forOfMovementsUsd.push(move * eurToUsd);
+for (const move of movements) forOfMovementsUsd.push(move * eurToUsd);
+
+console.log(forOfMovementsUsd);
+
+separator('movemets descriptions');
+const movementsDescriptions = movements.map(
+  (mov, i) => `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`
+);
+console.log(movementsDescriptions);
