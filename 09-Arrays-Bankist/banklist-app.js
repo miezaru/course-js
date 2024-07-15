@@ -80,3 +80,15 @@ const displayMovements = function (movements) {
 };
 
 displayMovements(account1.movements);
+
+// Steven Thomas Williams - stw
+const createUsernames = accs => {
+  accs.forEach(acc => {
+    acc.username = acc.owner
+      .split(' ')
+      .map(name => name[0])
+      .join('')
+      .toLowerCase();
+  });
+};
+createUsernames(accounts);
