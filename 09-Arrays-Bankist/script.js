@@ -28,8 +28,9 @@ const lectures = [
 ];
 
 const separator = num => {
-  if (typeof num === 'number') console.log(`\n|----------[ ${lectures[num]} ]----------|\n\n`);
-  if (typeof num === 'string') console.log(`----- ${num} -----`);
+  if (typeof num === 'number')
+    return console.log(`\n|----------[ ${lectures[num]} ]----------|\n\n`);
+  if (typeof num === 'string') return console.log(`----- ${num} -----`);
 };
 
 /* const currencies = new Map([
@@ -247,3 +248,19 @@ console.log(forOfBalance);
 separator('maximum value');
 const max = movements.reduce((acc, mov) => (acc > mov ? acc : mov), movements[0]);
 console.log(max);
+
+//~ The magic of chaining methods
+separator(11);
+//_ Avoid mutating original array!
+
+separator('pipeline');
+const totalDepositsUSD = movements
+  .filter(mov => mov > 0)
+  .map((mov, i, arr) => {
+    // console.log(arr);
+    return mov * eurToUsd;
+  })
+  // .map((mov) => mov * eurToUsd)
+  .reduce((acc, mov) => acc + mov);
+
+console.log(totalDepositsUSD);

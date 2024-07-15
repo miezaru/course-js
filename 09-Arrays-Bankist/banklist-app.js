@@ -71,7 +71,7 @@ const displayMovements = function (movements) {
 <div class="movements__row">
   <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
   <div class="movements__date"></div>
-  <div class="movements__value">${mov}</div>
+  <div class="movements__value">${mov}€</div>
 </div>
     `;
 
@@ -83,11 +83,28 @@ displayMovements(account1.movements);
 
 // Calc balance
 const calcDisplayBalance = movements => {
-  const balance = movements.reduce((acc, move) => acc + move, 0);
-  labelBalance.textContent = `${balance} EUR`;
+  const incomes = movements.filter(mov => mov > 0).reduce((acc, move) => acc + move, 0);
+  labelBalance.textContent = `${incomes}€`;
+
+  const out = movements.filter(mov => mov < 0).reduce((acc, mov, i, arr) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(out)}€`;
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter((int, i, arr) => int > 1)
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = `${interest}€`;
 };
 
 calcDisplayBalance(account1.movements);
+
+const calcDisplaySummary = movements => {
+  const incomes = movements.filter(mov => mov > 0).reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes}€`;
+};
+
+calcDisplaySummary(account1.movements);
 
 // Steven Thomas Williams - stw
 const createUsernames = accs => {
