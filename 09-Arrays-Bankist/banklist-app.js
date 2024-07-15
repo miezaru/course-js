@@ -80,15 +80,16 @@ const displayMovements = function (movements) {
 };
 
 //_ Calc balance
-const calcDisplayBalance = movements => {
-  const incomes = movements.filter(mov => mov > 0).reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `${incomes}€`;
+const calcDisplayBalance = acc => {
+  acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${acc.balance}€`;
+  console.log(acc.balance);
 };
 
 //_ Calc summary
 const calcDisplaySummary = acc => {
   const incomes = acc.movements.filter(mov => mov > 0).reduce((acc, move) => acc + move, 0);
-  labelBalance.textContent = `${incomes}€`;
+  labelSumIn.textContent = `${incomes}€`;
 
   const out = acc.movements.filter(mov => mov < 0).reduce((acc, mov, i, arr) => acc + mov, 0);
   labelSumOut.textContent = `${Math.abs(out)}€`;
@@ -114,9 +115,22 @@ const createUsernames = accs => {
 createUsernames(accounts);
 
 //_ Event handlers
+
+const updateUI = acc => {
+  // Display movements
+  displayMovements(acc.movements);
+
+  // Display balance
+  calcDisplayBalance(acc);
+
+  // Display summary
+  calcDisplaySummary(acc);
+};
+
+//_ Login
 let currentAccount;
 btnLogin.addEventListener('click', e => {
-  // Prevent form from submitting
+  // Prevent form from submitting and reloading page
   e.preventDefault();
 
   currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
@@ -130,14 +144,26 @@ btnLogin.addEventListener('click', e => {
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur(); // remove focus from input
+  }
 
-    // Display movements
-    displayMovements(currentAccount.movements);
+  updateUI(currentAccount);
+});
 
-    // Display balance
-    calcDisplayBalance(currentAccount.movements);
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
 
-    // Display summary
-    calcDisplaySummary(currentAccount);
+  const amount = Number(inputTransferAmount.value);
+  const receiverAccount = accounts.find(acc => acc.username === inputTransferTo.value);
+
+  if (
+    amount > 0 &&
+    currentAccount.balance > amount &&
+    receiverAccount &&
+    receiverAccount?.username !== currentAccount.username
+  ) {
+    currentAccount.movements.push(-amount);
+    receiverAccount.movements.push(amount);
+    updateUI(currentAccount);
+    inputTransferTo.value = inputTransferAmount.value = '';
   }
 });
