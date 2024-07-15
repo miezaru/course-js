@@ -79,34 +79,29 @@ const displayMovements = function (movements) {
   });
 };
 
-displayMovements(account1.movements);
-
-// Calc balance
+//_ Calc balance
 const calcDisplayBalance = movements => {
-  const incomes = movements.filter(mov => mov > 0).reduce((acc, move) => acc + move, 0);
+  const incomes = movements.filter(mov => mov > 0).reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes}€`;
+};
+
+//_ Calc summary
+const calcDisplaySummary = acc => {
+  const incomes = acc.movements.filter(mov => mov > 0).reduce((acc, move) => acc + move, 0);
   labelBalance.textContent = `${incomes}€`;
 
-  const out = movements.filter(mov => mov < 0).reduce((acc, mov, i, arr) => acc + mov, 0);
+  const out = acc.movements.filter(mov => mov < 0).reduce((acc, mov, i, arr) => acc + mov, 0);
   labelSumOut.textContent = `${Math.abs(out)}€`;
 
-  const interest = movements
+  const interest = acc.movements
     .filter(mov => mov > 0)
-    .map(deposit => (deposit * 1.2) / 100)
+    .map(deposit => (deposit * acc.interestRate) / 100)
     .filter((int, i, arr) => int > 1)
     .reduce((acc, int) => acc + int, 0);
   labelSumInterest.textContent = `${interest}€`;
 };
 
-calcDisplayBalance(account1.movements);
-
-const calcDisplaySummary = movements => {
-  const incomes = movements.filter(mov => mov > 0).reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `${incomes}€`;
-};
-
-calcDisplaySummary(account1.movements);
-
-// Steven Thomas Williams - stw
+//_ Create usernames
 const createUsernames = accs => {
   accs.forEach(acc => {
     acc.username = acc.owner
@@ -116,5 +111,33 @@ const createUsernames = accs => {
       .toLowerCase();
   });
 };
-
 createUsernames(accounts);
+
+//_ Event handlers
+let currentAccount;
+btnLogin.addEventListener('click', e => {
+  // Prevent form from submitting
+  e.preventDefault();
+
+  currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
+
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    // Display UI and message
+    labelWelcome.textContent = `Welcome back ${currentAccount.owner.split(' ')[0]}`;
+
+    containerApp.style.opacity = 100;
+
+    // Clear input fields
+    inputLoginUsername.value = inputLoginPin.value = '';
+    inputLoginPin.blur(); // remove focus from input
+
+    // Display movements
+    displayMovements(currentAccount.movements);
+
+    // Display balance
+    calcDisplayBalance(currentAccount.movements);
+
+    // Display summary
+    calcDisplaySummary(currentAccount);
+  }
+});
