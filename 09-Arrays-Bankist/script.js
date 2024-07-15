@@ -284,3 +284,27 @@ separator('find object in array with for-of loop');
 for (const acc of accounts) {
   if (acc.owner === 'Jessica Davis') console.log(acc);
 }
+
+//~ some and every methods
+separator(16);
+
+separator('check for EQUALITY with includes');
+console.log(movements);
+console.log(movements.includes(-130));
+
+separator('check for EQUALITY with some');
+console.log(movements.some(mov => mov === -130));
+
+separator('check for a CONDITION with some');
+const anyDeposits = movements.some(mov => mov > 1500);
+console.log(anyDeposits);
+
+separator('every method');
+console.log(movements.every(mov => mov > 0));
+console.log(account4.movements.every(mov => mov > 0));
+
+separator('separate callback, dry principle');
+const deposit = mov => mov > 0;
+console.log(movements.every(deposit));
+console.log(movements.some(deposit));
+console.log(movements.filter(deposit));
