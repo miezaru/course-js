@@ -251,6 +251,7 @@ console.log(max);
 
 //~ The magic of chaining methods
 separator(11);
+
 //_ Avoid mutating original array!
 
 separator('pipeline');
@@ -264,3 +265,22 @@ const totalDepositsUSD = movements
   .reduce((acc, mov) => acc + mov);
 
 console.log(totalDepositsUSD);
+
+//~ The find method
+separator(12);
+
+separator('find first withdrawal');
+const firstWithdrawal = movements.find(mov => mov < 0);
+console.log(movements);
+console.log(firstWithdrawal);
+
+console.log(accounts);
+
+separator('find object in array with find method');
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
+
+separator('find object in array with for-of loop');
+for (const acc of accounts) {
+  if (acc.owner === 'Jessica Davis') console.log(acc);
+}
