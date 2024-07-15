@@ -81,6 +81,14 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
+// Calc balance
+const calcDisplayBalance = movements => {
+  const balance = movements.reduce((acc, move) => acc + move, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+
+calcDisplayBalance(account1.movements);
+
 // Steven Thomas Williams - stw
 const createUsernames = accs => {
   accs.forEach(acc => {
@@ -91,4 +99,5 @@ const createUsernames = accs => {
       .toLowerCase();
   });
 };
+
 createUsernames(accounts);

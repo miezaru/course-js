@@ -225,3 +225,25 @@ for (const mov of movements) {
 }
 
 console.log(forOfDeposits);
+
+//~ The reduce method
+separator(10);
+
+separator('with reduce method');
+
+// accumulator -> snowball
+const balance = movements.reduce((acc, cur, i, arr) => {
+  console.log(`Iteration ${i}: ${acc}`);
+  return acc + cur; // each loop return a new accumulator
+}, 0);
+console.log(balance);
+
+separator('with for-of loop');
+
+let forOfBalance = 0;
+for (const mov of movements) forOfBalance += mov;
+console.log(forOfBalance);
+
+separator('maximum value');
+const max = movements.reduce((acc, mov) => (acc > mov ? acc : mov), movements[0]);
+console.log(max);
