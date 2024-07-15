@@ -306,3 +306,47 @@ h2 {
 .timer {
     font-weight: 600;
 }
+
+/* Logins styles */
+
+.logins__container {
+    margin-block-start: 2.4rem;
+    font-size: 1.4rem;
+}
+
+.logins__header {
+    margin-block-end: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.logins {
+    display: flex;
+    gap: 3.2rem;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
+}
+
+.logins__login {
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+}
+
+.logins__user,
+.logins__pin {
+    inline-size: auto;
+    padding: 0.4rem;
+    font-weight: 700;
+}
+
+.logins__user {
+    letter-spacing: 1px;
+    background-color: hsl(92deg 69% 62%);
+}
+
+.logins__pin {
+    letter-spacing: 3px;
+    background-color: hsl(345deg 78% 53%);
+}

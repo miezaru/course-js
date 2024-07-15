@@ -32,6 +32,27 @@
             </form>
         </nav>
 
+        <div class="logins__container">
+            <div class="logins__header">
+                <p>Logins for testing:</p>
+            </div>
+
+            <div class="logins">
+                <div class="logins__login">
+                    <span class="logins__user">js</span><span class="logins__pin">1111</span>
+                </div>
+                <div class="logins__login">
+                    <span class="logins__user">jd</span><span class="logins__pin">2222</span>
+                </div>
+                <div class="logins__login">
+                    <span class="logins__user">stw</span><span class="logins__pin">3333</span>
+                </div>
+                <div class="logins__login">
+                    <span class="logins__user">ss</span><span class="logins__pin">4444</span>
+                </div>
+            </div>
+        </div>
+
         <main class="app">
             <!-- BALANCE -->
             <div class="balance">
@@ -71,8 +92,16 @@
             <div class="operation operation--transfer">
                 <h2>Transfer money</h2>
                 <form class="form form--transfer">
-                    <input class="form__input form__input--to" type="text" />
-                    <input class="form__input form__input--amount" type="number" />
+                    <input
+                        class="form__input form__input--to"
+                        type="text"
+                        placeholder="User login"
+                    />
+                    <input
+                        class="form__input form__input--amount"
+                        type="number"
+                        placeholder="1000"
+                    />
                     <button class="form__btn form__btn--transfer" type="button">&rarr;</button>
                     <label class="form__label">Transfer to</label>
                     <label class="form__label">Amount</label>
@@ -110,7 +139,7 @@
             </footer> -->
 
         <script src="./banklist-app.js"></script>
-        <!-- <script src="./script.js"></script> -->
+        <script src="./script.js"></script>
 
         <!-- <script src="./challenge-1.js"></script> -->
         <!-- <script src="./challenge-2.js"></script> -->
