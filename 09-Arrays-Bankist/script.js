@@ -308,3 +308,39 @@ const deposit = mov => mov > 0;
 console.log(movements.every(deposit));
 console.log(movements.some(deposit));
 console.log(movements.filter(deposit));
+
+//~ flat and flatMap
+separator(17);
+
+separator('remove nested arrays with flat method');
+const array = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(array.flat());
+
+separator('deep nested array with flat method');
+const arrayDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arrayDeep.flat(2)); // 1 - default
+
+separator('separately calculate overall balance');
+console.log(accounts);
+const accountMovements = accounts.map(acc => acc.movements);
+console.log(accountMovements);
+
+const allMovements = accountMovements.flat();
+console.log(allMovements);
+
+let overallBalance = allMovements.reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance);
+
+separator('calculate overall balance with pipeline');
+overallBalance = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .reduce((acc, mov) => acc + mov, 0);
+
+console.log(overallBalance);
+
+separator('calculate overall balance with flatMap method');
+
+//_ flatMap only goes 1 level deep and we can not change it
+overallBalance = accounts.flatMap(acc => acc.movements).reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance);
