@@ -63,10 +63,13 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 //_ App
 
-const displayMovements = function (acc) {
+//_ Display movements
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = '';
 
-  acc.movements.forEach(function (mov, i) {
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     const html = `
@@ -119,7 +122,7 @@ createUsernames(accounts);
 
 const updateUI = acc => {
   // Display movements
-  displayMovements(acc);
+  displayMovements(acc.movements);
 
   // Display balance
   calcDisplayBalance(acc);
@@ -213,4 +216,14 @@ btnClose.addEventListener('click', function (e) {
     // Hide UI
     containerApp.style.opacity = 0;
   }
+});
+
+//_ Sort
+let sorted = false;
+
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
 });

@@ -344,3 +344,38 @@ separator('calculate overall balance with flatMap method');
 //_ flatMap only goes 1 level deep and we can not change it
 overallBalance = accounts.flatMap(acc => acc.movements).reduce((acc, mov) => acc + mov, 0);
 console.log(overallBalance);
+
+//~ Sorting arrays
+separator(18);
+
+separator('sort() strings - sorted alphabetically');
+const owners = accounts.map(acc => acc.owner);
+console.log(owners.sort());
+
+separator('sort() numbers - sorting based on strings');
+console.log(movements);
+console.log(movements.sort());
+
+separator('sort() numbers');
+// - return < 0, A, B (keep order)
+// - return > 0, B, A (switch order)
+
+separator('ascending');
+movements.sort((a, b) => {
+  if (a > b) return 1;
+  if (b > a) return -1;
+});
+console.log(movements);
+
+movements.sort((a, b) => a - b);
+console.log(movements);
+
+separator('descending');
+movements.sort((a, b) => b - a);
+console.log(movements);
+
+movements.sort((a, b) => {
+  if (a > b) return -1;
+  if (b > a) return 1;
+});
+console.log(movements);
