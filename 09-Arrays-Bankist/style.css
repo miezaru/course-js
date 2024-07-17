@@ -95,6 +95,8 @@ nav {
     max-inline-size: 100rem;
     margin-block: 4rem;
     margin-inline: auto;
+    pointer-events: none;
+    visibility: hidden;
 
     /* NOTE This creates the fade in/out anumation */
     opacity: 0;

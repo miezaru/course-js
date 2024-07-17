@@ -379,3 +379,92 @@ movements.sort((a, b) => {
   if (b > a) return 1;
 });
 console.log(movements);
+
+//~ More ways of creating and filling arrays
+separator(19);
+
+separator('creating arrays');
+console.log([1, 2, 3, 4, 5, 6, 7]);
+console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+
+const x = new Array(7);
+console.log(x);
+
+separator('filling with fill method');
+x.fill(1);
+console.log(x);
+
+separator('filling 1 from index 3 to 5 (not included)');
+const y = new Array(7);
+y.fill(1, 3, 5);
+console.log(y);
+
+separator('can fill not only empty arrays');
+const testedArr = [1, 2, 3, 4, 5, 6, 7];
+console.log(testedArr);
+
+testedArr.fill(0, 2, 6);
+console.log(testedArr);
+
+separator('Array.from({ length: 7 }, callback)');
+const k = Array.from({ length: 7 }, () => 1);
+console.log(k);
+
+const s = Array.from({ length: 7 }, (cur, i) => i + 1);
+console.log(s);
+
+separator('100 random dice rolls');
+const diceRolls = Array.from({ length: 100 }, (cur, i) => {
+  return Math.floor(Math.random() * 6 + 1);
+});
+console.log(diceRolls);
+
+separator('calculate how many dice numbers');
+const resultsCounter = arr => {
+  const results = Array.from({ length: 6 }, () => 0);
+
+  arr.map(cur => {
+    if (cur === 1) results[0]++;
+    if (cur === 2) results[1]++;
+    if (cur === 3) results[2]++;
+    if (cur === 4) results[3]++;
+    if (cur === 5) results[4]++;
+    if (cur === 6) results[5]++;
+  });
+
+  return `Results:
+${results[0]} times 1,
+${results[1]} times 2,
+${results[2]} times 3,
+${results[3]} times 4,
+${results[4]} times 5,
+  `;
+};
+
+console.log(resultsCounter(diceRolls));
+
+separator('convert arrays from other iterable structures');
+
+separator('all buttons');
+let allBtns = Array.from(document.querySelectorAll('button'));
+console.log(allBtns);
+
+separator('all movements');
+labelBalance.addEventListener('click', () => {
+  const movementsUI = Array.from(document.querySelectorAll('.movements__value'));
+  console.log(movementsUI);
+
+  const movementsUI2 = Array.from(document.querySelectorAll('.movements__value'), el =>
+    el.textContent.replace('€', '')
+  );
+  console.log(movementsUI2);
+
+  const movementsUI3 = [...document.querySelectorAll('.movements__value')];
+  console.log(movementsUI3);
+
+  const movementsValues = movementsUI.map(el => el.textContent.replace('€', ''));
+  console.log(movementsValues);
+
+  const total = movementsValues.reduce((acc, mov) => acc + parseFloat(mov), 0);
+  console.log(total);
+});

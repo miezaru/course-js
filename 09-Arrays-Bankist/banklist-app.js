@@ -131,6 +131,19 @@ const updateUI = acc => {
   calcDisplaySummary(acc);
 };
 
+const visibleUI = (state = false) => {
+  const appContainer = containerApp.style;
+  if (state) {
+    appContainer.opacity = 100;
+    appContainer.visibility = 'visible';
+    appContainer.pointerEvents = 'all';
+    return;
+  }
+  appContainer.opacity = 0;
+  appContainer.visibility = 'hidden';
+  appContainer.pointerEvents = 'none';
+};
+
 //_ Login
 let currentAccount;
 btnLogin.addEventListener('click', e => {
@@ -148,7 +161,7 @@ btnLogin.addEventListener('click', e => {
     // Display UI and message
     labelWelcome.textContent = `Welcome back ${currentAccount.owner.split(' ')[0]}`;
 
-    containerApp.style.opacity = 100;
+    visibleUI(true);
 
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
@@ -214,7 +227,7 @@ btnClose.addEventListener('click', function (e) {
     accounts.splice(index, 1);
 
     // Hide UI
-    containerApp.style.opacity = 0;
+    visibleUI();
   }
 });
 
