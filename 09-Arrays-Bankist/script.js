@@ -462,118 +462,66 @@ labelBalance.addEventListener('click', () => {
   const movementsUI3 = [...document.querySelectorAll('.movements__value')];
   console.log(movementsUI3);
 
-  const movementsValues = movementsUI.map(el => el.textContent.replace('€', ''));
+  const movementsValues = movementsUI3.map(el => el.textContent.replace('€', ''));
   console.log(movementsValues);
 
   const total = movementsValues.reduce((acc, mov) => acc + parseFloat(mov), 0);
   console.log(total);
 });
 
-//~ Summary: Which array method to use?
-separator(20);
+//~ Array methods practice
+separator(21);
 
-/*
-----------------------------------------------------------------
-1. Array.prototype.push() - adds an element to the end of an array.
-2. Array.prototype.unshift() - adds an element to the beginning of an array.
-3. Array.prototype.splice() - adds/removes elements from an array.
-4. Array.prototype.concat() - creates a new array by merging two or more arrays.
-5. Array.prototype.slice() - creates a shallow copy of a portion of an array.
-6. Array.prototype.map() - creates a new array with the results of calling a provided function on every element in the array.
-7. Array.prototype.filter() - creates a new array with all elements that pass the test implemented by the provided function.
-8. Array.prototype.reduce() - applies a function against an accumulator and each element in the array (from left to right) to reduce it to a single output value.
-9. Array.prototype.forEach() - calls a provided function once for each element in an array.
-10. Array.prototype.find() - returns the value of the first element in the array that satisfies the provided testing function.
-11. Array.prototype.findIndex() - returns the index of the first element in the array that satisfies the provided testing function.
-12. Array.prototype.includes() - determines whether an array includes a certain value among its entries.
-13. Array.prototype.every() - tests whether all elements in the array pass the test implemented by the provided function.
-14. Array.prototype.some() - tests whether at least one element in the array passes the test implemented by the provided function.
-15. Array.prototype.sort() - sorts the elements of an array in place and returns the array.
-16. Array.prototype.reverse() - reverses the order of the elements in an array in place.
-17. Array.prototype.flat() - returns a new array with all sub-array elements concatenated into it recursively up to the specified depth.
-18. Array.prototype.flatMap() - returns a new array with the results of calling a provided function on every element in the array and then flattening the result.
-19. Array.from() - creates a new Array instance from an array-like or iterable object.
-20. Array.prototype.fill() - fills all the elements of an array with a static value.
-21. Array.prototype.entries() - returns a new Array Iterator object that contains the key-value pairs for each index in the array.
-22. Array.prototype.keys() - returns a new Array Iterator object that contains the keys for each index in the array.
-23. Array.prototype.values() - returns a new Array Iterator object that contains the values for each index in the array.
----------------------------------------------------------------- */
+separator('all bank deposits sum');
+const bankDepositsSum = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov > 0)
+  .reduce((sum, cur) => sum + cur, 0);
+console.log(bankDepositsSum);
 
-//_ To mutate original array
-/*
-_ Add to original:
-  .push() - end
-  .unshift() - start
+separator('how many deposits 1000+');
+// const numDeposits1000 = accounts.flatMap(acc => acc.movements).filter(mov => mov >= 1000).length;
+const numDeposits1000 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((count, cur) => (cur >= 1000 ? ++count : count), 0);
+console.log(numDeposits1000);
 
-_ Remove from original:
-  .pop() - end
-  .shift() - start
-  .splice() - any
+separator('accounts sums | reduce with object');
+const { depositsSum, withdrawalsSum } = accounts
+  .flatMap(acc => acc.movements)
+  .reduce(
+    (sums, cur) => {
+      // cur > 0 ? (sums.depositsSum += cur) : (sums.withdrawalsSum += cur);
+      sums[cur > 0 ? 'depositsSum' : 'withdrawalsSum'] += cur;
 
-_ Others:
-  .reverse()
-  .sort()
-  .fill()
-*/
+      return sums;
+    },
+    {
+      depositsSum: 0,
+      withdrawalsSum: 0,
+    }
+  );
 
-//~ A new array
-/*
-_ Computed from original:
-  .map()
+console.log(depositsSum);
+console.log(withdrawalsSum);
 
-_ Filtered using condition:
-  .filter()
+separator('title converter');
+// this is a nice title -> This Is a Nice Title
 
-_ Portion of original:
-  .slice()
+const convertTitleCase = function (title) {
+  const capitalize = str => str[0].toUpperCase() + str.slice(1);
 
-_ Adding original to other:
-  .concat()
+  const exceptions = ['a', 'an', 'and', 'the', 'but', 'or', 'on', 'in', 'with'];
 
-_ Flattering the original:
-  .flat()
-  .flatMap()
-*/
+  const titleCase = title
+    .toLowerCase()
+    .split(' ')
+    .map((word, i) => (exceptions.includes(word) && i != 0 ? word : capitalize(word)))
+    .join(' ');
 
-//~ An array index
-/*
-_ Based on value:
-  .indexOf()
+  return titleCase;
+};
 
-_ Based on test condition:
-  .findIndex()
-*/
-
-//~ An array element
-/*
-_ Based on test condition:
-  .find()
-*/
-
-//~ Know if array includes
-/*
-_ Based on value:
-  .includes()
-
-_ Based on test condition:
-  .some()
-  .every()
-*/
-
-//~ A new string
-/*
-_ Based on separator string:
-  .join()
-*/
-
-//~ To transform to value
-/*
-_ Based on accumulator:
-  .reduce() - (Boil down array to single value of any type: number, string, boolean, or even new array or object)
-*/
-
-//~ To just loop array
-/*
-_ Based on callback:
-  .forEach() - (Does not create a new array, just loops over it)
-*/
+console.log(convertTitleCase('this is a nice title'));
+console.log(convertTitleCase('this is a LONG title, BUT not TOo lonG'));
+console.log(convertTitleCase('and Another title'));
