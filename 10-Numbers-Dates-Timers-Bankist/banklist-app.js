@@ -96,6 +96,13 @@ const formatMovementDate = (date, locale) => {
   }
 };
 
+const formatCur = (value, locale, currency) => {
+  return new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency: currency,
+  }).format(value);
+};
+
 //_ Display movements
 const displayMovements = function (acc, sort = false) {
   containerMovements.innerHTML = '';
@@ -108,11 +115,13 @@ const displayMovements = function (acc, sort = false) {
     const date = new Date(acc.movementsDates[i]);
     const displayDate = formatMovementDate(date, acc.locale);
 
+    const formattedMov = formatCur(mov, acc.locale, acc.currency);
+
     const html = `
 <div class="movements__row">
   <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
   <div class="movements__date">${displayDate}</div>
-  <div class="movements__value">${mov.toFixed(2)}€</div>
+  <div class="movements__value">${formattedMov}</div>
 </div>
     `;
 
@@ -123,23 +132,24 @@ const displayMovements = function (acc, sort = false) {
 //_ Display balance
 const displayBalance = acc => {
   acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${acc.balance.toFixed(2)}€`;
+
+  labelBalance.textContent = formatCur(acc.balance, acc.locale, acc.currency);
 };
 
 //_ Display summary
 const displaySummary = acc => {
   const incomes = acc.movements.filter(mov => mov > 0).reduce((acc, move) => acc + move, 0);
-  labelSumIn.textContent = `${incomes.toFixed(2)}€`;
+  labelSumIn.textContent = formatCur(incomes, acc.locale, acc.currency);
 
   const out = acc.movements.filter(mov => mov < 0).reduce((acc, mov, i, arr) => acc + mov, 0);
-  labelSumOut.textContent = `${Math.abs(out).toFixed(2)}€`;
+  labelSumOut.textContent = formatCur(Math.abs(out), acc.locale, acc.currency);
 
   const interest = acc.movements
     .filter(mov => mov > 0)
     .map(deposit => (deposit * acc.interestRate) / 100)
     .filter((int, i, arr) => int > 1)
     .reduce((acc, int) => acc + int, 0);
-  labelSumInterest.textContent = `${interest.toFixed(2)}€`;
+  labelSumInterest.textContent = formatCur(interest, acc.locale, acc.currency);
 };
 
 //_ Create usernames

@@ -289,4 +289,47 @@
   };
   console.log(new Date().toLocaleString('en-US', options));
   console.log(new Date().toLocaleString('de-DE', options));
+
+  console.log(new Intl.DateTimeFormat('en-US', options).format(new Date()));
+
+  separator('working with dates in different time zones');
+  const optionsTime = { timeZone: 'America/New_York' };
+  console.log(new Date().toLocaleString('en-US', optionsTime));
+  console.log(new Date().toLocaleString('de-DE', optionsTime));
+
+  console.log(new Intl.DateTimeFormat('en-US', optionsTime).format(new Date()));
+
+  //~ Internationalizing Numbers (Intl)
+  separator(9);
+
+  const locale = navigator.language || navigator.userLanguage;
+  const optionsNumber = {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2,
+  };
+  console.log(new Intl.NumberFormat(locale, optionsNumber).format(123456.789));
+  console.log(new Intl.NumberFormat('en-US', optionsNumber).format(123456.789));
+
+  const optionsNum = {
+    style: 'currency',
+    currency: 'EUR',
+
+    // style: 'percent',
+
+    // style: 'unit',
+    // unit: 'mile-per-hour',
+    // unit: 'celsius',
+
+    // useGrouping: false,
+  };
+
+  const number = 3884764.23;
+  console.log('US:', new Intl.NumberFormat('en-US', optionsNum).format(number));
+  console.log('DE:', new Intl.NumberFormat('de-DE', optionsNum).format(number));
+  console.log('Syria:', new Intl.NumberFormat('ar-SY', optionsNum).format(number));
+
+  separator('navigator.language');
+  console.log(navigator.language);
+  console.log('Browser:', new Intl.NumberFormat(navigator.language, optionsNum).format(number));
 }
