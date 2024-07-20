@@ -275,4 +275,18 @@
   console.log(days1);
 
   //_ For date operations including time changes and other weird changes - use library moment.js
+
+  //~ Internationalizing Dates (Intl)
+  separator(8);
+
+  const options = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+  };
+  console.log(new Date().toLocaleString('en-US', options));
+  console.log(new Date().toLocaleString('de-DE', options));
 }
