@@ -25,6 +25,10 @@
   //~ Converting and cheking numbers
   separator(0);
 
+  // Numbers represents in 64bits
+  // 53 of 64 for storing digits
+  // rest 11 for decimal points and the sign
+
   console.log(23 === 23.0);
 
   // Base 10 - 0 to 9. 1/10 = 0.1. 3/10 = 3.33333
@@ -173,4 +177,44 @@
 
   console.log(Number('230_000')); // NaN
   console.log(parseInt('230_000')); // 230
+
+  //~ Working with BigInt
+  separator(4);
+
+  // Biggest number
+  console.log(2 ** 53 - 1);
+  console.log(Number.MAX_SAFE_INTEGER);
+
+  // Using this numbers are not safe
+  console.log(2 ** 53 + 1);
+  console.log(2 ** 53 + 2);
+  console.log(2 ** 53 + 3);
+  console.log(2 ** 53 + 4);
+
+  //_ ES2020 - BigInt
+  console.log(494948484874848588349484213123123123552359n);
+  console.log(BigInt(494948484874));
+
+  separator('operations');
+  console.log(10000n + 10000n);
+  console.log(234923492394923949239492349n * 1231231239123123123n);
+
+  // console.log(Math.sqrt(60n)); - error
+
+  separator('cannot mix BigInt with numbers');
+  const huge = 3218418409128409812094809124n;
+  const num = 23;
+  console.log(huge * BigInt(num));
+
+  separator('exceptions - logical operations and strings concatination');
+  console.log(20n > 15); // true
+  console.log(20n === 20); // false
+  console.log(20n == 20); // true
+  console.log(typeof 20n);
+
+  console.log(huge + ' is REALLY big!!!');
+
+  separator('divisions');
+  console.log(11n / 3n);
+  console.log(11 / 3);
 }
