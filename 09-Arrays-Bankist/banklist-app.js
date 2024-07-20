@@ -84,13 +84,13 @@ const displayMovements = function (movements, sort = false) {
   });
 };
 
-//_ Calc balance
+//_ Display balance
 const calcDisplayBalance = acc => {
   acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
   labelBalance.textContent = `${acc.balance}€`;
 };
 
-//_ Calc summary
+//_ Display summary
 const calcDisplaySummary = acc => {
   const incomes = acc.movements.filter(mov => mov > 0).reduce((acc, move) => acc + move, 0);
   labelSumIn.textContent = `${incomes}€`;
