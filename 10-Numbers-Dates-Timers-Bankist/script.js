@@ -217,4 +217,49 @@
   separator('divisions');
   console.log(11n / 3n);
   console.log(11 / 3);
+
+  //~ Creating dates
+  separator(5);
+
+  separator('creating dates');
+  const now = new Date();
+  console.log(now);
+
+  console.log(new Date('Sat Jul 20 2024 16:50:13'));
+  console.log(new Date('December 24, 2015'));
+  console.log(new Date(account1.movementsDates[0]));
+
+  // Moths in JavaScript is 0 based (0 - 11)
+  console.log(new Date(2037, 10, 19, 15, 23, 5));
+  console.log(new Date(2037, 10, 33));
+
+  console.log(new Date(0));
+
+  separator('days to milliseconds');
+  console.log(new Date(3 * 24 * 60 * 60 * 1000));
+
+  separator('working with dates');
+  const future = new Date(2037, 10, 19, 15, 23);
+  console.log(future);
+
+  console.log(future.getFullYear());
+  console.log(future.getMonth() + 1);
+  console.log(future.getDate());
+  console.log(future.getDay());
+  console.log(future.getHours());
+  console.log(future.getMinutes());
+  console.log(future.getMilliseconds());
+
+  separator('storing dates in ISO format');
+  console.log(future.toISOString());
+
+  separator('get time in milliseconds');
+  console.log(future.getTime()); // 2142249780000
+  console.log(new Date(2142249780000));
+
+  console.log(Date.now());
+
+  separator('set date');
+  future.setFullYear(2040);
+  console.log(future);
 }
