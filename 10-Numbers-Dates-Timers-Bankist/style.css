@@ -1,0 +1,354 @@
+/*
+ * Use this CSS to learn some intersting techniques,
+ * in case you're wondering how I built the UI.
+ * Have fun! 😁
+ */
+
+* {
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body {
+    block-size: 100vh;
+    padding: 2rem;
+    font-family: Poppins, sans-serif;
+    color: hsl(0deg 0% 27%);
+    background-color: hsl(0deg 0% 95%);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 0;
+    padding-inline: 2rem;
+}
+
+.welcome {
+    font-size: 1.9rem;
+    font-weight: 500;
+}
+
+.logo {
+    block-size: 5.25rem;
+}
+
+.login {
+    display: flex;
+}
+
+.login__input {
+    inline-size: 12rem;
+    padding-block: 0.5rem;
+    padding-inline: 2rem;
+    margin-inline-end: 1rem;
+    font-family: inherit;
+    font-size: 1.6rem;
+    color: inherit;
+    text-align: center;
+    border: none;
+    border: 1px solid hsl(0deg 0% 100%);
+    border-radius: 10rem;
+    transition: all 0.3s;
+}
+
+.login__input:focus {
+    border: 1px solid hsl(0deg 0% 80%);
+    outline: none;
+}
+
+.login__input::placeholder {
+    color: hsl(0deg 0% 73%);
+}
+
+.login__btn {
+    font-size: 2.2rem;
+    color: inherit;
+    cursor: pointer;
+    background: none;
+    border: none;
+    transition: all 0.3s;
+}
+
+.login__btn:hover,
+.login__btn:focus,
+.btn--sort:hover,
+.btn--sort:focus {
+    color: hsl(0deg 0% 47%);
+    outline: none;
+}
+
+/* MAIN */
+.app {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto repeat(3, 15rem) auto;
+    grid-template-columns: 4fr 3fr;
+    gap: 2rem;
+    max-inline-size: 100rem;
+    margin-block: 4rem;
+    margin-inline: auto;
+    pointer-events: none;
+    visibility: hidden;
+
+    /* NOTE This creates the fade in/out anumation */
+    opacity: 0;
+    transition: all 1s;
+}
+
+.balance {
+    display: flex;
+    grid-column: 1 / span 2;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-block-end: 2rem;
+}
+
+.balance__label {
+    margin-block-end: -0.2rem;
+    font-size: 2.2rem;
+    font-weight: 500;
+}
+
+.balance__date {
+    font-size: 1.4rem;
+    color: hsl(0deg 0% 53%);
+}
+
+.balance__value {
+    font-size: 4.5rem;
+    font-weight: 400;
+}
+
+/* MOVEMENTS */
+.movements {
+    grid-row: 2 / span 3;
+    overflow: scroll;
+    background-color: hsl(0deg 0% 100%);
+    border-radius: 1rem;
+}
+
+.movements__row {
+    display: flex;
+    align-items: center;
+    padding-block: 2.25rem;
+    padding-inline: 4rem;
+    border-block-end: 1px solid hsl(0deg 0% 93%);
+}
+
+.movements__type {
+    padding-block: 0.1rem;
+    padding-inline: 1rem;
+    margin-inline-end: 2rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: hsl(0deg 0% 100%);
+    text-transform: uppercase;
+    border-radius: 10rem;
+}
+
+.movements__date {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: hsl(0deg 0% 40%);
+    text-transform: uppercase;
+}
+
+.movements__type--deposit {
+    background-image: linear-gradient(to top left, hsl(157deg 52% 46%), hsl(92deg 69% 62%));
+}
+
+.movements__type--withdrawal {
+    background-image: linear-gradient(to top left, hsl(345deg 78% 53%), hsl(357deg 100% 67%));
+}
+
+.movements__value {
+    margin-inline-start: auto;
+    font-size: 1.7rem;
+}
+
+/* SUMMARY */
+.summary {
+    display: flex;
+    grid-row: 5 / 6;
+    align-items: baseline;
+    padding-block: 0;
+    padding-inline: 0.3rem;
+    margin-block-start: 1rem;
+}
+
+.summary__label {
+    margin-inline-end: 0.8rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.summary__value {
+    margin-inline-end: 2.5rem;
+    font-size: 2.2rem;
+}
+
+.summary__value--in,
+.summary__value--interest {
+    color: hsl(128deg 47% 59%);
+}
+
+.summary__value--out {
+    color: hsl(352deg 90% 62%);
+}
+
+.btn--sort {
+    margin-inline-start: auto;
+    font-size: 1.3rem;
+    font-weight: 500;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+/* OPERATIONS */
+.operation {
+    padding-block: 3rem;
+    padding-inline: 4rem;
+    color: hsl(0deg 0% 20%);
+    border-radius: 1rem;
+}
+
+.operation--transfer {
+    background-image: linear-gradient(to top left, hsl(41deg 100% 51%), hsl(48deg 100% 51%));
+}
+
+.operation--loan {
+    background-image: linear-gradient(to top left, hsl(157deg 52% 46%), hsl(92deg 69% 62%));
+}
+
+.operation--close {
+    background-image: linear-gradient(to top left, hsl(345deg 78% 53%), hsl(357deg 100% 67%));
+}
+
+h2 {
+    margin-block-end: 1.5rem;
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: hsl(0deg 0% 20%);
+}
+
+.form {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 2.5fr 2.5fr 1fr;
+    gap: 0.4rem 1rem;
+}
+
+/* Exceptions for interst */
+.form.form--loan {
+    grid-template-columns: 2.5fr 1fr 2.5fr;
+}
+
+.form__label--loan {
+    grid-row: 2;
+}
+
+/* End exceptions */
+
+.form__input {
+    inline-size: 100%;
+    padding-block: 0.3rem;
+    padding-inline: 1rem;
+    font-family: inherit;
+    font-size: 1.5rem;
+    color: hsl(0deg 0% 20%);
+    text-align: center;
+    background-color: rgb(255 255 255 / 40%);
+    border: none;
+    border-radius: 0.7rem;
+    transition: all 0.3s;
+}
+
+.form__input:focus {
+    background-color: rgb(255 255 255 / 60%);
+    outline: none;
+}
+
+.form__label {
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.form__btn {
+    font-size: 1.8rem;
+    cursor: pointer;
+    background-color: hsl(0deg 0% 100%);
+    border: none;
+    border-radius: 0.7rem;
+    transition: all 0.3s;
+}
+
+.form__btn:focus {
+    background-color: rgb(255 255 255 / 80%);
+    outline: none;
+}
+
+.logout-timer {
+    padding-block: 0;
+    padding-inline: 0.3rem;
+    margin-block-start: 1.9rem;
+    font-size: 1.25rem;
+    text-align: end;
+}
+
+.timer {
+    font-weight: 600;
+}
+
+/* Logins styles */
+
+.logins__container {
+    margin-block-start: 2.4rem;
+    font-size: 1.4rem;
+}
+
+.logins__header {
+    margin-block-end: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.logins {
+    display: flex;
+    gap: 3.2rem;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
+}
+
+.logins__login {
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+}
+
+.logins__user,
+.logins__pin {
+    inline-size: auto;
+    padding: 0.4rem;
+    font-weight: 700;
+}
+
+.logins__user {
+    letter-spacing: 1px;
+    background-color: hsl(92deg 69% 62%);
+}
+
+.logins__pin {
+    letter-spacing: 3px;
+    background-color: hsl(345deg 78% 53%);
+}
