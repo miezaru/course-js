@@ -16,10 +16,10 @@
     'Implementing a Countdown timer',
   ];
 
-  const separator = num => {
-    if (typeof num === 'number')
-      return console.log(`\n|----------[ ${lectures[num]} ]----------|\n\n`);
-    if (typeof num === 'string') return console.log(`----- ${num} -----`);
+  const separator = val => {
+    if (typeof val === 'number')
+      return console.log(`\n|----------[ ${lectures[val]} ]----------|\n\n`);
+    if (typeof val === 'string') return console.log(`----- ${val} -----`);
   };
 
   //~ Converting and cheking numbers
@@ -55,6 +55,8 @@
 
   separator('isFinite - checking if value is number');
   console.log(Number.isFinite(20));
+  console.log(Number.isFinite(20.0));
+  console.log(Number.isFinite(20.1));
   console.log(Number.isFinite('20'));
   console.log(Number.isFinite(+'20X'));
   console.log(Number.isFinite(23 / 0));
@@ -62,5 +64,61 @@
   separator('isInteger');
   console.log(Number.isInteger(23));
   console.log(Number.isInteger(23.0));
+  console.log(Number.isInteger(23.1));
   console.log(Number.isInteger(23 / 0));
+
+  //~ Math and rounding
+  separator(1);
+
+  separator('Math.sqrt()');
+  console.log(Math.sqrt(25));
+  console.log(25 ** (1 / 2));
+  console.log(8 ** (1 / 3));
+
+  separator('Math.max()');
+  console.log(Math.max(5, 18, '23', 11, 2));
+
+  separator('Math.min()');
+  console.log(Math.min(5, 18, '23', 11, 2));
+
+  separator('Math.PI');
+  console.log(Math.PI);
+  console.log(Math.PI * Number.parseFloat('10px') ** 2); // pi * r ** 2
+
+  separator('Math.random()');
+  console.log(Math.trunc(Math.random() * 6) + 1);
+
+  // 0...1 -> 0...(max-min) -> min...(max - min + min) -> min...max
+  const randomInt = (min, max) => Math.floor(Math.random() * (max - min) + 1) + min;
+  console.log(randomInt(10, 20));
+
+  separator('rounding integers');
+
+  separator('Math.trunc()');
+  console.log(Math.trunc(23.3));
+  console.log(~~23.3);
+
+  separator('Math.round()');
+  console.log(Math.round(23.3));
+  console.log(Math.round(23.9));
+
+  separator('Math.ceil()');
+  console.log(Math.ceil(23.3));
+  console.log(Math.ceil(23.9));
+
+  separator('Math.floor()');
+  console.log(Math.floor(23.3));
+  console.log(Math.floor('23.9'));
+
+  separator('Math.trunc() vs Math.floor()');
+  console.log(Math.trunc(-23.3));
+  console.log(Math.floor(-23.9));
+
+  separator('rounding decimals');
+
+  separator('toFixed');
+  console.log((2.7).toFixed(0));
+  console.log((2.7).toFixed(3));
+  console.log((2.745).toFixed(2));
+  console.log(+(2.745).toFixed(2));
 }
