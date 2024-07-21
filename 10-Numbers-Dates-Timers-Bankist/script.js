@@ -332,4 +332,31 @@
   separator('navigator.language');
   console.log(navigator.language);
   console.log('Browser:', new Intl.NumberFormat(navigator.language, optionsNum).format(number));
+
+  //~ Timers: setTimeout and setInterval
+  separator(10);
+
+  separator('setTimeout');
+  const ingredients = ['olives', 'spinach'];
+  const pizzaTimer = setTimeout(
+    (ing1, ing2) => {
+      return console.log(`Here is your pizza with ${ing1} and ${ing2} 🍕`);
+    },
+    3000,
+    ...ingredients
+  );
+
+  console.log('Waiting...');
+
+  if (ingredients.includes('spinach')) clearTimeout(pizzaTimer);
+
+  separator('setInterval');
+  setInterval(() => {
+    const now = new Date();
+    const hour = `${new Date().getHours()}`.padStart(2, '0');
+    const minutes = `${new Date().getMinutes()}`.padStart(2, '0');
+    const seconds = `${new Date().getSeconds()}`.padStart(2, '0');
+
+    console.log(`${hour}:${minutes}:${seconds}`);
+  }, 1000);
 }

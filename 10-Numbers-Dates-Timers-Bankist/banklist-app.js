@@ -287,20 +287,23 @@ btnLoan.addEventListener('click', function (e) {
 
   //_ some method
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
-    // Add movement
-    currentAccount.movements.push(amount);
+    setTimeout(() => {
+      // Add movement
+      currentAccount.movements.push(amount);
 
-    // Add loan date
-    currentAccount.movementsDates.push(new Date().toISOString());
+      // Add loan date
+      currentAccount.movementsDates.push(new Date().toISOString());
 
-    // Update UI
-    updateUI(currentAccount);
+      // Update UI
+      updateUI(currentAccount);
+    }, 2500);
   }
 
   // Clear input field
   inputLoanAmount.value = '';
 });
 
+//_ Delete account
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
 
