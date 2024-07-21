@@ -177,6 +177,37 @@ const updateUI = acc => {
   displaySummary(acc);
 };
 
+const startLogOutTimer = () => {
+  const tick = () => {
+    // Set time to 5 minutes
+    const min = `${Math.trunc(time / 60)}`.padStart(2, '0');
+    const sec = `${time % 60}`.padStart(2, '0');
+
+    // In each call, print the remaining time to UI
+    labelTimer.textContent = `${min}:${sec}`;
+
+    // When 0 seconds, stop timer and log out user
+    if (time === 0) {
+      clearInterval(timer);
+
+      labelWelcome.textContent = `Log in to get started`;
+
+      visibleUI(false);
+    }
+
+    // Decrease time by 1 second
+    time--;
+  };
+
+  let time = 300;
+
+  // Call the timer every second
+  tick();
+  const timer = setInterval(tick, 1000);
+
+  return timer;
+};
+
 const visibleUI = (state = false) => {
   const appContainer = containerApp.style;
   if (state) {
@@ -191,12 +222,13 @@ const visibleUI = (state = false) => {
 };
 
 //_ Login
-let currentAccount;
+let currentAccount, timer;
 
 //_ Fake always logged in
+/*
 currentAccount = account1;
 updateUI(currentAccount);
-visibleUI(true);
+visibleUI(true); */
 
 btnLogin.addEventListener('click', e => {
   // Prevent form from submitting and reloading page
@@ -212,6 +244,9 @@ btnLogin.addEventListener('click', e => {
   if (currentAccount?.pin === +inputLoginPin.value) {
     // Display UI and message
     labelWelcome.textContent = `Welcome back ${currentAccount.owner.split(' ')[0]}`;
+
+    if (timer) clearInterval(timer);
+    timer = startLogOutTimer();
 
     visibleUI(true);
 
@@ -275,6 +310,10 @@ btnTransfer.addEventListener('click', function (e) {
     updateUI(currentAccount);
 
     inputTransferTo.value = inputTransferAmount.value = '';
+
+    // Reset the timer
+    clearInterval(timer);
+    timer = startLogOutTimer();
   }
 });
 
@@ -301,6 +340,10 @@ btnLoan.addEventListener('click', function (e) {
 
   // Clear input field
   inputLoanAmount.value = '';
+
+  // Reset the timer
+  clearInterval(timer);
+  timer = startLogOutTimer();
 });
 
 //_ Delete account
