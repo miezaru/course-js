@@ -231,3 +231,24 @@ const headerObserver = new IntersectionObserver(stickyNav, {
   rootMargin: `-${navHeight}px`, // negative value means that the header will be 90px from the bottom of the viewport when it starts to hide.
 });
 headerObserver.observe(headerEl);
+
+//~ Revealing elements (sections) on scroll
+
+const allSections = document.querySelectorAll('.section');
+const revealSection = function (entries, observer) {
+  const [entry] = entries;
+  console.log(entry);
+  if (!entry.isIntersecting) return;
+
+  entry.target.classList.remove('section--hidden');
+  observer.unobserve(entry.target); // Remove observer once the section is visible. This improves performance because it avoids unnecessary checks.
+};
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.15, // 15% of the element is visible before triggering the callback.
+});
+
+allSections.forEach(function (section) {
+  sectionObserver.observe(section);
+  section.classList.add('section--hidden');
+});
