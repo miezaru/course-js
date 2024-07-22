@@ -88,7 +88,7 @@ console.log(allButtons);
 
 console.log(document.getElementsByClassName('btn'));
 
-separator('Creating and inserting elements');
+//~ Creating and inserting elements
 // insertAdjacentHTML
 
 const message = document.createElement('div');
@@ -97,11 +97,14 @@ message.classList.add('cookie-message');
 message.innerHTML =
   'We use cookies to improved functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
 
+// We can use prepend and append not only for inserting elements, but also move them
 //_ prepend - first child
 headerEl.prepend(message);
 
 //_ append - last child
 headerEl.append(message);
+
+//_ More than one append
 // headerEl.append(message.cloneNode(true));
 
 //_ before and after the element
@@ -109,11 +112,62 @@ headerEl.append(message);
 headerEl.before(message);
 headerEl.after(message);
 
-// We can use prepend and append not only for inserting elements, but also move them
-
 //_ delete elements
 document.querySelector('.btn--close-cookie').addEventListener('click', () => {
   // message.parentElement.removeChild(message);
-
   return message.remove();
 });
+
+//~ Styles, attributes and classes
+separator(2);
+
+// Styles
+message.style.backgroundColor = '#37383d';
+message.style.width = '100%';
+
+separator('Shows only styles what we added before with style attribute');
+console.log(message.style.color);
+console.log(message.style.backgroundColor);
+
+separator('Get access to all element styles');
+console.log(getComputedStyle(message).color);
+console.log(getComputedStyle(message).height);
+
+message.style.height = Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
+
+separator('Change custom properties (css variables)');
+document.documentElement.style.setProperty('--color-primary', 'orangered');
+
+separator('Attributes');
+const logo = document.querySelector('.nav__logo');
+console.log(logo.alt);
+console.log((logo.alt = 'Beautiful minimalist logo'));
+
+console.log(logo.src);
+console.log(logo.getAttribute('src'));
+
+console.log(logo.className);
+
+// Non standart (doesn`t work)
+console.log(logo.designer);
+
+separator('Get and set attributes');
+console.log(logo.getAttribute('designer'));
+console.log(logo.setAttribute('company', 'Bankist'));
+console.log(logo);
+
+const link = document.querySelector('.nav__link--btn');
+console.log(link.href);
+console.log(link.getAttribute('href'));
+
+separator('Data attributes');
+console.log(logo.dataset.versionNumber);
+
+separator('Classes');
+logo.classList.add('c', 'j');
+logo.classList.remove('c', 'j');
+logo.classList.toggle('c');
+logo.classList.contains('c'); // not includes
+
+// Don't use, because it removes other classes
+// logo.className = 'jonas';
