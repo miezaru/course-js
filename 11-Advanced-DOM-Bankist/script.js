@@ -108,7 +108,6 @@ headerEl.append(message);
 // headerEl.append(message.cloneNode(true));
 
 //_ before and after the element
-
 headerEl.before(message);
 headerEl.after(message);
 
@@ -136,7 +135,7 @@ console.log(getComputedStyle(message).height);
 message.style.height = Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
 
 separator('Change custom properties (css variables)');
-document.documentElement.style.setProperty('--color-primary', 'orangered');
+// document.documentElement.style.setProperty('--color-primary', 'orangered');
 
 separator('Attributes');
 const logo = document.querySelector('.nav__logo');
@@ -171,3 +170,56 @@ logo.classList.contains('c'); // not includes
 
 // Don't use, because it removes other classes
 // logo.className = 'jonas';
+
+//~ Implementing smooth scrolling
+separator(3);
+
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', e => {
+  const s1coords = section1.getBoundingClientRect();
+  console.log(s1coords);
+
+  console.log(e.target.getBoundingClientRect());
+
+  console.log('Current scroll (X/Y)', window.pageXOffset, window.pageYOffset);
+
+  console.log(
+    'height/width viewport',
+    document.documentElement.clientHeight,
+    document.documentElement.clientWidth
+  );
+
+  //_ Scrolling
+  // window.scrollTo(s1coords.left + window.pageXOffset, s1coords.top + window.pageYOffset);
+
+  //_ Oldschool, and if u need offset
+  /*
+  window.scrollTo({
+    left: s1coords.left + window.pageXOffset,
+    top: s1coords.top + window.pageYOffset + 100,
+    behavior: 'smooth',
+  }); */
+
+  section1.scrollIntoView({ block: 'start', behavior: 'smooth' });
+});
+
+const relativeLinks = document.querySelectorAll("a[href^='#']");
+console.log(relativeLinks);
+relativeLinks.forEach(link =>
+  link.addEventListener('click', e => {
+    e.preventDefault();
+
+    const targetEl = document.querySelector(`${link.getAttribute('href')}`);
+    const coords = targetEl.getBoundingClientRect();
+
+    window.scrollTo({
+      left: coords.left + window.pageXOffset,
+      top: coords.top + window.pageYOffset + 100,
+      behavior: 'smooth',
+    });
+
+    // targetEl.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  })
+);
