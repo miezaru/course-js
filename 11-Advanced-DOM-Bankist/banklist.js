@@ -64,18 +64,44 @@ document.querySelectorAll('.nav__link').forEach(function (el) {
 
 //_ Event delegation: implementing page navigation
 
-// 1. Add event listener to common parent element
-// 2. Detemine what element originated the event
+//_ 1. Add event listener to common parent element
+//_ 2. Detemine what element originated the event
 
 document.querySelector('.nav__links').addEventListener('click', function (e) {
   e.preventDefault();
 
-  console.log(e.target);
+  // console.log(e.target);
 
-  // Matching strategy
+  //_ Matching strategy
   if (e.target.classList.contains('nav__link')) {
     // this.href - absolute path
     const id = e.target.getAttribute('href');
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
+});
+
+//_ Tabbed component
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+tabsContainer.addEventListener('click', function (e) {
+  //_ Fix clicking on a span
+  const clicked = e.target.closest('.operations__tab');
+  // console.log(clicked);
+
+  //_ Return if clicked tabsContainer
+  //_ (returns null because have no closest('operations__tab'))
+  if (!clicked) return;
+
+  //_ Active tab
+  tabs.forEach(t => t.classList.remove('operations__tab--active'));
+  clicked.classList.add('operations__tab--active');
+
+  //_ Activate content area
+  tabsContent.forEach(c => c.classList.remove('operations__content--active'));
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
+  // console.log(clicked.dataset.tab);
 });
