@@ -205,6 +205,12 @@ btnScrollTo.addEventListener('click', e => {
   section1.scrollIntoView({ block: 'start', behavior: 'smooth' });
 });
 
+//_ Only once event listener
+/*
+buttonScrollTo.addEventListener("click", function () {
+  console.log("Only once");
+}, { once: true }) */
+
 const relativeLinks = document.querySelectorAll("a[href^='#']");
 console.log(relativeLinks);
 relativeLinks.forEach(link =>
@@ -223,3 +229,37 @@ relativeLinks.forEach(link =>
     // targetEl.scrollIntoView({ block: 'start', behavior: 'smooth' });
   })
 );
+
+//~ Types of events and event handlers
+separator(4);
+
+const h1 = document.querySelector('h1');
+
+h1.addEventListener(
+  'mouseenter',
+  e => {
+    alert('addEventListener: Great! You are reading the heading :D');
+  },
+  { once: true }
+);
+
+// Old way
+/*
+h1.onmouseenter = e => {
+  alert('addEventListener: Great! You are reading the heading :D');
+}; */
+
+// Even listener better because it's allowed us to add multiple event listeners to the same event, we can remove event if we do not need it anymore and we can override event listeners when we rewrite it
+const alertH1 = e => {
+  alert('addEventListener: Great! You are reading the heading :D');
+
+  // only listen to events once, or we can use { once: true } like in the first event
+  // can inserted anywhere, like in the setTimeout at the bottom
+  // h1.removeEventListener('mouseenter', alertH1);
+};
+
+h1.addEventListener('mouseenter', alertH1);
+
+setTimeout(() => {
+  h1.removeEventListener('mouseenter', alertH1);
+}, 3000);
