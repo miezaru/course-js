@@ -28,36 +28,6 @@ const separator = val => {
   if (typeof val === 'string') return console.log(`----- ${val} -----`);
 };
 
-///////////////////////////////////////
-// Modal window
-
-const modal = document.querySelector('.modal');
-const overlay = document.querySelector('.overlay');
-const btnCloseModal = document.querySelector('.btn--close-modal');
-const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
-
-const openModal = function (e) {
-  e.preventDefault();
-  modal.classList.remove('hidden');
-  overlay.classList.remove('hidden');
-};
-
-const closeModal = function () {
-  modal.classList.add('hidden');
-  overlay.classList.add('hidden');
-};
-
-btnsOpenModal.forEach(btn => btn.addEventListener('click', openModal));
-
-btnCloseModal.addEventListener('click', closeModal);
-overlay.addEventListener('click', closeModal);
-
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-    closeModal();
-  }
-});
-
 //~ How the DOM really works
 
 /*
@@ -174,9 +144,10 @@ logo.classList.contains('c'); // not includes
 //~ Implementing smooth scrolling
 separator(3);
 
-const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1');
+// const btnScrollTo = document.querySelector('.btn--scroll-to');
+// const section1 = document.querySelector('#section--1');
 
+/*
 btnScrollTo.addEventListener('click', e => {
   const s1coords = section1.getBoundingClientRect();
   console.log(s1coords);
@@ -195,15 +166,15 @@ btnScrollTo.addEventListener('click', e => {
   // window.scrollTo(s1coords.left + window.pageXOffset, s1coords.top + window.pageYOffset);
 
   //_ Oldschool, and if u need offset
-  /*
-  window.scrollTo({
-    left: s1coords.left + window.pageXOffset,
-    top: s1coords.top + window.pageYOffset + 100,
-    behavior: 'smooth',
-  }); */
+
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: s1coords.top + window.pageYOffset + 100,
+  //   behavior: 'smooth',
+  // });
 
   section1.scrollIntoView({ block: 'start', behavior: 'smooth' });
-});
+}); */
 
 //_ Only once event listener
 /*
@@ -211,7 +182,7 @@ buttonScrollTo.addEventListener("click", function () {
   console.log("Only once");
 }, { once: true }) */
 
-const relativeLinks = document.querySelectorAll("a[href^='#']");
+/* const relativeLinks = document.querySelectorAll("a[href^='#']");
 console.log(relativeLinks);
 relativeLinks.forEach(link =>
   link.addEventListener('click', e => {
@@ -228,20 +199,21 @@ relativeLinks.forEach(link =>
 
     // targetEl.scrollIntoView({ block: 'start', behavior: 'smooth' });
   })
-);
+); */
 
 //~ Types of events and event handlers
 separator(4);
 
 const h1 = document.querySelector('h1');
 
+/*
 h1.addEventListener(
   'mouseenter',
   e => {
     alert('addEventListener: Great! You are reading the heading :D');
   },
   { once: true }
-);
+); */
 
 // Old way
 /*
@@ -258,7 +230,7 @@ const alertH1 = e => {
   // h1.removeEventListener('mouseenter', alertH1);
 };
 
-h1.addEventListener('mouseenter', alertH1);
+// h1.addEventListener('mouseenter', alertH1);
 
 setTimeout(() => {
   h1.removeEventListener('mouseenter', alertH1);
@@ -302,3 +274,6 @@ document.querySelector('.nav').addEventListener(
   // true - change from bubbling to capturing (false default)
   false
 );
+
+//~ Event delegation: implementing page navigation
+separator(7);
