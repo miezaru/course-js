@@ -250,26 +250,25 @@ const randomColor = () => `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${rando
 console.log(randomColor());
 
 document.querySelector('.nav__link').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomColor();
-  console.log('LINK', e.target, e.currentTarget);
-  console.log(e.currentTarget === this);
-
+  // this.style.backgroundColor = randomColor();
+  // console.log('LINK', e.target, e.currentTarget);
+  // console.log(e.currentTarget === this);
   //_ Stop propagation
   // e.stopPropagation();
 });
 
 document.querySelector('.nav__links').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomColor();
-  console.log('CONTAINER', e.target, e.currentTarget);
-  console.log(e.currentTarget === this);
+  // this.style.backgroundColor = randomColor();
+  // console.log('CONTAINER', e.target, e.currentTarget);
+  // console.log(e.currentTarget === this);
 });
 
 document.querySelector('.nav').addEventListener(
   'click',
   function (e) {
-    this.style.backgroundColor = randomColor();
-    console.log('NAV', e.target, e.currentTarget);
-    console.log(e.currentTarget === this);
+    // this.style.backgroundColor = randomColor();
+    // console.log('NAV', e.target, e.currentTarget);
+    // console.log(e.currentTarget === this);
   },
   // true - change from bubbling to capturing (false default)
   false
@@ -277,3 +276,36 @@ document.querySelector('.nav').addEventListener(
 
 //~ Event delegation: implementing page navigation
 separator(7);
+
+//~ DOM traversing
+separator(8);
+
+const h1El = document.querySelector('h1');
+
+separator('Going dawnwards: child');
+console.log(h1El.querySelectorAll('.highlight'));
+console.log(h1El.childNodes);
+console.log(h1El.children);
+console.log(h1El.firstElementChild);
+h1El.firstElementChild.style.color = 'white';
+h1El.lastElementChild.style.color = 'orangered';
+
+separator('Going upwards: parents');
+console.log(h1El.parentNode);
+console.log(h1El.parentElement);
+
+separator('closest (find parent) method is opposite to querySelector (find children)');
+h1El.closest('.header').style.background = 'var(--gradient-secondary)';
+h1El.closest('h1').style.background = 'var(--gradient-primary)';
+
+separator('Going sideways: siblings');
+console.log(h1.previousElementSibling);
+console.log(h1.nextElementSibling);
+
+console.log(h1.previousSibling);
+console.log(h1.nextSibling);
+
+console.log(h1.parentElement.children);
+[...h1.parentElement.children].forEach(el => {
+  if (el !== h1) el.style.transform = 'scale(0.5)';
+});

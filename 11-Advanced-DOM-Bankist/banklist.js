@@ -62,7 +62,7 @@ document.querySelectorAll('.nav__link').forEach(function (el) {
   });
 }); */
 
-//_ Event delegation
+//_ Event delegation: implementing page navigation
 
 // 1. Add event listener to common parent element
 // 2. Detemine what element originated the event
