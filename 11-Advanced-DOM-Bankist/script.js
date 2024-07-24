@@ -329,4 +329,7 @@ h1.onmouseenter = e => {
     console.log(e);
     e.returnValue = '';
   }); */
+
+  //~ Efficient script loading: defer vs async
+  // [img]
 }
