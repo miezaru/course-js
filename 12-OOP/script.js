@@ -200,3 +200,31 @@ console.log(jonas.species, matilda.species);
 
 console.log(jonas.hasOwnProperty('firstName'));
 console.log(jonas.hasOwnProperty('species'));
+
+//~ Prototypal inheritance on built-in objects
+separator(5);
+
+console.log(jonas.__proto__);
+// Object.prototype (top of prototype chain)
+console.log(jonas.__proto__.__proto__);
+console.log(jonas.__proto__.__proto__.__proto__);
+
+console.dir(Person.prototype.constructor);
+
+separator('arrays prototype');
+const arr = [1, 2, 3, 4, 5, 6, 6, 7, 7, 8, 8]; // [] === new Array
+console.log(arr);
+console.log(arr.__proto__);
+console.log(arr.__proto__ === Array.prototype);
+console.log(arr.__proto__.__proto__);
+
+// bad idea to implement new methods directly in built-in array prototype (javascript update and add this method with the same name but another implementation, and if we working in a big team and every programmer name this method not the same as u)
+Array.prototype.unique = function () {
+  return [...new Set(this)];
+};
+
+console.log(arr.unique());
+
+const h1 = document.querySelector('h1');
+console.dir(h1);
+console.dir(x => x + 1);
