@@ -509,10 +509,14 @@ class Account {
   deposit(val) {
     this.#movements.push(val);
     console.log(`${val > 0 ? 'Deposited' : 'Withdrawal'} ${Math.abs(val)} ${this.currency}`);
+
+    return this;
   }
 
   withdraw(val) {
     this.deposit(-val);
+
+    return this;
   }
 
   //_ Encapsulation
@@ -523,9 +527,10 @@ class Account {
   requestLoan(val) {
     // if (this.#approveLoan(val)) {
     if (this._approveLoan(val)) {
-      this.deposit(val);
       console.log(`Loan approved: ${val} ${this.currency}`);
+      this.deposit(val);
     }
+    return this;
   }
   //_ Static methods
   static helper() {
@@ -581,3 +586,9 @@ console.log(acc1.getMovements());
 // console.log(acc1.#approveLoan());
 
 Account.helper();
+
+//~ Chaining methods
+separator(16);
+
+acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000);
+console.log(acc1.getMovements());
