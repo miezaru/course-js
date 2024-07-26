@@ -336,3 +336,32 @@ Person.hey();
 // jonas.hey(); // not in prototype
 
 PersonCl.hey();
+
+//~ Object.create
+separator(9);
+
+const PersonProto = {
+  calcAge2() {
+    console.log(new Date().getFullYear() - this.birthYear);
+  },
+
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
+
+const steven = Object.create(PersonProto);
+console.log(steven);
+
+steven.name = 'Steven';
+steven.birthYear = 2002;
+console.log(steven);
+steven.calcAge2();
+
+console.log(steven.__proto__);
+console.log(steven.__proto__ === PersonProto);
+
+const sarah = Object.create(PersonProto);
+sarah.init('Sarah', 1984);
+console.log(sarah);
