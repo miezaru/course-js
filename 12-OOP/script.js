@@ -481,24 +481,33 @@ jay.calcAge2();
 separator(13);
 
 class Account {
+  //_ 1. Public fields (instances)
+  locale = navigator.language;
+
+  //_ 2. Private fields (instances)
+  #movements = [];
+  #pin;
+
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
     //_ Encapsulation, protected property
-    this._pin = pin;
-    this._movements = [];
-    this.locale = navigator.language;
+    this.#pin = pin;
+
+    // this._movements = [];
+    // this.locale = navigator.language;
 
     console.log(`Thanks for opening an account, ${owner}`);
   }
 
-  // Public interface of our objects (API)
+  //_ 3. Public methods
+  // Public interface of our class (API)
   getMovements() {
-    return this._movements;
+    return this.#movements;
   }
 
   deposit(val) {
-    this._movements.push(val);
+    this.#movements.push(val);
     console.log(`${val > 0 ? 'Deposited' : 'Withdrawal'} ${Math.abs(val)} ${this.currency}`);
   }
 
@@ -512,10 +521,21 @@ class Account {
   }
 
   requestLoan(val) {
+    // if (this.#approveLoan(val)) {
     if (this._approveLoan(val)) {
       this.deposit(val);
       console.log(`Loan approved: ${val} ${this.currency}`);
     }
+  }
+  //_ Static methods
+  static helper() {
+    console.log('Helper');
+  }
+
+  //_ 4. Private methods
+
+  #approveLoan(val) {
+    return true;
   }
 }
 
@@ -542,3 +562,22 @@ console.log(acc1._approveLoan()); // can`t be accessible from the user
 separator(14);
 
 console.log(acc1.getMovements());
+
+//~ Encapsulation: private class fields and methods
+
+/*
+  1. Public fields
+  2. Private fields
+  3. Public methods
+  4. Private methods
+  (there is also the static version)
+*/
+
+// console.log(acc1.#movements); // private field
+console.log(acc1.getMovements());
+
+// console.log(acc1.#pin);
+
+// console.log(acc1.#approveLoan());
+
+Account.helper();
