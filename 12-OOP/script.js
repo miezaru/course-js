@@ -484,16 +484,21 @@ class Account {
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
-    this.pin = pin;
-    this.movements = [];
+    //_ Encapsulation, protected property
+    this._pin = pin;
+    this._movements = [];
     this.locale = navigator.language;
 
     console.log(`Thanks for opening an account, ${owner}`);
   }
 
   // Public interface of our objects (API)
+  getMovements() {
+    return this._movements;
+  }
+
   deposit(val) {
-    this.movements.push(val);
+    this._movements.push(val);
     console.log(`${val > 0 ? 'Deposited' : 'Withdrawal'} ${Math.abs(val)} ${this.currency}`);
   }
 
@@ -501,12 +506,13 @@ class Account {
     this.deposit(-val);
   }
 
-  approveLoan(val) {
+  //_ Encapsulation
+  _approveLoan(val) {
     return true;
   }
 
   requestLoan(val) {
-    if (this.approveLoan(val)) {
+    if (this._approveLoan(val)) {
       this.deposit(val);
       console.log(`Loan approved: ${val} ${this.currency}`);
     }
@@ -518,7 +524,7 @@ const acc1 = new Account('Jonas', 'EUR', 1111);
 console.log(acc1);
 
 // acc1.movements.push(250);
-// acc1.movements.push(-140);
+// acc1._movements.push(-140);
 // console.log(acc1);
 
 acc1.deposit(250);
@@ -528,6 +534,11 @@ console.log(acc1);
 console.log(acc1.pin); // can`t be accessible from the user
 
 acc1.requestLoan(1000);
-console.log(acc1.approveLoan()); // can`t be accessible from the user
+console.log(acc1._approveLoan()); // can`t be accessible from the user
 
 // Need data encapsulation and data privacy
+
+//~ Encapsulation: protected properties and methods
+separator(14);
+
+console.log(acc1.getMovements());
