@@ -439,3 +439,40 @@ console.log(nika);
 
 nika.introduce();
 nika.calcAge();
+
+//~ Inheritance between "classes": Object.create
+separator(12);
+
+/*
+const PersonProto = {
+  calcAge2() {
+    console.log(new Date().getFullYear() - this.birthYear);
+  },
+
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
+
+const steven = Object.create(PersonProto); */
+
+const StudentProto = Object.create(PersonProto);
+StudentProto.init = function (firstName, birthYear, course) {
+  PersonProto.init.call(this, firstName, birthYear);
+  this.course = course;
+};
+
+const jay = Object.create(StudentProto);
+
+// [img]
+
+StudentProto.introduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+
+jay.init('Jay', 2010, 'Computer Science');
+console.log(jay);
+
+jay.introduce();
+jay.calcAge2();
