@@ -267,6 +267,13 @@ class PersonCl {
   get fullName() {
     return this._fullName;
   }
+
+  //_ Static methods in classes
+  // Static methods NOT added to .prototype property
+  static hey() {
+    console.log('Hey there 🙋‍♂️');
+    console.log(this);
+  }
 }
 
 const jessica = new PersonCl('Jessica Davis', 1997);
@@ -314,3 +321,18 @@ console.log(account.latest);
 //_ Access setters
 account.latest = 50;
 console.log(account.movements);
+
+//~ Static methods
+separator(8);
+
+// Array.from() and Number.parseFloat() - static methods attached to Array and Number (in their namespace)
+
+Person.hey = function () {
+  console.log('Hey there 🙋‍♂️');
+  console.log(this);
+};
+
+Person.hey();
+// jonas.hey(); // not in prototype
+
+PersonCl.hey();
