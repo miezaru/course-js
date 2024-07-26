@@ -150,10 +150,11 @@ const Person = function (firstName, birthYear) {
   this.firstName = firstName;
   this.birthYear = birthYear;
 
-  // Never create a method in the constructor function
-  this.calcAge = function () {
+  // Never create a method in the constructor function, create methods in the prototype
+  /*
+ this.calcAge = function () {
     return new Date().getFullYear() - this.birthYear;
-  };
+  }; */
 };
 
 const jonas = new Person('Jonas', 1991);
@@ -162,7 +163,7 @@ console.log(jonas);
 /*
   1. New {} is created
   2. function is called, this = {}
-  3. {} is linked to Person.prototype
+  3. {} is linked to prototype (Person.prototype)
   4. {} is returned (if no return statement is given, it returns the newly created object)
 */
 
@@ -171,3 +172,31 @@ const jack = new Person('Jack', 1975);
 console.log(matilda, jack);
 
 console.log(jonas instanceof Person);
+
+//~ Prototypes
+separator(3);
+
+console.log(Person.prototype);
+
+Person.prototype.calcAge = function () {
+  console.log(new Date().getFullYear() - this.birthYear);
+};
+
+jonas.calcAge();
+matilda.calcAge();
+
+console.log(jonas.__proto__);
+console.log(jonas.__proto__ === Person.prototype);
+
+console.log(Person.prototype.isPrototypeOf(jonas));
+console.log(Person.prototype.isPrototypeOf(matilda));
+console.log(Person.prototype.isPrototypeOf(Person));
+
+// Person.prototype = Person.prototypeOfLinkedObjects
+
+Person.prototype.species = 'Homo Sapiens';
+console.log(jonas, matilda);
+console.log(jonas.species, matilda.species);
+
+console.log(jonas.hasOwnProperty('firstName'));
+console.log(jonas.hasOwnProperty('species'));
