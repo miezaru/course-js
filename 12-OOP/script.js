@@ -141,3 +141,33 @@ num.map(n => n * 2);
 /*
   - The easiest and most straightforward way of linking an object to a prototype object.
 */
+
+//~ Constructor functions and the new Operator
+separator(2);
+
+const Person = function (firstName, birthYear) {
+  // instance properties
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+
+  // Never create a method in the constructor function
+  this.calcAge = function () {
+    return new Date().getFullYear() - this.birthYear;
+  };
+};
+
+const jonas = new Person('Jonas', 1991);
+console.log(jonas);
+
+/*
+  1. New {} is created
+  2. function is called, this = {}
+  3. {} is linked to Person.prototype
+  4. {} is returned (if no return statement is given, it returns the newly created object)
+*/
+
+const matilda = new Person('Matilda', 2017);
+const jack = new Person('Jack', 1975);
+console.log(matilda, jack);
+
+console.log(jonas instanceof Person);
