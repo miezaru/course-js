@@ -247,9 +247,9 @@ class PersonCl {
     console.log(new Date().getFullYear() - this.birthYear);
   }
 
-  greet = function () {
+  greet() {
     console.log(`Hey ${this.fullName}`);
-  };
+  }
 
   //_ Getter
   get age() {
@@ -409,3 +409,33 @@ Student.prototype.constructor = Student;
 console.dir(Student.prototype.constructor);
 
 console.log(mike);
+
+//~ Inheritance between "classes": ES6 classes
+separator(11);
+
+class StudentCl extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    // PersonCl.call(this, fullName, birthYear, course)
+
+    //_ super() Always needs to happen first
+    super(fullName, birthYear);
+    this.course = course;
+  }
+
+  introduce() {
+    console.log(`My name is ${this.fullName} and I study ${this.course}`);
+  }
+
+  calcAge() {
+    console.log(
+      `I'm ${new Date().getFullYear() - this.birthYear} years old, but as a astudent I feel more like ${new Date().getFullYear() - this.birthYear + 10}`
+    );
+  }
+}
+
+const nika = new StudentCl('Nika Manes', 2007, 'Computer Science');
+
+console.log(nika);
+
+nika.introduce();
+nika.calcAge();
