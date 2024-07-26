@@ -228,3 +228,44 @@ console.log(arr.unique());
 const h1 = document.querySelector('h1');
 console.dir(h1);
 console.dir(x => x + 1);
+
+//~ ES6 classes
+separator(6);
+
+// class expression
+// const PersonCl = class {}
+
+// class declaration
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+
+  // Methods will be added to .prototype property
+  calcAge() {
+    console.log(new Date().getFullYear() - this.birthYear);
+  }
+
+  greet = function () {
+    console.log(`Hey ${this.firstName}`);
+  };
+}
+
+const jessica = new PersonCl('Jessica', 1997);
+console.log(jessica);
+jessica.calcAge();
+
+console.log(jessica.__proto__ === PersonCl.prototype);
+
+/*
+PersonCl.prototype.greet = function () {
+  console.log(`Hey ${this.firstName}`);
+}; */
+jessica.greet();
+
+/*
+  1. Classes are NOT hoisted (classes declarations too)
+  2. Classes are first-class citizens
+  3. Classes are executed in 'stric mode' (even if we not activated it in document, classes are always executed in 'strict mode')
+*/
