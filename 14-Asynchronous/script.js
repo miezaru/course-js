@@ -1,37 +1,9 @@
 'use strict';
 
-const lectures = [
-  'Asynchronous JavaScript, AJAX and APIs',
-  'Our First AJAX Call: XMLHttpRequest',
-  '[OPTIONAL] How the Web Works: Requests and Responses',
-  'Welcome to Callback Hell',
-  'Promises and the Fetch API',
-  'Consuming Promises',
-  'Chaining Promises',
-  'Handling Rejected Promises',
-  'Throwing Errors Manually',
-  'Asynchronous Behind the Scenes: The Event Loop',
-  'The Event Loop in Practice',
-  'Building a Simple Promise',
-  'Promisifying the Geolocation API',
-  'Consuming Promises with Async/Await',
-  'Error Handling With try...catch',
-  'Returning Values from Async Functions',
-  'Running Promises in Parallel',
-  'Other Promise Combinators: race, allSettled and any',
-];
-
-const separator = val => {
-  if (typeof val === 'number')
-    return console.log(`\n|----------[ ${lectures[val]} ]----------|\n\n`);
-  if (typeof val === 'string') return console.log(`----- ${val} -----`);
-};
-
 const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
 
 //~ Asynchronous JavaScript, AJAX and APIs
-separator(0);
 
 //_ Synchronous code
 /*
@@ -65,7 +37,6 @@ separator(0);
 */
 
 //~ Our first AJAX call: XMLHttpRequest
-separator(1);
 
 const renderCountry = function (data, className = '') {
   const html = `
@@ -119,11 +90,11 @@ const getCountryDataAndNeighbour = function (country) {
   });
 };
 
-getCountryDataAndNeighbour('ukraine');
+// getCountryDataAndNeighbour('ukraine');
 
 //~ Welcome to callback hell
-separator(3);
 
+/*
 setTimeout(() => {
   console.log('1 second past');
   setTimeout(() => {
@@ -132,17 +103,16 @@ setTimeout(() => {
       console.log('3 second past');
     }, 1000);
   }, 1000);
-}, 1000);
+}, 1000); */
 
 //~ Promises and the Fetch API
-separator(4);
 
 // const request = new XMLHttpRequest();
 // request.open('GET', `https://restcountries.com/v3.1/name/${country}`);
 // request.send();
 
-const requestFetch = fetch('https://restcountries.com/v3.1/name/ukraine');
-console.log(requestFetch);
+// const requestFetch = fetch('https://restcountries.com/v3.1/name/ukraine');
+// console.log(requestFetch);
 
 //_ Promise
 /*
@@ -156,3 +126,15 @@ less formal
 
   - Insted of nesting callbacks, we can chain promises for a sequence of asynchronous operations: escaping callback hell
 */
+
+//~ Consuming promises
+
+const requestFetch = fetch('https://restcountries.com/v3.1/name/ukraine');
+
+const getCountryData = function (country) {
+  fetch(`https://restcountries.com/v3.1/name/${country}`)
+    .then(response => response.json())
+    .then(data => renderCountry(data[0]));
+};
+
+getCountryData('ukraine');
