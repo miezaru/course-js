@@ -121,6 +121,9 @@ const getCountryDataAndNeighbour = function (country) {
 
 getCountryDataAndNeighbour('ukraine');
 
+//~ Welcome to callback hell
+separator(3);
+
 setTimeout(() => {
   console.log('1 second past');
   setTimeout(() => {
@@ -130,3 +133,26 @@ setTimeout(() => {
     }, 1000);
   }, 1000);
 }, 1000);
+
+//~ Promises and the Fetch API
+separator(4);
+
+// const request = new XMLHttpRequest();
+// request.open('GET', `https://restcountries.com/v3.1/name/${country}`);
+// request.send();
+
+const requestFetch = fetch('https://restcountries.com/v3.1/name/ukraine');
+console.log(requestFetch);
+
+//_ Promise
+/*
+  - Promise: an object is used as a placeholder for the future result of an aynchronous operation
+less formal
+  - Promise: a container for an asynchronously delivered value
+less formal
+  - Promise: a container for a future value (value example - response from AJAX call).
+
+  - We no longer need to rely on events and callbacks passed into asynchronous function to handle asynchronous result
+
+  - Insted of nesting callbacks, we can chain promises for a sequence of asynchronous operations: escaping callback hell
+*/
