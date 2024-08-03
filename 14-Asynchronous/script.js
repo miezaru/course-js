@@ -53,7 +53,7 @@ const renderCountry = function (data, className = '') {
     `;
 
   countriesContainer.insertAdjacentHTML('beforeend', html);
-  // countriesContainer.style.opacity = 1;
+  countriesContainer.style.opacity = 1;
 };
 
 const getCountryDataAndNeighbour = function (country) {
@@ -295,3 +295,33 @@ const whereAmI = function () {
 };
 
 btn.addEventListener('click', whereAmI);
+
+//~ Consuming promises with Async/Await
+
+const getPosition2 = function () {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
+
+const whereAmI2 = async function (country) {
+  // Geolocation
+  const position = await getPosition();
+  const { latitude: lat, longitude: lng } = position.coords;
+
+  // Reverse geolocation
+  const resGeo = await fetch(
+    `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`
+  );
+  const geoData = await resGeo.json();
+
+  // Country data
+  const { countryName } = geoData;
+  const res = await fetch(`https://restcountries.com/v3.1/name/${countryName}`);
+  const data = await res.json();
+
+  // Render country
+  renderCountry(data[0]);
+};
+
+whereAmI2();
