@@ -167,10 +167,10 @@ const getCountryData = function (country) {
     });
 };
 
-btn.addEventListener('click', function () {
-  countriesContainer.textContent = '';
-  getCountryData('ukraine');
-});
+// btn.addEventListener('click', function () {
+//   countriesContainer.textContent = '';
+//   getCountryData('ukraine');
+// });
 
 //~ The event loop in practice
 console.log('Test start');
@@ -240,3 +240,58 @@ setTimeout(() => {
 Promise.resolve('Immediately resolve').then(x => console.log(x));
 
 Promise.reject(new Error('Immediatyle reject')).catch(err => console.error(err));
+
+//~ Promisifying the Geolocation API
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    // navigator.geolocation.getCurrentPosition(
+    //   position => resolve(console.log(position)),
+    //   err => reject(console.error(err))
+    // );
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
+    }
+  });
+};
+
+// getPosition().then(pos => console.log(pos));
+
+const whereAmI = function () {
+  getPosition()
+    .then(pos => {
+      const { latitude: lat, longitude: lng } = pos.coords;
+
+      return fetch(
+        `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`
+      );
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      return response.json();
+    })
+    .then(data => {
+      const { countryName } = data;
+      const { city } = data;
+      console.log(`You are in ${city}, ${countryName}`);
+
+      return fetch(`https://restcountries.com/v3.1/name/${countryName}`);
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      return response.json();
+    })
+    .then(data => renderCountry(data[0]))
+    .catch(err => console.log(`Something went wrong: ${err.message}`))
+    .finally(() => {
+      countriesContainer.style.opacity = 1;
+    });
+};
+
+btn.addEventListener('click', whereAmI);
