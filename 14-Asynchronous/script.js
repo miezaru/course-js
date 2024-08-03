@@ -327,13 +327,38 @@ const whereAmI2 = async function (country) {
     const data = await res.json();
 
     // Render country
+    console.log('Rendering country in whereAmI2');
     renderCountry(data[0]);
+
+    return `You are in ${geoData.city}, ${geoData.countryName}`;
   } catch (err) {
     renderError(`Something went wrong. ${err.message}`);
+
+    // Reject promise returned from async function
+    throw err;
   }
 };
 
-whereAmI2();
+console.log('1: Will get location');
+
+// const city = whereAmI2();
+// console.log(city);
+
+/*
+whereAmI2()
+  .then(city => console.log(`2: ${city}`))
+  .catch(err => console.error(`2: ${err.message}`))
+  .finally(() => console.log('3: finished getting location')); */
+
+(async function () {
+  try {
+    const city = await whereAmI2();
+    console.log(`2: ${city}`);
+  } catch (err) {
+    console.error(`2: ${err.message}`);
+  }
+  console.log('3: finished getting location');
+})();
 
 //~ Error handling with try...catch
 
@@ -344,3 +369,5 @@ whereAmI2();
 // } catch (err) {
 //   console.error(err.message);
 // }
+
+//~ Returning values from async functions
