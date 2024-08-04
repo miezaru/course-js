@@ -1,5 +1,3 @@
-'use strict';
-
 //~ An overview of modules in JavaScript
 
 //_ Module
@@ -28,3 +26,49 @@ why modules?
 */
 
 // [img]
+
+// Importing module
+
+console.log('Importing module');
+import { addToCart, totalPrice as price, tq } from './shoppingCart.js';
+addToCart('bread', 5);
+console.log(price, tq);
+
+import * as ShoppingCart from './shoppingCart.js';
+console.log(ShoppingCart.totalPrice);
+console.log(ShoppingCart.tq);
+ShoppingCart.addToCart('bread', 10);
+
+// import add, { addToCart, totalPrice as price, tq } from './shoppingCart.js';
+import add from './shoppingCart.js';
+import { cart } from './shoppingCart.js';
+add('bread', 15);
+add('pizza', 3);
+add('apples', 8);
+
+console.log(cart);
+
+//~ Top-level await (ES2022)
+/*
+console.log('Start fetching');
+const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+const data = await res.json();
+console.log(data);
+console.log('Something'); */
+
+const getLastPost = async function () {
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const data = await res.json();
+  // console.log(data);
+
+  return { title: data.at(-1).title, text: data.at(-1).body };
+};
+
+const lastPost = getLastPost();
+console.log(lastPost);
+
+// Not very clean
+lastPost.then(last => console.log(last));
+
+const lastPost2 = await getLastPost();
+console.log(lastPost2);
